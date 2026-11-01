@@ -1,0 +1,33 @@
+{
+  "model": "n_r * (w_n^* - w0) -> -R1_prime(w0) / R0_second(w0)",
+  "replicates_per_seed": 200000,
+  "independent_seeds": 1,
+  "configurations": {
+    "p2_aligned": {
+      "w0": 0.3708596805024698,
+      "curvature": 0.13996112633356506,
+      "R1_prime": 0.32097113443127256,
+      "shift_constant": -2.2932877352409404
+    }
+  },
+  "cells": [
+    {
+      "configuration": "p2_aligned",
+      "n_r": 4000,
+      "seed_index": 0,
+      "seed": 20265031,
+      "w0": 0.3708596805024698,
+      "shift_constant": -2.2932877352409404,
+      "first_order_weight_prediction": 0.3702863585686596,
+      "coefficient_optimum": 0.3702938554637266,
+      "coefficient_scaled_shift": -2.2633001549727805,
+      "mc_optimal_weight": 0.3702854617095595,
+      "mc_weight_standard_error": 1.950800157903345e-05,
+      "mc_scaled_shift": -2.296875171641233,
+      "mc_scaled_shift_standard_error": 0.0780320063161338,
+      "scaled_shift_error_in_standard_errors": -0.045973909548838815,
+      "grid_halfwidth": 0.0025,
+      "max_derivative_fit_residual": 3.598720019108519e-07
+    }
+  ]
+}

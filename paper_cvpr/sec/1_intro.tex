@@ -1,0 +1,26 @@
+\section{Introduction}
+\label{sec:intro}
+
+Robot demonstrations are expensive, while egocentric human recordings and other auxiliary embodiments are cheap and abundant. Mixed training can exploit this asymmetry, but auxiliary data can also produce negative transfer. The question is therefore not merely whether more data helps, but \emph{when it should be used, in what proportion, and how that decision changes with data scale}.
+
+We study a dual-domain model with Gaussian covariates, a shared spectral basis, task-vector mismatch $\delta$, and domain-specific noise. Standard full-ridge regression is the main estimator; diagonalized ridge is retained only as an interpretable special case. The model is deliberately simple so that the risk geometry and the global optimum can be characterized rather than inferred from a local derivative or a coarse grid. Closed-loop robot policies are outside the scope of this paper.
+
+\paragraph{From risk expansion to global shape.}
+Our first result is a fixed-dimension expansion of the actual full-ridge risk and its first two derivatives (Theorem~\ref{thm:t1c}). Instead of then assuming a unique nondegenerate interior minimizer, we analyze the population risk itself. At zero mismatch, log-convexity gives a complete uniqueness and flatness classification. In general, one coordinate cannot produce multiple valleys, whereas two suffice. A certified two-dimensional example and a one-parameter family show local minima separated by a local maximum, valley creation and annihilation, and two distinct global minimizers. These are exact statements about the population risk, not numerical shape conjectures.
+
+\paragraph{Algebraic global certification.}
+The population derivative can be cleared of positive denominators to obtain a polynomial stationary equation of degree at most $3p-2$. For fixed parameters, complete real-root isolation followed by comparison of all stationary and boundary candidates certifies the global optimum without assuming convexity or unimodality. This supplies a direct way to check when the nondegenerate perturbation theorem applies and when a different global-shape analysis is required.
+
+\paragraph{Finite-sample optimal selection.}
+When a unique nondegenerate interior population optimum does exist, we derive a first-order sample-size correction to the finite-sample optimal weight and expansions for optimized risk and gain (Theorem~\ref{thm:optfull}). When several population minimizers coexist, the smaller $R_1$ branch wins at first order. When matched spectra and zero mismatch make $R_0$ flat, the exact quadratic form $R_1=A(1-w)^2+Bw^2$ determines the optimal weight, risk, and gain. Higher-order terms are needed only when these first-order objects also tie or when more precise degenerate rates are requested.
+
+\paragraph{Dosage, exchange, and evidence.}
+At matched spectra, we retain the optimized full-ridge gain expansion and a first-order exchange approximation. An explicitly defined quadratic surrogate admits an exact piecewise dosage rule; this rule is not asserted for the complete full-ridge risk. Validation separates exact algebraic checks, real-root and interval certificates, and conditional Monte Carlo. A unified closed-form classification of all parameters, general $R_1/R_n$ shape theory, the proportional regime, and robot-policy validation remain open.
+
+\paragraph{Contributions.}
+Our contribution is not the first introduction of task mismatch or weighted transfer regression. It is a global analysis of what those risks look like and how their optima are selected:
+(i)~a fixed-dimension full-ridge risk and derivative expansion for dual-domain mixing with task mismatch;
+(ii)~log-convex and flat special cases, a minimum-dimension multimodality result, and polynomial global certification for fixed parameters;
+(iii)~a first-order correction at nondegenerate interior optima, $R_1$ branch selection at multiple population optima, and an exact flat-$R_0$ theory at matched spectra and zero mismatch;
+(iv)~matched-spectrum gain and surrogate-dosage formulas, supported by exact algebra, interval certificates, and conditional Monte Carlo.
+Proofs, exact parameters, and numerical protocols are in the supplementary material.

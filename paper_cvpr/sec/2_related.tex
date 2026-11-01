@@ -1,0 +1,22 @@
+\section{Related work}
+\label{sec:related}
+
+\paragraph{Egocentric human data for robot learning.}
+Egocentric video has long served as a representation prior: Ego4D~\cite{grauman2022ego4d} supplies large-scale first-person video, and R3M/VIP-style pretraining~\cite{nair2022r3m,ma2022vip} distills it into visual features for downstream control.
+A more recent line injects egocentric data \emph{directly into policy training}: EgoMimic~\cite{kareer2024egomimic} uses hand-mounted grippers whose kinematics match the robot, UMI~\cite{chi2024universal} uses hand-held grippers with visual-inertial pose recovery, DexCap~\cite{wang2024dexcap} uses portable mocap, and EgoBridge~\cite{egobridge2025} studies mixing in simulation with explicit domain gaps.
+Cross-embodiment robot corpora~\cite{openx2024} face a cousin of the same problem across robot morphologies.
+These works demonstrate practical benefits, substitution ratios~\cite{zevaego2025}, and failure modes, and motivate our complementary regression-level analysis of how task mismatch and sample scale affect an explicitly optimized mixing weight.
+
+\paragraph{Domain adaptation and transfer regression.}
+Classical domain-adaptation theory bounds target error by source error plus a discrepancy and a shared-optimal-hypothesis term~\cite{bendavid2010theory}; subsequent work studies when quantity compensates for quality, the value of target data, and when representation invariance can hurt~\cite{bendavid2014quantity,hanneke2019value,zhao2019learning}.
+More closely, \cite{yang2025precise} analyze two-task linear regression under covariate and model shifts in the proportional high-dimensional limit. They characterize the bias and variance of hard parameter sharing, identify positive-to-negative transfer transitions, and study source rebalancing.
+\cite{kovacevic2026private} consider weighted joint ridge regression with multiple heterogeneous sources, deriving deterministic risk equivalents that capture covariance shift, model shift, sample sizes, regularization, and privacy noise. Their formulation contains pooled weighted ridge as a limiting case and includes Bayes-optimal tuning under Gaussian priors.
+These works therefore already provide precise transfer-risk analyses and source-weighting principles under task mismatch. Our contribution is complementary: a fixed-dimension, second-order analysis of the actual full-ridge risk as a function of a scalar mixing weight, with uniform derivative control and explicit consequences for optimized risk and interior or boundary optima.
+
+\paragraph{Mixture scaling laws and the present scope.}
+\cite{wu2026mixture} study mixed ridge regression with a shared regression function, heterogeneous covariances and noise levels, and derive minimax and ridge scaling laws under aligned power-law spectra. Sim-to-real co-training analyses provide complementary empirical models of multi-source learning~\cite{lei2026simreal}.
+Relative to this line, we allow an explicit deterministic task mismatch $\delta$ and focus on fixed-dimension risk and optimum expansions rather than proportional-regime scaling exponents. Our exchange approximation and the piecewise dosage rule are correspondingly restricted: the former is first order, while the latter is exact only for an explicitly defined quadratic surrogate.
+
+\paragraph{Technical tools.}
+Our analysis builds on the ridge-regression literature under power-law spectra~\cite{dobriban2018high,hastie2022surprises}, with two differences that matter: the robot-domain risk is $\Sigma_r$-weighted (only target-geometry errors count), and the sample-level coupling between coordinates induces a \emph{label-feedthrough} term that acts as effective noise (Sec.~\ref{sec:setup}).
+On the alignment side we use kernel MMD~\cite{gretton2012kernel,long2015learning} as the alignment-strength knob in experiments; gradient-conflict diagnostics follow the multi-task learning literature~\cite{yu2020surgery}; and the impossibility caveats of invariant-representation approaches~\cite{zhao2019learning,arjovsky2019invariant} inform our negative results.

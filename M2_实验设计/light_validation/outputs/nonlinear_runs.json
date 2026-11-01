@@ -1,0 +1,1402 @@
+[
+  {
+    "configuration": "p2_aligned",
+    "seed": 11,
+    "w": 0.0,
+    "l2": 0.0,
+    "mlp_risk": 0.009968382846152079,
+    "full_risk": 0.034525535501348695
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 11,
+    "w": 0.05,
+    "l2": 0.0,
+    "mlp_risk": 0.010025069535736276,
+    "full_risk": 0.02958685607830262
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 11,
+    "w": 0.1,
+    "l2": 0.0,
+    "mlp_risk": 0.011386135752413202,
+    "full_risk": 0.02567402406634167
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 11,
+    "w": 0.2,
+    "l2": 0.0,
+    "mlp_risk": 0.01762205665023539,
+    "full_risk": 0.02054701656601743
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 11,
+    "w": 0.4,
+    "l2": 0.0,
+    "mlp_risk": 0.03994844717099263,
+    "full_risk": 0.01891803315890618
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 11,
+    "w": 0.7,
+    "l2": 0.0,
+    "mlp_risk": 0.08427130608481595,
+    "full_risk": 0.031224007536943356
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 11,
+    "w": 1.0,
+    "l2": 0.0,
+    "mlp_risk": 0.135582014367832,
+    "full_risk": 0.05404995293258423
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 23,
+    "w": 0.0,
+    "l2": 0.0,
+    "mlp_risk": 0.012473341173166065,
+    "full_risk": 0.029781492855380558
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 23,
+    "w": 0.05,
+    "l2": 0.0,
+    "mlp_risk": 0.010271674940267699,
+    "full_risk": 0.02517369002372849
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 23,
+    "w": 0.1,
+    "l2": 0.0,
+    "mlp_risk": 0.008926653897008495,
+    "full_risk": 0.021441857647187788
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 23,
+    "w": 0.2,
+    "l2": 0.0,
+    "mlp_risk": 0.011720509966000393,
+    "full_risk": 0.016330286736057235
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 23,
+    "w": 0.4,
+    "l2": 0.0,
+    "mlp_risk": 0.027600145954690698,
+    "full_risk": 0.013897353385741912
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 23,
+    "w": 0.7,
+    "l2": 0.0,
+    "mlp_risk": 0.07005015002980124,
+    "full_risk": 0.024449921519619916
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 23,
+    "w": 1.0,
+    "l2": 0.0,
+    "mlp_risk": 0.12204155783272716,
+    "full_risk": 0.04619737666358941
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 37,
+    "w": 0.0,
+    "l2": 0.0,
+    "mlp_risk": 0.009743950289562939,
+    "full_risk": 0.015916368761333975
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 37,
+    "w": 0.05,
+    "l2": 0.0,
+    "mlp_risk": 0.010597596345763446,
+    "full_risk": 0.013763470926348243
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 37,
+    "w": 0.1,
+    "l2": 0.0,
+    "mlp_risk": 0.011864194936812586,
+    "full_risk": 0.01213106371465766
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 37,
+    "w": 0.2,
+    "l2": 0.0,
+    "mlp_risk": 0.015834650157163718,
+    "full_risk": 0.010232537265673662
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 37,
+    "w": 0.4,
+    "l2": 0.0,
+    "mlp_risk": 0.025053942817314993,
+    "full_risk": 0.010784497373524417
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 37,
+    "w": 0.7,
+    "l2": 0.0,
+    "mlp_risk": 0.04426478365542502,
+    "full_risk": 0.018987856125380495
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 37,
+    "w": 1.0,
+    "l2": 0.0,
+    "mlp_risk": 0.06276778889499778,
+    "full_risk": 0.0323692974974679
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 53,
+    "w": 0.0,
+    "l2": 0.0,
+    "mlp_risk": 0.010076415028955083,
+    "full_risk": 0.024800554583619894
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 53,
+    "w": 0.05,
+    "l2": 0.0,
+    "mlp_risk": 0.009786755757237989,
+    "full_risk": 0.021009912513280077
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 53,
+    "w": 0.1,
+    "l2": 0.0,
+    "mlp_risk": 0.01037693773216475,
+    "full_risk": 0.017752748428396185
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 53,
+    "w": 0.2,
+    "l2": 0.0,
+    "mlp_risk": 0.01452014895271178,
+    "full_risk": 0.01274613121595233
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 53,
+    "w": 0.4,
+    "l2": 0.0,
+    "mlp_risk": 0.02904056195978825,
+    "full_risk": 0.008175455254569187
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 53,
+    "w": 0.7,
+    "l2": 0.0,
+    "mlp_risk": 0.06563380212590143,
+    "full_risk": 0.012763324946309641
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 53,
+    "w": 1.0,
+    "l2": 0.0,
+    "mlp_risk": 0.10797690488690152,
+    "full_risk": 0.028265729973966636
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 71,
+    "w": 0.0,
+    "l2": 0.0,
+    "mlp_risk": 0.004613529909186861,
+    "full_risk": 0.026976438810457522
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 71,
+    "w": 0.05,
+    "l2": 0.0,
+    "mlp_risk": 0.004523288032165833,
+    "full_risk": 0.024366784763825894
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 71,
+    "w": 0.1,
+    "l2": 0.0,
+    "mlp_risk": 0.004991278761554509,
+    "full_risk": 0.02209583529386301
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 71,
+    "w": 0.2,
+    "l2": 0.0,
+    "mlp_risk": 0.007828967468556063,
+    "full_risk": 0.018488909494750315
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 71,
+    "w": 0.4,
+    "l2": 0.0,
+    "mlp_risk": 0.01808935149428505,
+    "full_risk": 0.01452992327492561
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 71,
+    "w": 0.7,
+    "l2": 0.0,
+    "mlp_risk": 0.03810878003984793,
+    "full_risk": 0.01509601009863867
+  },
+  {
+    "configuration": "p2_aligned",
+    "seed": 71,
+    "w": 1.0,
+    "l2": 0.0,
+    "mlp_risk": 0.058265077298013286,
+    "full_risk": 0.021562872756029985
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 11,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.045135988755763606,
+    "full_risk": 0.03552081691238547
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 11,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.04800174720787679,
+    "full_risk": 0.03623899982866442
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 11,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.04806610014893671,
+    "full_risk": 0.03713091613834778
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 11,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.0540577815963198,
+    "full_risk": 0.039365504658073126
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 11,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.06314325498130398,
+    "full_risk": 0.045239731154315295
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 11,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.08182002788198686,
+    "full_risk": 0.05634013888682379
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 11,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.10439440240086105,
+    "full_risk": 0.06893615303008808
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 23,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.10489344765837204,
+    "full_risk": 0.030340652337334528
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 23,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.0856192044949045,
+    "full_risk": 0.027545101675499076
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 23,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.07213620715696088,
+    "full_risk": 0.025121161594230796
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 23,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.048127452058239636,
+    "full_risk": 0.02132100283078037
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 23,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.018336330644158867,
+    "full_risk": 0.017517126952929903
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 23,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.015815469498011235,
+    "full_risk": 0.020007196102214853
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 23,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.04470708088350011,
+    "full_risk": 0.030865136963043726
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 37,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.13321395090053062,
+    "full_risk": 0.1496688047276088
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 37,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.11606508888149397,
+    "full_risk": 0.13862657311225923
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 37,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.10510454861908747,
+    "full_risk": 0.12847186385189593
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 37,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.0800831976520818,
+    "full_risk": 0.11066191995800069
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 37,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.053749009906150766,
+    "full_risk": 0.08401224565898176
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 37,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.05749351429992691,
+    "full_risk": 0.06273007651796392
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 37,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.10045038138671014,
+    "full_risk": 0.05909837533537378
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 53,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.044443423971311145,
+    "full_risk": 0.04958256457434208
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 53,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.04599615647372234,
+    "full_risk": 0.05147656336162216
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 53,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.04900002084002505,
+    "full_risk": 0.05356752295392159
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 53,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.0549860689137165,
+    "full_risk": 0.05814550003527805
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 53,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.06960907596574235,
+    "full_risk": 0.06796671365019114
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 53,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.1013243284311398,
+    "full_risk": 0.0822656348560033
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 53,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.1395096525837642,
+    "full_risk": 0.09481634552396889
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 71,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.054909031739613,
+    "full_risk": 0.06247081314062286
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 71,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.04710530182053933,
+    "full_risk": 0.057295833442834364
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 71,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.03981732000204063,
+    "full_risk": 0.05248367635464686
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 71,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.03320235459636441,
+    "full_risk": 0.04386587910705519
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 71,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.030417865835568398,
+    "full_risk": 0.03015735175140933
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 71,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.05226905842323229,
+    "full_risk": 0.01668476375240493
+  },
+  {
+    "configuration": "p2_anti_n50",
+    "seed": 71,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.093849912618677,
+    "full_risk": 0.009631871507322053
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 11,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.07255224848293478,
+    "full_risk": 0.004782900097789142
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 11,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.06332517255996459,
+    "full_risk": 0.004565657760078818
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 11,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.05748816337904908,
+    "full_risk": 0.005422978386142516
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 11,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.05295847529090578,
+    "full_risk": 0.009652074368461157
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 11,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.05744410585847998,
+    "full_risk": 0.024656488326222054
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 11,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.08106388714036987,
+    "full_risk": 0.05464512632339395
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 11,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.11529000906977044,
+    "full_risk": 0.08666228107322524
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 23,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.017366717235961306,
+    "full_risk": 0.01592735283794599
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 23,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.021369792722882818,
+    "full_risk": 0.017546567699386322
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 23,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.022412671398900675,
+    "full_risk": 0.019889653528734418
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 23,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.024836629755243797,
+    "full_risk": 0.026504164343835585
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 23,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.03643262250406681,
+    "full_risk": 0.04612750626400425
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 23,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.0727858096942355,
+    "full_risk": 0.08783921671329617
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 23,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.13071667390300737,
+    "full_risk": 0.14124162423529407
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 37,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.07381093715349632,
+    "full_risk": 0.048827034879459205
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 37,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.07931243473637525,
+    "full_risk": 0.05435586069386904
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 37,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.0791559390908234,
+    "full_risk": 0.06037270886243991
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 37,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.08619553267993708,
+    "full_risk": 0.07355980834176926
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 37,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.10534024125646459,
+    "full_risk": 0.10290774138734048
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 37,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.1582884684232471,
+    "full_risk": 0.14984690368206716
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 37,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.2273492125973823,
+    "full_risk": 0.19639042530245665
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 53,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.049290245000243316,
+    "full_risk": 0.017272768055661938
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 53,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.04650430590549824,
+    "full_risk": 0.022891661442817294
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 53,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.0463940688623237,
+    "full_risk": 0.029338934934755638
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 53,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.05204605906311435,
+    "full_risk": 0.04410590254518475
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 53,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.07669985685508945,
+    "full_risk": 0.07809369567966627
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 53,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.13194680883980353,
+    "full_risk": 0.1325859090199455
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 53,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.19875559813356716,
+    "full_risk": 0.18550585453735696
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 71,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.07400594896433872,
+    "full_risk": 0.056839811271679946
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 71,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.06891431914848477,
+    "full_risk": 0.05901302555241064
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 71,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.06414266773193943,
+    "full_risk": 0.06113490973875434
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 71,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.05702412817848435,
+    "full_risk": 0.06522875399983966
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 71,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.05137140543808224,
+    "full_risk": 0.07284917103023456
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 71,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.054919175366552234,
+    "full_risk": 0.08300926325905025
+  },
+  {
+    "configuration": "p2_anti_n70",
+    "seed": 71,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.07361014088324898,
+    "full_risk": 0.09187127733064002
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 11,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.024466542123697376,
+    "full_risk": 0.011187668024299173
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 11,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.01989907467945607,
+    "full_risk": 0.008294622297027888
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 11,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.016649085152713253,
+    "full_risk": 0.0073381578980386145
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 11,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.014304360149852124,
+    "full_risk": 0.009980286989874193
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 11,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.02248662404099979,
+    "full_risk": 0.02890106437793678
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 11,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.06226945689755607,
+    "full_risk": 0.08233335463319005
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 11,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.13577174196724778,
+    "full_risk": 0.15914117197259453
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 23,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.01705440580046931,
+    "full_risk": 0.009663561360999405
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 23,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.015248961771331029,
+    "full_risk": 0.00830409671075363
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 23,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.013909349467526068,
+    "full_risk": 0.008437978469673467
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 23,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.014628651196380639,
+    "full_risk": 0.012503274240121624
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 23,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.02645851704128331,
+    "full_risk": 0.033517970352439155
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 23,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.07263617703634959,
+    "full_risk": 0.09422850502269109
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 23,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.17404996493861796,
+    "full_risk": 0.19062432270488275
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 37,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.039882040664617584,
+    "full_risk": 0.022378525968113214
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 37,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.028413087424479216,
+    "full_risk": 0.013395861068057242
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 37,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.02120526816208301,
+    "full_risk": 0.008370660433269759
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 37,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.013449841355323662,
+    "full_risk": 0.007934761674852322
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 37,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.02761756980591073,
+    "full_risk": 0.03705120957987837
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 37,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.11264353767033028,
+    "full_risk": 0.1382231849120097
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 37,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.2974047113334311,
+    "full_risk": 0.2944365645133656
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 53,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.038854568769113244,
+    "full_risk": 0.02090478726561676
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 53,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.033017303233449334,
+    "full_risk": 0.020710326096795944
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 53,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.030125781509667833,
+    "full_risk": 0.021645209502416274
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 53,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.0319012913267758,
+    "full_risk": 0.025951717552793525
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 53,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.04224191734639094,
+    "full_risk": 0.040882849288030744
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 53,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.07017505676623607,
+    "full_risk": 0.07285593824058849
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 53,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.11550014093107484,
+    "full_risk": 0.11285112695057171
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 71,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.012905302157967287,
+    "full_risk": 0.005409993610046168
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 71,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.011374230397234562,
+    "full_risk": 0.005922549846525345
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 71,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.01130776988915249,
+    "full_risk": 0.007762801107094726
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 71,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.013749021794344757,
+    "full_risk": 0.014318864011990168
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 71,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.028641645581106344,
+    "full_risk": 0.035652872788554814
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 71,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.06965434306081501,
+    "full_risk": 0.08407389704104822
+  },
+  {
+    "configuration": "p20_anti_n250",
+    "seed": 71,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.1484935096783057,
+    "full_risk": 0.15152596867650386
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 11,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.007701245591084443,
+    "full_risk": 0.003598234362539189
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 11,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.006325985568992403,
+    "full_risk": 0.0030558519345512893
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 11,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.006139411925446041,
+    "full_risk": 0.003904095448677449
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 11,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.008685713843361947,
+    "full_risk": 0.009249139615868143
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 11,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.025136915276626284,
+    "full_risk": 0.032716381930959854
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 11,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.0849627452396161,
+    "full_risk": 0.09757566786826341
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 11,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.1957709593133363,
+    "full_risk": 0.19884819364135253
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 23,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.009529955645076256,
+    "full_risk": 0.006789966632336847
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 23,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.010545965103414559,
+    "full_risk": 0.00906382032752985
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 23,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.012635954103135809,
+    "full_risk": 0.012206310185889474
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 23,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.01865697394955691,
+    "full_risk": 0.020788439885420656
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 23,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.039409638611696,
+    "full_risk": 0.046212079585502046
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 23,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.09067974665463277,
+    "full_risk": 0.10466082209262403
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 23,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.1813741648965035,
+    "full_risk": 0.19021257837295336
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 37,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.010447327019583867,
+    "full_risk": 0.002297445315220864
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 37,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.009517741864192724,
+    "full_risk": 0.0015330410380461012
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 37,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.009427040831436044,
+    "full_risk": 0.0020264214113869207
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 37,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.011910676640698954,
+    "full_risk": 0.006450249880627351
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 37,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.025900269098857905,
+    "full_risk": 0.027605829460307735
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 37,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.0715791083906228,
+    "full_risk": 0.08661250256388106
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 37,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.15914083619686104,
+    "full_risk": 0.1749674786858921
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 53,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.014703609333580597,
+    "full_risk": 0.006106483792689943
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 53,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.01483787982214746,
+    "full_risk": 0.007787923450307285
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 53,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.01705032879159573,
+    "full_risk": 0.010298980243402875
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 53,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.02331962925618275,
+    "full_risk": 0.017616864251464182
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 53,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.04190016610268404,
+    "full_risk": 0.04080720021782166
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 53,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.09059410219664403,
+    "full_risk": 0.09609513113960919
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 53,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.16981648176120898,
+    "full_risk": 0.17578542517635798
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 71,
+    "w": 0.0,
+    "l2": 0.001,
+    "mlp_risk": 0.014338889490131663,
+    "full_risk": 0.006786424861397622
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 71,
+    "w": 0.05,
+    "l2": 0.001,
+    "mlp_risk": 0.014727011957357589,
+    "full_risk": 0.008312988776563189
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 71,
+    "w": 0.1,
+    "l2": 0.001,
+    "mlp_risk": 0.01645043983770085,
+    "full_risk": 0.010835904168957586
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 71,
+    "w": 0.2,
+    "l2": 0.001,
+    "mlp_risk": 0.021262448638685216,
+    "full_risk": 0.01841193298777618
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 71,
+    "w": 0.4,
+    "l2": 0.001,
+    "mlp_risk": 0.04078217781995859,
+    "full_risk": 0.0423358929005087
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 71,
+    "w": 0.7,
+    "l2": 0.001,
+    "mlp_risk": 0.09534078540605381,
+    "full_risk": 0.09897547413888227
+  },
+  {
+    "configuration": "p20_anti_n700",
+    "seed": 71,
+    "w": 1.0,
+    "l2": 0.001,
+    "mlp_risk": 0.18442503242396105,
+    "full_risk": 0.18167739027448807
+  }
+]

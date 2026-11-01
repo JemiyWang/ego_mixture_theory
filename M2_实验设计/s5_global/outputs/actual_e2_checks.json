@@ -1,0 +1,40 @@
+[
+  {
+    "configuration": "p2_anti_aligned",
+    "n_r": 50,
+    "actual_paired_derivative": -0.030951230400432145,
+    "se": 0.009710707973951417
+  },
+  {
+    "configuration": "p2_anti_aligned",
+    "n_r": 70,
+    "actual_paired_derivative": 0.009654778746509806,
+    "se": 0.005595016225035946
+  },
+  {
+    "configuration": "p20_spectral_A",
+    "n_r": 250,
+    "actual_paired_derivative": -0.024491912131216355,
+    "se": 0.0037068805228519506
+  },
+  {
+    "configuration": "p20_spectral_A",
+    "n_r": 700,
+    "actual_paired_derivative": 0.008940225251682277,
+    "se": 0.0021064210200514386
+  },
+  {
+    "configuration": "matched_interior",
+    "n_r": 1000,
+    "w": 0.48902077151335316,
+    "actual_paired_gain": 0.011853193684346189,
+    "se": 0.00043846273936094294
+  },
+  {
+    "configuration": "counterexample",
+    "n_r": 1000,
+    "w": 0.06828933497757826,
+    "actual_paired_gain": 0.009870708102435692,
+    "se": 0.00035852667263488666
+  }
+]

@@ -1,0 +1,74 @@
+{
+  "scope": "Matched spectra and delta=0; R1 global shape and first-order finite-sample consequences",
+  "algebra": {
+    "random_configurations": 200,
+    "max_quadratic_identity_error": 1.8189894035458565e-12,
+    "max_flat_r0_error": 3.552713678800501e-15,
+    "max_coefficient_identity_error": 4.547473508864641e-13,
+    "minimum_gram_correction_eigenvalue": 7.730558790047641e-10
+  },
+  "monte_carlo": [
+    {
+      "configuration": "p1",
+      "n_r": 1000,
+      "replicates": 20000,
+      "A": 0.8674270883136397,
+      "B": 1.673382965644423,
+      "R1_optimal_weight": 0.3413978494623656,
+      "mc_optimal_weight": 0.33916566303487883,
+      "mc_weight_standard_error": 0.0011474740044587946,
+      "gain_prediction": 0.0002961377425156781,
+      "mc_gain_at_R1_optimal_weight": 0.0002986445413467713,
+      "mc_gain_standard_error": 2.1397778469447964e-06,
+      "gain_error_in_standard_errors": 1.171522938548255
+    },
+    {
+      "configuration": "p1",
+      "n_r": 4000,
+      "replicates": 20000,
+      "A": 0.8674270883136397,
+      "B": 1.673382965644423,
+      "R1_optimal_weight": 0.3413978494623656,
+      "mc_optimal_weight": 0.34089825692283515,
+      "mc_weight_standard_error": 0.0022698941057196545,
+      "gain_prediction": 7.403443562891952e-05,
+      "mc_gain_at_R1_optimal_weight": 7.39619414957152e-05,
+      "mc_gain_standard_error": 1.0109977596883462e-06,
+      "gain_error_in_standard_errors": -0.07170553298423457
+    },
+    {
+      "configuration": "p2",
+      "n_r": 1000,
+      "replicates": 20000,
+      "A": 1.3271264288028137,
+      "B": 2.4705360035170534,
+      "R1_optimal_weight": 0.3494587664001816,
+      "mc_optimal_weight": 0.34980669112658275,
+      "mc_weight_standard_error": 0.001797028356935553,
+      "gain_prediction": 0.0004637759646665097,
+      "mc_gain_at_R1_optimal_weight": 0.0004613740570027872,
+      "mc_gain_standard_error": 4.870453069402013e-06,
+      "gain_error_in_standard_errors": -0.4931589791537343
+    },
+    {
+      "configuration": "p2",
+      "n_r": 4000,
+      "replicates": 20000,
+      "A": 1.3271264288028137,
+      "B": 2.4705360035170534,
+      "R1_optimal_weight": 0.3494587664001816,
+      "mc_optimal_weight": 0.35103834063289974,
+      "mc_weight_standard_error": 0.0035647012184780794,
+      "gain_prediction": 0.00011594399116662742,
+      "mc_gain_at_R1_optimal_weight": 0.00011873792250023249,
+      "mc_gain_standard_error": 2.3744980775755826e-06,
+      "gain_error_in_standard_errors": 1.1766408067416667
+    }
+  ],
+  "degenerate_cases": {
+    "A=B=0": "R1 is identically zero; all weights are equivalent at first order",
+    "A=0<B": "unique minimizer w=0",
+    "A>0=B": "unique minimizer w=1",
+    "A,B>0": "unique interior minimizer A/(A+B)"
+  }
+}

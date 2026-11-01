@@ -1,0 +1,94 @@
+[
+  {
+    "configuration": "p2_anti_aligned",
+    "theory": {
+      "H": 0.052927329662023535,
+      "H1": -0.012766304016477603,
+      "K_population_derivative": 2.9323237231400494,
+      "K_full": 2.9450900271565272
+    },
+    "predicted_root": 55.644032033410724,
+    "cells": [
+      {
+        "n_r": 30,
+        "derivative_prediction": -0.0452423379098607,
+        "derivative_mc": -0.057045299974769946,
+        "standard_error": 0.001972007152883915
+      },
+      {
+        "n_r": 50,
+        "derivative_prediction": -0.005974470881107009,
+        "derivative_mc": -0.011203278553860068,
+        "standard_error": 0.0010098887606302125
+      },
+      {
+        "n_r": 70,
+        "derivative_prediction": 0.010854614988358859,
+        "derivative_mc": 0.007866917613533957,
+        "standard_error": 0.0007505846287073633
+      },
+      {
+        "n_r": 100,
+        "derivative_prediction": 0.023476429390458263,
+        "derivative_mc": 0.02132258984578483,
+        "standard_error": 0.0006142160168737142
+      }
+    ],
+    "estimated_root": 61.74951579471981,
+    "root_ratio_bootstrap_median": 1.1094665519876852,
+    "root_ratio_ci_97_5": [
+      1.0821090824847814,
+      1.13669322352983
+    ],
+    "compatible": true,
+    "bootstrap_successful_roots": 1000,
+    "root_ratio": 1.1097239638860665,
+    "status": "compatible"
+  },
+  {
+    "configuration": "p20_spectral_A",
+    "theory": {
+      "H": 0.027101051187360673,
+      "H1": 0.3538375404339965,
+      "K_population_derivative": 12.641328367116758,
+      "K_full": 12.287490826682761
+    },
+    "predicted_root": 453.39535879011856,
+    "cells": [
+      {
+        "n_r": 250,
+        "derivative_prediction": -0.022048912119370375,
+        "derivative_mc": -0.02300139401277834,
+        "standard_error": 0.00018228398308661785
+      },
+      {
+        "n_r": 450,
+        "derivative_prediction": -0.00020448398304546284,
+        "derivative_mc": -0.0005923902091875959,
+        "standard_error": 0.00014324142982303047
+      },
+      {
+        "n_r": 700,
+        "derivative_prediction": 0.009547492863528156,
+        "derivative_mc": 0.009544641082668065,
+        "standard_error": 0.00011606981743854173
+      },
+      {
+        "n_r": 1000,
+        "derivative_prediction": 0.014813560360677911,
+        "derivative_mc": 0.014620795934346655,
+        "standard_error": 0.00010720794991767109
+      }
+    ],
+    "estimated_root": 464.60955856137923,
+    "root_ratio_bootstrap_median": 1.0249960954663222,
+    "root_ratio_ci_97_5": [
+      1.0083173037375726,
+      1.0409184533487983
+    ],
+    "compatible": true,
+    "bootstrap_successful_roots": 1000,
+    "root_ratio": 1.0247338212750692,
+    "status": "compatible"
+  }
+]

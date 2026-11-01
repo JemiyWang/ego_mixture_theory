@@ -1,0 +1,518 @@
+%% Supplementary material — full version (compiled as suppl.pdf via suppl.tex)
+%% Self-contained: restates the model and all equations used.
+
+\section{Setup and notation}
+\label{supp:setup}
+
+We restate the model of the main text (Sec.~3) for self-containment.
+Coordinates $j = 1,\dots,p$ index a shared spectral basis; domain $e \in \{r, h\}$ has covariates $x_e = \Sigma_e^{1/2} u_e$, $u_e$ standard Gaussian, $\Sigma_e = \mathrm{diag}(\lambda^e_j)$ with $\lambda^e_j \asymp j^{-\alpha_e}$, $\lambda^e_1 = 1$; we write $a_j = \lambda^r_j$, $b_j = \lambda^h_j$.
+Labels: $y_r = \langle\beta^*, x_r\rangle + \varepsilon_r$, $y_h = \langle\beta^* + \delta, x_h\rangle + \varepsilon_h$; $\sum_j j^{2s}\beta_j^{*2} \le 1$; noise variances $\sigma_e^2$.
+Given $\nr$ robot and $\nh$ human samples, mixing ratio $\lambda \in [0,1]$, per-sample weights $w_r = (1-\lambda)/\nr$, $w_h = \lambda/\nh$, the diagonalized ridge estimator is
+\begin{equation}
+\begin{aligned}
+  \hat\beta_j &= \frac{w_r T_{rj} + w_h T_{hj}}{w_r S_{rj} + w_h S_{hj} + \mu},\\
+  S_{ejk} &= {\textstyle\sum_{i=1}^{n_e}} x_{e,ij} x_{e,ik},\qquad
+  T_{ej} = {\textstyle\sum_i} x_{e,ij}\, y_{e,i}.
+\end{aligned}
+  \label{supp:eq:estimator}
+\end{equation}
+The robot-domain excess risk is $\risk(\lambda) = \E\|\hat\beta(\lambda) - \beta^*\|^2_{\Sigma_r} = \sum_j a_j\, \E(\hat\beta_j - \beta^*_j)^2$.
+The effective noise is $\tilde\sigma_e^2 = \sigma_e^2 + F_e$ with feedthrough energy $F_e = \sum_k \lambda^e_k \beta_{e,k}^2$ ($\beta_h = \beta^* + \delta$).
+
+\medskip
+\noindent\textbf{Single-coordinate notation} (used throughout, index $j$ suppressed).
+$U_r \sim \chi^2_{\nr}$, $U_h \sim \chi^2_{\nh}$ independent; $S_e = \lambda^e U_e$, so $\E S_e = n_e\lambda^e$, $\mathrm{Var}(S_e) = 2n_e(\lambda^e)^2$, and the third central moment is $8n_e(\lambda^e)^3$.
+$\hat D = w_r S_r + w_h S_h + \mu$; $D = \E\hat D = (1-\lambda)a + \lambda b + \mu$.
+$\hat N = w_r T_{r} + w_h T_{h}$; its systematic part $N_0 = \lambda b\,\delta - \mu\beta^*$.
+The fluctuation scale is $\eta = \sqrt{8\log(4p/\delta_c)}\,\big(\frac{(1-\lambda)a}{\sqrt{\nr}} + \frac{\lambda b}{\sqrt{\nh}}\big)$ for confidence parameter $\delta_c \in (0,1)$.
+We write $\tilde n = \hat N - \E\hat N$; direct expansion gives
+\begin{equation}
+  \mathrm{Var}(\tilde n) = \underbrace{\frac{2\lambda^2 (b\delta)^2}{\nh}}_{\text{mismatch fluctuation}} + \underbrace{\frac{(1{-}\lambda)^2 \tilde\sigma_r^2 a}{\nr} + \frac{\lambda^2 \tilde\sigma_h^2 b}{\nh}}_{\text{noise + feedthrough}} .
+  \label{supp:eq:varn}
+\end{equation}
+
+\section{Lemmas L1 and L2: per-coordinate representation and conditional MSE}
+\label{supp:l12}
+
+\begin{lemma}[L1, representation]\label{supp:l1}
+For each coordinate $j$, with the definitions above,
+\begin{equation}
+  T_{ej} = S_{ejj}\,\beta_{e,j} + U_{ej} + \textstyle\sum_i x_{e,ij}\varepsilon_{e,i},
+  \qquad U_{ej} = \sum_{k\neq j} S_{ejk}\,\beta_{e,k},
+  \label{supp:eq:l1}
+\end{equation}
+where $U_{ej}$ is mean-zero with $\mathrm{Var}(U_{ej}) = n_e \lambda^e_j F_{e,j}$, $F_{e,j} = \sum_{k\neq j} \lambda^e_k \beta_{e,k}^2$.
+\end{lemma}
+
+\begin{proof}
+Expand $y_{e,i} = \sum_k x_{e,ik}\beta_{e,k} + \varepsilon_{e,i}$ in $T_{ej} = \sum_i x_{e,ij} y_{e,i}$ and separate the $k = j$ term.
+For $k \neq j$, $\E S_{ejk} = \sum_i \E[x_{e,ij}]\E[x_{e,ik}] = 0$ by independence of distinct coordinates of the Gaussian covariate, hence $\E U_{ej} = 0$.
+For the variance, $\mathrm{Var}(S_{ejk}) = \sum_i \E[x_{e,ij}^2]\E[x_{e,ik}^2] = n_e \lambda^e_j \lambda^e_k$ (independence of coordinates $j \neq k$), and distinct cross terms are uncorrelated: for $k \neq l$, $\mathrm{Cov}(S_{ejk}, S_{ejl}) = \sum_i \E[x_{e,ij}^2 x_{e,ik} x_{e,il}] = 0$ since $\E[x_{e,ik}x_{e,il}] = 0$ and $x_{e,ij}^2$ is independent of $(x_{e,ik}, x_{e,il})$.
+Summing, $\mathrm{Var}(U_{ej}) = \sum_{k\neq j} \beta_{e,k}^2 \, n_e \lambda^e_j \lambda^e_k = n_e \lambda^e_j F_{e,j}$.
+Finally, $F_{e,j} = F_e - \lambda^e_j\beta_{e,j}^2 = F_e(1 + o(1))$ under the ellipsoid constraint, since the omitted single term is negligible against the total energy.
+\end{proof}
+
+\begin{remark}
+The feedthrough $U_{ej}$ is indistinguishable from label noise for coordinate $j$: it contributes variance $n_e\lambda^e_j F_e$ exactly as if the noise variance were $\sigma_e^2 + F_e$.
+This is the origin of the effective noise $\tilde\sigma_e^2$ in Eq.~\eqref{supp:eq:varn}; absorbing it there is justified because $U_{ej}$ is independent of $S_{ejj}$ (disjoint coordinate sets) and of the label noise.
+\end{remark}
+
+\begin{lemma}[L2, conditional MSE]\label{supp:l2}
+Conditioned on the design matrices,
+\begin{equation}
+\begin{aligned}
+  \E\big[(\hat\beta_j - \beta^*_j)^2 \,\big|\, X\big] &= \frac{\hat N_j^2}{\hat D_j^2},\\
+  \hat N_j &= w_h S_{hjj}\delta_j - \mu\beta^*_j + w_r U_{rj} + w_h U_{hj}\\
+  &\qquad + w_r X_{r,:j}^{\!\top}\varepsilon_r + w_h X_{h,:j}^{\!\top}\varepsilon_h .
+\end{aligned}
+  \label{supp:eq:l2}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Substitute Lemma~\ref{supp:l1} into Eq.~\eqref{supp:eq:estimator}:
+$\hat\beta_j \hat D_j = w_r S_{rjj}\beta^*_j + w_h S_{hjj}(\beta^*_j + \delta_j) + (\text{feedthrough} + \text{noise})$.
+Subtract $\beta^*_j \hat D_j = w_r S_{rjj}\beta^*_j + w_h S_{hjj}\beta^*_j + \mu\beta^*_j$; the error numerator is exactly $\hat N_j$.
+Conditional on $X$, the only randomness left is the label noise, which is mean-zero; the displayed expression is the conditional second moment, with the noise contributions' conditional variances $w_e^2 \sigma_e^2 S_{ejj}$ understood as part of $\hat N_j^2$ after taking expectations over the noise (cross terms vanish by independence and mean-zero).
+\end{proof}
+
+\section{Lemma L3: per-coordinate deterministic equivalent}
+\label{supp:l3}
+
+\begin{lemma}[L3]\label{supp:l3lem}
+Fix a coordinate and suppose $D \ge 2\eta$ (information-rich regime).
+Define
+\begin{equation}
+  \mathrm{MSE}^{\det} = \frac{N_0^2}{D^2} + \frac{\mathrm{Var}(\tilde n)}{D^2} - \frac{4 N_0\, \mathrm{Cov}(\tilde n, \hat D)}{D^3} + \frac{3 N_0^2\, \mathrm{Var}(\hat D)}{D^4},
+  \label{supp:eq:msedet}
+\end{equation}
+with $\mathrm{Var}(\tilde n)$ from Eq.~\eqref{supp:eq:varn}, $\mathrm{Cov}(\tilde n, \hat D) = 2\lambda^2 \delta b^2 / \nh$, and $\mathrm{Var}(\hat D) = 2\big[\frac{(1-\lambda)^2 a^2}{\nr} + \frac{\lambda^2 b^2}{\nh}\big]$.
+Then
+\begin{equation}
+  \Big|\, \E\big[(\hat\beta - \beta^*)^2\big] - \mathrm{MSE}^{\det} \,\Big|
+  \;\le\; C\Big(\frac{\eta}{D}\Big)^3 \frac{\overline{N}^2}{D^2} + O\big(\delta_c\, \mu^{-2}\, \overline{N}^2\big),
+  \label{supp:eq:l3bound}
+\end{equation}
+where $\overline{N}^2 = N_0^2 + \mathrm{Var}(\tilde n)$ and $C$ is an absolute constant.
+\end{lemma}
+
+Before the proof we record that only the mismatch fluctuation correlates with $\hat D$: $\mathrm{Cov}(\tilde n, \hat D) = \mathrm{Cov}(w_h \lambda^h (U_h - \nh)\,\delta,\; w_h \lambda^h U_h) = w_h^2 (\lambda^h)^2 \delta\, \mathrm{Var}(U_h) = 2\lambda^2\delta b^2/\nh$, since the noise and feedthrough parts of $\tilde n$ are independent of $(U_r, U_h)$.
+
+\begin{proof}
+\emph{Step 1 (concentration of $\hat D$).}
+Write $\hat D - D = w_r \lambda^r (U_r - \nr) + w_h \lambda^h (U_h - \nh)$.
+By the Laurent--Massart $\chi^2$ tail bound, $\Pr(|U_e - n_e| \ge 2\sqrt{n_e x} + 2x) \le 2e^{-x}$; taking $x = \log(4p/\delta_c)$ and a union bound over the $p$ coordinates, with probability $\ge 1 - \delta_c$ simultaneously for all coordinates $|\hat D - D| \le \eta$.
+On the complementary event, $|\hat N^2/\hat D^2| \le \hat N^2 \mu^{-2}$, and $\hat N$ has finite fourth moments (those of a $\chi^2$ mixture plus Gaussian quadratics), so the bad event contributes $O(\delta_c \mu^{-2} \overline{N}^2)$.
+
+\emph{Step 2 (Taylor expansion on the good event).}
+Let $f(x) = x^{-2}$. For $|\Delta| \le \eta \le D/2$,
+$f(D + \Delta) = D^{-2} - 2\Delta D^{-3} + R$ with
+$|R| \le \tfrac{1}{2}\max_{\xi \in [D-\eta, D+\eta]} 6\xi^{-4}\Delta^2 \le 48\,\eta^2/D^4$.
+
+\emph{Step 3 (moment expansion).}
+On the good event (Step 1 justifies the truncation of the expansion; the indicator algebra contributes only lower-order terms absorbed into the remainder),
+\begin{equation}
+\begin{aligned}
+  \E\big[\hat N^2 f(\hat D)\big] &= \frac{\E\hat N^2}{D^2} - \frac{2\,\E[\hat N^2 \Delta]}{D^3} + \E\big[\hat N^2 R\big],\\
+  \E\hat N^2 &= N_0^2 + \mathrm{Var}(\tilde n).
+\end{aligned}
+  \label{supp:eq:l3step3}
+\end{equation}
+Expanding $\E[\hat N^2\Delta] = N_0^2\,\E\Delta + 2N_0\,\mathrm{Cov}(\tilde n, \hat D) + \E[\tilde n^2\Delta]$, the first term vanishes since $\E\Delta = 0$.
+For the third term, decompose $\tilde n = a_1 v_h + \zeta$ with $a_1 = \frac{\lambda}{\nh} b\,\delta$, $v_h = U_h - \nh$, and $\zeta$ collecting the noise, feedthrough, and robot-side parts, independent of $(v_r, v_h)$ with $\E\zeta = 0$; and $\Delta = w_r \lambda^r v_r + w_h \lambda^h v_h$.
+Then
+\begin{align}
+  \E[\tilde n^2 \Delta]
+  &= \E\big[(a_1 v_h + \zeta)^2 (w_r \lambda^r v_r + w_h \lambda^h v_h)\big] \nonumber\\
+  &= a_1^2 w_h \lambda^h\, \E[v_h^3]
+   = a_1^2\, w_h \lambda^h \cdot 8\nh
+   = \frac{8\lambda^3 b^3 \delta^2}{\nh^2},
+  \label{supp:eq:third}
+\end{align}
+where all cross terms vanish by independence and $\E v = \E\zeta = 0$, using $\E[v_h^3] = 8\nh$ (third central moment of $\chi^2_{\nh}$).
+This term contributes $-2\E[\tilde n^2\Delta]/D^3 < 0$ to the MSE, of relative order $O(\lambda^3\delta^2/(\nh^2 D^3))$ against the leading terms --- analytically exact, numerically negligible; we keep it in the formula for exactness.
+The remainder satisfies $|\E[\hat N^2 R]| \le 48\eta^2 D^{-4}\, \E\hat N^2 = O\big((\eta/D)^2 \cdot \overline{N}^2/D^2\big)$.
+
+\emph{Step 4 (collection).}
+Substituting Step 3 into Eq.~\eqref{supp:eq:l3step3} and grouping terms gives Eq.~\eqref{supp:eq:msedet} with the announced error: the dominant remainder is $(\eta/D)^3 \overline{N}^2/D^2$ (the $\E[\tilde n^2\Delta]$ term beyond its exact value, and higher-order Taylor terms).
+Since $\eta/D = O(n_{\min}^{-1/2})$ up to spectral-weight factors, the relative error is $O(n_{\min}^{-3/2})$, matching the Monte-Carlo accuracy of 1--2\% (Sec.~\ref{supp:numerics}).
+\end{proof}
+
+\section{Lemma L4: truncation assembly}
+\label{supp:l4}
+
+\begin{lemma}[L4]\label{supp:l4lem}
+Let $m = \max\{j : D_j \ge \kappa_0 \eta_j\}$ for a fixed threshold $\kappa_0 \ge 2$.
+Then:
+(i)~on the truncated coordinates $j > m$, $\E(\hat\beta_j - \beta^*_j)^2 = \Theta(\beta_j^{*2})$;
+(ii)~on the retained coordinates $j \le m$, Lemma~\ref{supp:l3lem} applies with aggregate relative error $O(\kappa_0^{-3}) + o(1)$;
+(iii)~consequently
+\begin{equation}
+  \risk(\lambda) = \sum_{j > m} a_j \beta_j^{*2} + \Big(\sum_{j \le m} a_j\, \mathrm{MSE}^{\det}_j\Big)\big(1 + O(\kappa_0^{-3} + n_{\min}^{-3/2})\big),
+  \label{supp:eq:l4}
+\end{equation}
+and $\sum_{j>m} a_j\beta_j^{*2} \asymp m^{-(\alpha_r + 2s)}$.
+\end{lemma}
+
+\begin{proof}
+(i)~For $j > m$, $D_j < \kappa_0\eta_j$; since $\eta_j$ is the fluctuation scale of the information terms, the information part of $D_j$ is at most of the order of $\eta_j$ itself, while $\mu$ is constant --- tracing the definitions gives $D_j < 2\mu$ once the spectral weights have decayed below the ridge floor, hence $\mu/D_j > 1/2$.
+Then $\E\hat\beta_j = \beta^*_j(1 - \mu/D_j) + O(\eta_j/D_j)$ with the shrinkage factor bounded away from $1$: the squared bias is $\Theta(\beta_j^{*2})$, and the variance is subleading because $|\hat\beta_j| \le |\hat N_j|/\mu$ while $N_0 = -\mu\beta^*_j$ cancels the leading term.
+The total truncated contribution is $\sum_{j>m} a_j\beta_j^{*2} \asymp m^{-(\alpha_r+2s)}$ by power-law tail integration with $a_j \asymp j^{-\alpha_r}$, $\beta_j^{*2} \asymp j^{-(2s+1)}$.
+
+(ii)~Split the retained set into the \emph{well-conditioned core} $\{j : D_j \ge \kappa_0 \eta_j\}$ with $\kappa_0$ large, where Lemma~\ref{supp:l3lem} gives uniform relative error $O(\kappa_0^{-3})$, and the \emph{boundary band} $\{2\eta_j \le D_j < \kappa_0\eta_j\}$.
+Under the power-law spectra, the band width solves $D_j = \kappa_0\eta_j$, whose solution set has cardinality $o(m)$; coordinates in the band have risk between the leading term and the truncated value, so their total contribution is absorbed by the constants of the truncation term without changing its order.
+The aggregate relative error over $j \le m$ is therefore $O(\kappa_0^{-3}) + o(1)$.
+
+(iii)~Sum (i) and (ii); infimizing over $m$ yields the theorem statement of the main text (the infimum is attained at the self-consistent truncation by construction).
+\end{proof}
+
+\section{Proof of Corollary 1 (marginal-benefit decomposition)}
+\label{supp:c1}
+
+Differentiate Eq.~\eqref{supp:eq:msedet} at $\lambda = 0^+$ per coordinate.
+With $D_0 = a + \mu$, $V = \tilde\sigma_r^2 a/\nr$, direct expansion gives
+\begin{equation}
+  \partial_\lambda \mathrm{MSE}^{\det}\big|_{0^+} = \frac{-2\mu\beta^* b\, \delta - 2V}{D_0^2} - \frac{2\big(V + \mu^2\beta^{*2}\big)(b - a)}{D_0^3},
+  \label{supp:eq:c1deriv}
+\end{equation}
+which, after flipping the sign and dropping the positive factor $2/D_0^3$, is the three-term decomposition of the main text:
+\begin{equation}
+  \mathrm{benefit}_j \;\propto\; \underbrace{\mu\beta^*_j b_j \delta_j}_{\text{A: alignment}} + \underbrace{V_j D_{0j}}_{\text{B: variance}} + \underbrace{\big(V_j + \mu^2\beta_j^{*2}\big)(b_j - a_j)}_{\text{C: coverage}} .
+  \label{supp:eq:c1}
+\end{equation}
+Analytic derivative vs.\ finite differences on the formula: relative error $<1\%$ (configuration of the v2 benchmark).
+At $\mu = 0$, $D_0 = a$, terms A and the shrinkage part of C vanish, and
+$\risk'(0^+)|_{\mu=0} = -(2\tilde\sigma_r^2/\nr)\sum_j j^{\alpha_r-\alpha_h} < 0$ always.
+
+\section{Theorem 2: derivation and exactness of the $H$-criterion}
+\label{supp:h}
+
+Take $\nr \to \infty$ with $\nh/\nr$ fixed in Eq.~\eqref{supp:eq:c1deriv}: the variance term B vanishes, and for anti-aligned mismatch ($c < 0$; write $|\delta|$ for the effective sign-flipped components) the marginal benefit converges to $-H$ with
+\begin{equation}
+  H = \underbrace{2\mu \sum_j \frac{a_j\beta^*_j b_j |\delta_j|}{D_{0j}^2}}_{A_\infty} - \underbrace{2\mu^2 \sum_j \frac{a_j\beta_j^{*2}(b_j - a_j)}{D_{0j}^3}}_{C_\infty}.
+  \label{supp:eq:h}
+\end{equation}
+At finite $\nr$ the variance terms contribute $-K/\nr$ to the derivative, with $K = 2\tilde\sigma_r^2(S_1 + S_2)$, $S_1 = \sum_j a_j^2/D_{0j}^2$, $S_2 = \sum_j a_j^2(b_j-a_j)/D_{0j}^3$; hence marginal mixing is beneficial iff $K/\nr > H$, giving $\nr^{\mathrm{crit}} = K/H$ when $H > 0$.
+Numerically (v11, $p = 1000$, $\mu = 0.05$, spectral family A): $A_\infty$ is linear in $\|\delta\|$ with slope $6.975\times10^{-3}$, $C_\infty = 4.700\times10^{-3}$ independent of $\delta$, predicting $\|\delta\|^* = 0.674$, which brackets the Monte-Carlo transition exactly; and $\nr^{\mathrm{crit}}\cdot H = 25.866$ is constant across $\|\delta\| \in \{0.75, 1.0, 2.0\}$ to display precision.
+
+\paragraph{The classical limit.}
+As $\mu \to 0$, $C_\infty \to 0$ and $H = A_\infty > 0$ whenever $c < 0$: the discard-the-source transition of classical domain adaptation is recovered.
+At $\mu > 0$ the large-$\nr$ mixing benefit tends to $-C_\infty < 0$: regularization carries a nonzero coverage benefit even with unlimited robot data.
+
+\section{Corollary 2 (exchange rate): existence, uniqueness, and unimodality}
+\label{supp:t2}
+
+$\kex$ is defined implicitly by $\riske(\lambda^*;\, \nr, \nh) = \riske(0;\, \nr + \kex\nh)$, where $\lambda^*$ minimizes the mixture risk over $[0,1]$.
+This section proves that $\kex$ is well-defined without any unimodality assumption (Proposition~\ref{supp:prop:kexwell}), that every per-coordinate risk is unimodal with an explicit minimizer (Lemma~\ref{supp:lem:affine} and Proposition~\ref{supp:prop:nomax}), and that global unimodality holds exactly in the matched-spectrum regime (Theorem~\ref{supp:thm:quad}) and under an explicit convexity condition in general (Proposition~\ref{supp:prop:convreg}).
+
+\subsection{Well-definedness of the exchange rate}
+
+\begin{proposition}[existence and uniqueness of $\kex$]\label{supp:prop:kexwell}
+Fix $(\nr, \nh)$ and write $m_\star = \min_{\lambda \in [0,1]} \riske(\lambda; \nr, \nh)$ (attained: $\riske$ is continuous in $\lambda$ on a compact set).
+As a function of the robot sample size $n$ at $\lambda = 0$,
+\begin{equation}
+\riske(0; n) \;=\; \sum_{j > m} a_j \beta_j^{*2} \;+\; \sum_{j \le m} a_j\, \frac{\tilde\sigma_r^2 a_j / n + \mu^2 \beta_j^{*2}}{(a_j + \mu)^2}
+\end{equation}
+is continuous and strictly decreasing in $n$ whenever $\tilde\sigma_r^2 > 0$ (in particular whenever $\beta^* \neq 0$, since $\tilde\sigma_r^2 = \sigma_r^2 + F_r > 0$), with limit
+\begin{equation}
+\riske(0; \infty) \;=\; \sum_{j} a_j\, \frac{\mu^2 \beta_j^{*2}}{(a_j + \mu)^2},
+\end{equation}
+the pure shrinkage risk (the truncation recedes, $m \to p$, as $n \to \infty$).
+Since $\lambda = 0$ is feasible, $m_\star \le \riske(0; \nr)$, and therefore:
+(i)~if $m_\star > \riske(0; \infty)$, there exists a unique $\kex \ge 0$ solving the defining equation;
+(ii)~if $m_\star \le \riske(0; \infty)$, no finite amount of additional robot data reproduces the mixture optimum --- this is the cap regime of Corollary~2(iv) of the main text.
+Only the minimum \emph{value} $m_\star$ enters the construction; unimodality of $\riske(\cdot)$ is not used.
+\end{proposition}
+
+\begin{proof}
+On the retained coordinates, $\partial_n \riske(0; n) = -\sum_{j \le m} a_j^2\, \tilde\sigma_r^2 / \big(n^2 (a_j + \mu)^2\big) < 0$ (the truncation index $m$ is locally constant in $n$ almost everywhere), and $\riske(0; n) \downarrow \riske(0; \infty)$ as $n \to \infty$.
+The map $\kappa \mapsto \riske(0; \nr + \kappa \nh)$ is thus a continuous strict bijection from $[0, \infty)$ onto $(\riske(0; \infty),\, \riske(0; \nr)]$, which contains $m_\star$ in case (i) and not in case (ii).
+\end{proof}
+
+\subsection{Per-coordinate unimodality, exactly}
+
+Drop the coordinate index and write a per-coordinate risk (effective variance plus bias square, including the mismatch-fluctuation term of Eq.~\eqref{supp:eq:varn}) as $\mathrm{MSE}(\lambda) = N(\lambda)/D(\lambda)^2$ with
+\begin{equation}
+N(\lambda) = v_r(1-\lambda)^2 + v_h\lambda^2 + (u\lambda - w)^2 + \frac{2u^2}{\nh}\,\lambda^2,
+\end{equation}
+and $D(\lambda) = D_0 + \Delta \lambda$, where $v_e = \tilde\sigma_e^2 \lambda^e / n_e$ are the variance prices, $u = b\delta$, $w = \mu\beta^*$, $D_0 = a + \mu > 0$, $\Delta = b - a$, and $D > 0$ on $[0,1]$ since $D(1) = b + \mu > 0$.
+$N$ is a quadratic, $N(\lambda) = n_0 + n_1\lambda + n_2\lambda^2$, with $n_0 = v_r + w^2$, $n_1 = -2(v_r + uw)$, $n_2 = v_r + v_h + u^2(1 + 2/\nh)$.
+
+\begin{lemma}[affine derivative numerator]\label{supp:lem:affine}
+$\partial_\lambda \mathrm{MSE}(\lambda) = L(\lambda)/D(\lambda)^3$ with $L$ affine:
+\begin{equation}
+L(\lambda) = p + q\lambda,
+\qquad
+p = n_1 D_0 - 2\Delta n_0,
+\qquad
+q = 2 n_2 D_0 - \Delta n_1 .
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+$\partial_\lambda \mathrm{MSE} = (N' D - 2\Delta N)/D^3$; in $N'D - 2\Delta N$ the quadratic terms $2 n_2 \Delta \lambda^2$ cancel exactly.
+\end{proof}
+
+\begin{proposition}[coordinate risks are unimodal]\label{supp:prop:nomax}
+$L$ cannot cross zero from above on $[0,1]$: the pattern $L(0) > 0 > L(1)$ never occurs.
+Hence each coordinate risk is quasiconvex on $[0,1]$, with explicit minimizer
+\begin{equation}
+\lambda^* \;=\; \begin{cases}
+0, & L(0) \ge 0,\\[2pt]
+-p/q \in (0,1), & L(0) < 0 < L(1),\\[2pt]
+1, & L(1) \le 0 .
+\end{cases}
+\label{supp:eq:lamstar}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+With $D_1 = D_0 + \Delta = b + \mu > 0$ and $s = uD_0 + \Delta w$, direct rearrangement gives the endpoint values
+\begin{equation}
+\begin{gathered}
+L(0) = -2\big(v_r D_1 + w s\big),
+\\[2pt]
+L(1) = 2\Big(\big(v_h + \tfrac{2u^2}{\nh}\big) D_0 + (u - w)\, s\Big) .
+\end{gathered}
+\label{supp:eq:endpoints}
+\end{equation}
+Suppose $L(0) > 0 > L(1)$.
+Since $v_r \ge 0$, $v_h + 2u^2/\nh \ge 0$, and $D_0, D_1 > 0$: if $s \ge 0$, the first inequality forces $w < 0$ and the second forces $u < w$; hence $s = uD_0 + \Delta w < w(D_0 + \Delta) = w D_1 < 0$, contradicting $s \ge 0$.
+If instead $s < 0$, they force $w > 0$ and $u > w$; hence $s > w D_1 > 0$, contradicting $s < 0$.
+The remaining sign patterns of the affine $L$ give the classification~\eqref{supp:eq:lamstar}; an interior zero of $L$ is a sign change from negative to positive, hence a minimum.
+\end{proof}
+
+\begin{remark}[sanity checks]
+At $\delta = 0$ and $\Delta = 0$ the interior branch of~\eqref{supp:eq:lamstar} reduces to $\lambda^* = v_r/(v_r + v_h)$, the classical inverse-variance weight.
+Moreover $L(0) = D_0^3\, \partial_\lambda \mathrm{MSE}(0^+)$, so the coordinate-wise marginal-harm condition $L(0) \ge 0$ is exactly the three-term decomposition of Corollary~1 of the main text.
+\end{remark}
+
+\subsection{Global unimodality: an exact region and a sufficient condition}
+
+Sums of quasiconvex functions need not be quasiconvex, so the aggregate $\riske(\lambda) = \sum_j a_j\, \mathrm{MSE}_j(\lambda)$ requires a separate argument.
+
+\begin{theorem}[matched spectra: quadratic regime]\label{supp:thm:quad}
+If $b_j = a_j$ for all $j$, then $\riske$ is a quadratic polynomial on $[0,1]$, $\riske(\lambda) = A_2 \lambda^2 + A_1 \lambda + A_0$, with
+\begin{equation}
+A_2 = \sum_j \frac{a_j\, n_{2j}}{(a_j+\mu)^2},
+\qquad
+A_1 = \sum_j \frac{a_j\, n_{1j}}{(a_j+\mu)^2}.
+\end{equation}
+Whenever $A_2 > 0$ --- i.e., unless the model is degenerate ($v_{rj} = v_{hj} = u_j = 0$ for every $j$) --- $\riske$ is strictly convex, with the unique closed-form minimizer
+\begin{equation}
+\lambda^* = \mathrm{clip}_{[0,1]}\!\left( \frac{\sum_j a_j (v_{rj} + u_j w_j)/(a_j+\mu)^2}{\sum_j a_j\, n_{2j}/(a_j+\mu)^2} \right) .
+\label{supp:eq:lamstarquad}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+With $\Delta_j = 0$, $\mathrm{MSE}_j(\lambda) = N_j(\lambda)/(a_j+\mu)^2$; summing with weights $a_j$ gives the quadratic, and the interior minimizer is $-A_1/(2A_2)$.
+\end{proof}
+
+\begin{proposition}[convexity region]\label{supp:prop:convreg}
+The per-coordinate second derivative is
+\begin{equation}
+\mathrm{MSE}''(\lambda) = \frac{N''(\lambda)D(\lambda)^2 - 4\Delta\, N'(\lambda)D(\lambda) + 6\Delta^2 N(\lambda)}{D(\lambda)^4},
+\end{equation}
+and a sufficient condition for convexity of $\mathrm{MSE}_j$ on $[0,1]$ --- hence, summing over $j$, for strict convexity and unimodality of $\riske$ --- is
+\begin{equation}
+2\,|\Delta_j|\,\big(|n_{1j}| + 2 n_{2j}\big)\,D_j^{\max} \;\le\; n_{2j}\,\big(D_j^{\min}\big)^2
+\qquad\text{for every } j,
+\label{supp:eq:convreg}
+\end{equation}
+where $D_j^{\max} = \max(a_j, b_j) + \mu$ and $D_j^{\min} = \min(a_j, b_j) + \mu$.
+Since $n_{2j} > 0$ and $D_j^{\min} > 0$, the condition holds whenever the per-coordinate spectral mismatch $|\Delta_j|/(a_j + \mu)$ is small enough, and is automatic at zero spectral gap.
+\end{proposition}
+
+\begin{proof}
+Differentiate Lemma~\ref{supp:lem:affine}: $\mathrm{MSE}'' = (qD - 3\Delta L)/D^4$; substituting $q = N''D - \Delta N'$ and $L = N'D - 2\Delta N$ gives the displayed numerator.
+Since $N$ is quadratic, $N'' = 2n_2$, $|N'| \le |n_1| + 2n_2$ on $[0,1]$, $D \in [D^{\min}, D^{\max}]$, and $6\Delta^2 N \ge 0$; the numerator is therefore at least $2 n_2 (D^{\min})^2 - 4|\Delta|(|n_1| + 2n_2) D^{\max}$, which is nonnegative under~\eqref{supp:eq:convreg}.
+\end{proof}
+
+Outside the region~\eqref{supp:eq:convreg} we have no proof of global unimodality, and positive combinations of quasiconvex rationals with distinct denominators can in principle be multimodal; however no multimodal instance was found in a randomized search over $4\times10^3$ aggregates (power-law and adversarial spectra), and $\riske(\lambda)$ is numerically unimodal on all grids used in this paper (Secs.~\ref{supp:h} and~\ref{supp:numerics}).
+In any case, Proposition~\ref{supp:prop:kexwell} guarantees that $\kex$ is well-defined irrespective of unimodality.
+
+\subsection{The source-sample axis: interior minimizers and an exact dosage law}
+
+\begin{corollary}[interior minimizers from endpoint signs]\label{supp:cor:interior}
+If $\riske'(0^+) = \sum_j a_j L_j(0)/D_{0j}^3 < 0$ (the condition of Corollary~1 of the main text) and $\riske'(1^-) = \sum_j a_j L_j(1)/D_{1j}^3 > 0$, with $L_j(0), L_j(1)$ from Eq.~\eqref{supp:eq:endpoints} and $D_{1j} = b_j + \mu$, then neither $\lambda = 0$ nor $\lambda = 1$ is optimal and every global minimizer lies in $(0,1)$.
+No unimodality is needed for existence.
+\end{corollary}
+
+\begin{proof}
+$\riske'(0^+) < 0$ yields points with risk strictly below $\riske(0)$, and $\riske'(1^-) > 0$ yields points strictly below $\riske(1)$; a global minimizer exists by continuity on the compact interval.
+\end{proof}
+
+\begin{lemma}[monotone value in $\nh$]\label{supp:lem:monoval}
+At fixed $\lambda$, each coordinate risk is nonincreasing in $\nh$: both human-sample terms of $N$, $v_h\lambda^2 = \tilde\sigma_h^2 b \lambda^2/\nh$ and $2u^2\lambda^2/\nh$, have nonnegative coefficients.
+Hence the optimal gain $g(\nh) = \riske(0) - \min_{\lambda}\riske(\lambda; \nh)$ is nondecreasing: more human data never hurts at the optimal mixing ratio.
+\end{lemma}
+
+\begin{theorem}[dosage law; matched spectra]\label{supp:thm:dosage}
+Assume $b_j = a_j$ for all $j$ and $A_1 = \riske'(0^+) < 0$, and write $A_2(\nh) = A_2^r + B/\nh$ with
+\begin{equation}
+A_2^r = \sum_j \frac{a_j (v_{rj} + u_j^2)}{(a_j+\mu)^2},
+\qquad
+B = \sum_j \frac{a_j (\tilde\sigma_h^2 b_j + 2u_j^2)}{(a_j+\mu)^2}.
+\end{equation}
+On the range where the minimizer is interior ($-A_1 < 2A_2(\nh)$):
+\begin{enumerate}
+\item[(i)] the optimal gain is hyperbolic,
+$g(\nh) = A_1^2 / \big(4A_2(\nh)\big)$, with $g(0^+) = 0$, $g(\infty) = A_1^2/(4A_2^r)$, and half-saturation point $\nh^{1/2} = B/A_2^r$;
+\item[(ii)] the worth-mixing threshold at tolerance $\varepsilon < g(\infty)$ is
+\begin{equation}
+g(\nh) \ge \varepsilon \iff \nh \ge \nh^\varepsilon = \frac{4\varepsilon B}{A_1^2 - 4\varepsilon A_2^r};
+\end{equation}
+\item[(iii)] the optimal ratio grows smoothly from zero,
+$\lambda^*(\nh) = -A_1/\big(2A_2(\nh)\big) \sim (-A_1/2B)\cdot\nh$ as $\nh \to 0$, approaching $\lambda^*_\infty = -A_1/(2A_2^r)$;
+\item[(iv)] the exchange rate has the closed form
+\begin{equation}
+\kex(\nh) = \frac{1}{\nh}\cdot \frac{\nr^2\, g(\nh)}{C - \nr\, g(\nh)},
+\qquad
+C = \tilde\sigma_r^2 \sum_j \frac{a_j^2}{(a_j+\mu)^2},
+\end{equation}
+since at matched spectra $\riske(0; n) = C/n + \mathrm{const}$; the cap regime of Proposition~\ref{supp:prop:kexwell}(ii) is the pole $g(\nh) \ge C/\nr$ ($\kex = +\infty$).
+Note $C = K/2$ at zero spectral gap, with $K$ the constant of Theorem~2 of the main text.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{supp:thm:quad}, $\riske(\lambda; \nh) = A_2(\nh)\lambda^2 + A_1\lambda + A_0$, and only $A_2$ depends on $\nh$.
+An interior minimizer gives $g = A_1^2/(4A_2)$ and $\lambda^* = -A_1/(2A_2)$; (i)--(iii) are rearrangements, with $\lambda^*$ nondecreasing in $\nh$ since $A_2$ decreases.
+For (iv), $\riske(0; n) = C/n + \sum_j a_j \mu^2\beta_j^{*2}/(a_j+\mu)^2$; solving $C/(\nr + \kex\nh) = C/\nr - g(\nh)$ for $\kex$ yields the formula, whose denominator vanishes exactly at $g(\nh) = C/\nr$ --- the cap condition $m_\star \le \riske(0;\infty)$ of Proposition~\ref{supp:prop:kexwell}(ii).
+\end{proof}
+
+If $-A_1 \ge 2A_2(\nh)$ the minimizer sits at the boundary $\lambda^* = 1$ and $g(\nh) = -A_1 - A_2(\nh)$; since $A_2(\nh)$ decreases in $\nh$, the crossing happens at most once, at $\nh^1 = 2B/(-A_1 - 2A_2^r)$.
+
+\begin{remark}[the second transition is of a different kind]
+The two axes of the phase diagram differ in kind.
+Along $\nr$ there is a genuine transition (Theorem~2 of the main text): the sign of $\riske'(0^+)$ flips at $H = 0$ and beyond $\nr^{\mathrm{crit}}$ all human data should be discarded.
+Along $\nh$ there is no sign change: once $\riske'(0^+) < 0$, human data helps at \emph{every} sample size, and the classical small-source threshold softens into the explicit $\nh^\varepsilon$ of (ii) --- equivalently, $\lambda^*(\nh) \le \lambda_0$ for all $\nh \le 2B\lambda_0/(-A_1 - 2A_2^r\lambda_0)$.
+The hard classical switch is recovered as the divergence $\nh^\varepsilon \to \infty$ when $A_1 \to 0^-$ or $B \to \infty$ (noisy or badly mismatched human data).
+\end{remark}
+
+The three monotonicities of Corollary~2 are read off term by term from Eq.~\eqref{supp:eq:c1}: increasing $\alpha_r - \alpha_h$ enlarges the coverage term C on high-risk coordinates; increasing the mismatch enlarges A-harm; increasing $\nr$ shrinks B.
+The cap regime (case (ii) of Proposition~\ref{supp:prop:kexwell}) appears when the human spectrum dominates on coordinates the robot spectrum has abandoned: the right-hand side of the defining equation is then bounded below by the truncation tail $\sum_{j>m'} a_j\beta_j^{*2}$ for any robot-only sample size, while the mixture side eliminates part of that tail through the human samples.
+Numerics (v12): $\nr = 1000$, $\nh/\nr = 10$, $\mu = 0.05$, white aligned mismatch $\|\delta\| = 0.3$, $\sigma_h = 2\sigma_r$; per-$\alpha_h$ Spearman correlations between $\kex$ and the spectral gap are $0.55$--$0.82$; the cap binds from $\alpha_r - \alpha_h \approx 0.5$--$0.75$; at zero gap $\kex \in [0.42, 0.59]$.
+
+\section{Numerical verification protocol}
+\label{supp:numerics}
+
+\textbf{(v5) Accuracy of the deterministic equivalent.} Three spectral/mismatch configurations $\times$ two mixing ratios, 200 Monte-Carlo replicates ($\sim$200k coordinate-replicates): binned median relative error 0.6--1.6\%, aggregate and $\Sigma_r$-weighted aggregate error $\le 2\%$.
+Ablations v3/v4 show the feedthrough term --- not the ratio-fluctuation corrections --- is the dominant closure: zero-order (population) formulas underestimate by 30--90\%, ratio corrections alone do not close the gap, and feedthrough closes it to the stated accuracy.
+
+\textbf{(v6) Full ridge vs.\ diagonalized.} Same-data comparison (50 replicates, $\lambda = 0.3$): the full ridge estimator is uniformly better (median full/diag risk ratio $0.64$/$0.50$ on spectral families A/B), \ie, the feedthrough ``noise'' is partly recoverable signal for the full estimator; on the $\Sigma_r$-weighted risk our formula overestimates by 8\% (A) / 28\% (B).
+The phase structure (sign conditions, transitions) is unchanged; quantitative thresholds shift, motivating the T1-b conjecture below.
+
+\textbf{(v9) Falsification of a naive assembly.} A leading-order power-law assembly predicts $\nr^{\mathrm{crit}} \propto \mu^{-2.05}$; the measured exponent is $-1.076$.
+Diagnosis: the assembly drops the harm channel beyond the $\mu$-induced truncation $j_\mu = \mu^{-1/\alpha_r}$ (where the cross term is amplified by $\mu^{-2}$) and the mismatch-induced inflation of the feedthrough energy $F_h$.
+This failure is what led us to the $H$-functional form; we report it as the worked example of the falsification loop.
+
+\textbf{(v8) Harmful-region phase diagrams.} Spectral family A, $\nr \in [10^2, 10^5]$, $\nh/\nr \in [0.5, 100]$: harmful-cell counts in Table~1 of the main text; the boundary expands monotonically in $\|\delta\|$ and toward small $\nr$.
+
+\textbf{(v12)} Exchange-rate numerics as in Sec.~\ref{supp:t2}.
+
+\textbf{(v13) Unimodality verification.} Randomized checks of the results of Sec.~\ref{supp:t2} (\texttt{verify\_kex\_unimodality.py}): the affine derivative identity of Lemma~\ref{supp:lem:affine} matches finite differences to $7\times10^{-6}$ (the finite-difference accuracy) over $2\times10^5$ random draws; the forbidden sign pattern of Proposition~\ref{supp:prop:nomax} never occurs, and all $\sim10^5$ interior roots found are minima; the quadratic form of Theorem~\ref{supp:thm:quad} holds to $2\times10^{-14}$ with the closed-form $\lambda^*$ matching the numerical argmin; condition~\eqref{supp:eq:convreg} implies convexity in every one of the $1.8\times10^4$ draws in which it holds; and a targeted search over $4\times10^3$ aggregate risks (power-law and adversarial spectra) found no multimodal instance.
+
+\textbf{(v14) Dosage law and closed-form $\kex$.} (\texttt{verify\_dosage\_law.py}.) Corollary~\ref{supp:cor:interior}: in $3.96\times10^4$ random general-spectrum draws with both endpoint signs strict, the global minimizer is interior in 100\% of cases. Theorem~\ref{supp:thm:dosage}: over 212 matched-spectrum configurations (8 decades of $\nh$ each), the closed-form gain, the closed-form $\kex$, and the $\nh^\varepsilon$ inversion match the per-coordinate ground truth (pointwise evaluation / bisection of the defining equation) to $3\times10^{-10}$, $1.1\times10^{-10}$, and $3\times10^{-16}$ respectively, and $\lambda^*(\nh)$ is nondecreasing in every tested configuration.
+
+\textbf{(v16) Full-ridge closed form.} (\texttt{verify\_full\_ridge.py}.) Monte-Carlo risk of the full ridge estimator against Eq.~\eqref{supp:eq:t1b}: relative errors between $-8.4\%$ and $+0.4\%$ across four configurations, decaying with sample size ($-2.5\% \to +0.3\%$ as $n_r$ grows $100 \to 6400$); on the same configurations the T1-a form overestimates by $+4\%$ to $+61\%$, confirming the feedthrough-recovery prediction of consequence (ii); the mismatch sandwich converges to its per-coordinate price (errors $-0.3\%$ to $+8\%$).
+
+\section{A label-shift floor for aligned representations (boundary)}
+\label{supp:zhao}
+
+This section formalizes boundary (a) stated in the main text: when alignment is enforced on representations whose \emph{action marginals} differ, a shared deterministic head provably fails on the target domain.
+It is the squared-loss, mixture-distribution analogue of the classical bound of Zhao et al.\ (cited in the main text).
+
+Setup: a representation $z = \Phi(x)$ with induced feature laws $P_r^z, P_h^z$ satisfying $W_1(P_r^z, P_h^z) \le \varepsilon$; action marginals $P_e^a$ with means $\mu_e$, gap $\Delta\mu = \mu_h - \mu_r$; a deterministic $L$-Lipschitz head $f$; domain risks $R_e(f) = \E[(f(z) - y_e)^2]$.
+
+\begin{proposition}[label-shift floor]\label{supp:prop:zhao}
+For every deterministic head $f$:
+\begin{enumerate}
+\item[(i)] $R_r(f) + R_h(f) \ge \tfrac12\big(|\Delta\mu| - L\varepsilon\big)_+^2$;
+\item[(ii)] the mixture risk $R_\lambda(f) = (1-\lambda)R_r(f) + \lambda R_h(f)$ obeys
+\begin{equation}
+R_\lambda(f) \ge \lambda(1-\lambda)\big(|\Delta\mu| - L\varepsilon\big)_+^2;
+\end{equation}
+\item[(iii)] any head with $R_\lambda(f) \le \eta$ pays target risk
+$R_r(f) \ge \big(|\Delta\mu| - L\varepsilon - \sqrt{\eta/\lambda}\,\big)_+^2$;
+in particular the alignment-constrained mixture-optimal head pays
+$R_r \ge \lambda^2\big(|\Delta\mu| - L\varepsilon\big)_+^2$: the target floor grows \emph{quadratically} in the mixing ratio.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Write $\nu_e = \E_{z \sim P_e^z}[f(z)]$.
+By Jensen, $R_e(f) \ge (\nu_e - \mu_e)^2$, and by the Kantorovich--Rubinstein dual, $|\nu_r - \nu_h| \le L\, W_1(P_r^z, P_h^z) \le L\varepsilon$.
+(i)~$(\nu_r-\mu_r)^2 + (\nu_h-\mu_h)^2 \ge \tfrac12\big((\nu_r-\mu_r) - (\nu_h-\mu_h)\big)^2 \ge \tfrac12(|\Delta\mu| - L\varepsilon)_+^2$, since $(\nu_r-\mu_r) - (\nu_h-\mu_h) = -\Delta\mu + (\nu_r - \nu_h)$.
+(ii)~Minimize $(1-\lambda)(\nu_r-\mu_r)^2 + \lambda(\nu_h-\mu_h)^2$ subject to $|\nu_r-\nu_h| \le L\varepsilon$. For fixed shift $\delta = \nu_h - \nu_r$, the minimum over the common level is attained at $\nu_r = (1-\lambda)\mu_r + \lambda(\mu_h - \delta)$ with value $\lambda(1-\lambda)(\Delta\mu - \delta)^2$; minimizing over $\delta \in [-L\varepsilon, L\varepsilon]$ gives $\delta^* = \mathrm{sign}(\Delta\mu)\min(L\varepsilon, |\Delta\mu|)$ and value $\lambda(1-\lambda)(|\Delta\mu| - L\varepsilon)_+^2$.
+(iii)~$R_\lambda(f) \le \eta$ implies $|\nu_h - \mu_h| \le \sqrt{\eta/\lambda}$, hence $|\nu_r - \mu_r| \ge |\Delta\mu| - L\varepsilon - \sqrt{\eta/\lambda}$.
+For the constrained mixture optimum, $\nu_r - \mu_r = \lambda(\Delta\mu - \delta^*)$, so $R_r \ge \lambda^2(|\Delta\mu| - L\varepsilon)_+^2$.
+\end{proof}
+
+\begin{remark}[Bernoulli case]
+For binary actions $y \in \{0,1\}$, $|\Delta\mu| = D_{\mathrm{TV}}(P_r^a, P_h^a)$ and (i) is the Brier-score analogue of the classification bound of Zhao et al.: perfectly aligned representations with shifted label marginals are guaranteed to fail --- exact alignment ($\varepsilon \to 0$) does not remove the floor, it creates it.
+For continuous actions the first-moment gap is the sharp quantity; second-moment (variance) shifts give analogous floors with second moments in place of means.
+\end{remark}
+
+\begin{remark}[operational reading for the L1 test]
+The floor is monotone in the marginal gap and, for the mixture-optimal head, quadratic in $\lambda$.
+This is the quantitative prediction for the action-marginal-shift axis of the L1 grid (main text, Experiments): inject a controlled marginal shift into the human action labels, enforce alignment, and the target-domain success should hit a floor that moves with $\lambda^2$.
+Numerical checks (\texttt{verify\_zhao\_floor.py}): bounds (i)--(iii) hold on $2\times10^5$ random draws with zero violations, and the constrained-optimum closed form matches brute-force minimization.
+\end{remark}
+
+\section{Theorem T1-b: the full-ridge deterministic equivalent (fixed-$p$ regime)}
+\label{supp:t1b}
+
+We now upgrade the conjecture announced in earlier drafts to a theorem in the fixed-dimension regime.
+The full ridge estimator is $\hat\beta = A^{-1}(w_r X_r^\top y_r + w_h X_h^\top y_h)$ with $A = w_r S_r + w_h S_h + \mu I$ and $S_e = X_e^\top X_e$ the (non-diagonal) sample Gram matrices, in the model of Sec.~\ref{supp:setup}.
+
+\begin{theorem}[T1-b]\label{supp:thm:t1b}
+Let the covariates be Gaussian, $p$ fixed, $\mu > 0$ fixed, and $\nr, \nh \to \infty$ at fixed $\lambda \in (0,1)$.
+Then
+\begin{equation}
+\risk(\lambda) \;=\; \sum_j \frac{a_j}{D_j^2}\Big[\, V_j(\lambda) + \big(\lambda b_j\delta_j - \mu\beta^*_j\big)^2 \,\Big] \;+\; O_p\big(n^{-1/2}\big),
+\label{supp:eq:t1b}
+\end{equation}
+with $V_j(\lambda) = (1-\lambda)^2\sigma_r^2\, a_j/\nr + \lambda^2\sigma_h^2\, b_j/\nh$, $D_j = (1-\lambda)a_j + \lambda b_j + \mu$, and $n = \min(\nr, \nh)$; the $O_p$ constants depend on $(p, \mu^{-1}, \|\beta^*\|, \|\delta\|)$ and the spectra.
+In words: the full-ridge deterministic equivalent is the T1-a closed form with the feedthrough-corrected noise $\tilde\sigma_e^2 = \sigma_e^2 + F_e$ replaced by the true label noise $\sigma_e^2$.
+\end{theorem}
+
+\begin{proof}
+The error decomposes exactly as
+\begin{equation}
+\begin{gathered}
+\hat\beta - \beta^* = -\mu A^{-1}\beta^* + A^{-1} w_h S_h\, \delta + A^{-1}\eta,
+\\[2pt]
+\eta = w_r X_r^\top\varepsilon_r + w_h X_h^\top\varepsilon_h .
+\end{gathered}
+\end{equation}
+Two estimates drive everything: (1)~Wishart concentration, $\|S_e/n_e - \Sigma_e\| = O_p(\sqrt{p/n_e})$, hence $\|A - D\| = O_p(n^{-1/2})$ with $D = (1-\lambda)\Sigma_r + \lambda\Sigma_h + \mu I = \mathrm{diag}(D_j)$; (2)~resolvent perturbation, using the deterministic bound $\|A^{-1}\| \le 1/\mu$: on the event $\|A-D\| \le \mu/2$ (whose complement is exponentially unlikely),
+\begin{equation}
+\|A^{-1} - D^{-1}\| \;\le\; \|A-D\|\,\big/\,\big(\mu\,(\mu-\|A-D\|)\big) \;=\; O_p(n^{-1/2}) .
+\end{equation}
+For the mismatch term write $w_h S_h\delta = \lambda\Sigma_h\delta + \zeta$ with $\E\|\zeta\|^2 = (\lambda^2/\nh)\,\mathrm{Var}\big(x(x^\top\delta)\big) = O(1/\nh)$; hence the mismatch-plus-shrinkage risk converges to $\sum_j a_j(\lambda b_j\delta_j - \mu\beta^*_j)^2/D_j^2$, including the alignment cross term.
+For the variance, $\E[\eta\eta^\top \mid X] = w_r^2\sigma_r^2 S_r + w_h^2\sigma_h^2 S_h$, so $\E[\eta^\top A^{-1}\Sigma_r A^{-1}\eta]$ converges to $\mathrm{tr}\, \Sigma_r D^{-1}\big((1-\lambda)^2\sigma_r^2\Sigma_r/\nr + \lambda^2\sigma_h^2\Sigma_h/\nh\big)D^{-1}$, the displayed variance sum.
+Cross terms involving $\eta$ vanish by conditional centering, and all replacements of $A^{-1}$ by $D^{-1}$ are justified by the deterministic bound $\|\Sigma_r^{1/2}A^{-1}\Sigma_e^{1/2}\| \le (\max_j a_j \cdot \max_j \lambda^e_j)^{1/2}/\mu^2$ on the good event.
+\end{proof}
+
+\paragraph{Three consequences.}
+(i)~\emph{The mismatch sandwich is confirmed}: $\mathcal{B}_{\mathrm{mis}} = w_h^2\, \delta^\top S_h A^{-1} \Sigma_r A^{-1} S_h\, \delta = \sum_j a_j\big(\lambda b_j \delta_j / D_j\big)^2\,(1 + o(1))$ --- the conjectured per-coordinate price, with $D^{\mathrm{full}}_j = D_j$ in this regime.
+(ii)~\emph{Feedthrough recovery}: the T1-a risk exceeds the full-ridge risk by $\sum_j a_j\big[(1-\lambda)^2 F_r a_j/\nr + \lambda^2 F_h b_j/\nh\big]/D_j^2$ to leading order --- exactly the off-diagonal signal energy that the coordinate-wise estimator treats as noise.
+This explains the direction and magnitude of the v6 gap (full ridge uniformly better; $8$--$28\%$ on the weighted risk), and upgrades ``Eq.~(T1-a) is a variance upper bound'' from an observation to a formula.
+(iii)~\emph{All downstream results transfer}: Corollary~1, Theorem~2, and Corollary~2 of the main text, and the dosage law of Theorem~\ref{supp:thm:dosage}, hold for the full ridge estimator with the substitution $\tilde\sigma_e^2 \to \sigma_e^2$; the phase structure is unchanged in form, only the variance prices shrink.
+
+\begin{remark}[the proportional regime]
+For $p \asymp n$ the resolvent perturbation step fails and an anisotropic deterministic equivalent is needed.
+The structure of a prospective proof is visible in the leave-one-out expansion of the sandwich: writing $S_h = \sum_i x_i x_i^\top$, the cross pairs $i \neq k$ carry the leading order through $\E[x\,(x^\top\delta)] = \Sigma_h\delta \neq 0$, while the diagonal pairs $i = k$ contribute only $O(1/\nh)$ corrections; a proportional-regime proof must therefore control $\sum_{i \neq k} (\delta^\top x_i)(x_i^\top A^{-1}\Sigma_r A^{-1} x_k)(\delta^\top x_k)$ via leave-two-out resolvent expansions --- the route through Wu's pipeline flagged in the project notes.
+The low-rank fallback of earlier drafts is no longer needed in the fixed-$p$ regime.
+\end{remark}
+
+\section{Experimental details}
+\label{supp:exp}
+
+\textbf{Training.} CNN diffusion policy~\cite{chi2023diffusion}; image observations ($96\times96$), 2 observation steps / 8 action steps; Adam; 50 epochs; the mixture dataset samples human-domain sequences with probability $\lambda$ per batch; the validation split is always robot-domain.
+\textbf{Evaluation.} 20 closed-loop episodes per run in the robot-domain simulator (episode seeds 101--120, horizon 300), coverage = mean final T-coverage (the binary success threshold 0.855 is never reached at this training budget); open-loop loss on held-out robot-domain sequences.
+\textbf{Probes.} Latent $W_2$: closed-form Gaussian (Fr\'echet) approximation on encoder features; domain AUC: 5-fold linear probe (saturated at $\approx 1.0$ in batch 1 --- a capacity-limited probe replaces it in batch 2); gradient cosine and $\kappa(\hat G) = 1/\sqrt{1-\cos^2}$ from per-domain gradients at the shared encoder (exact two-task form).
+\textbf{Data.} 122 robot-domain and 128 human-domain demonstrations (14.5k/15.5k steps) replayed from the public Push-T expert data; 102 paired episodes share initial configurations; mirror convention $\theta \mapsto -\theta$.
+\textbf{Compute.} 8$\times$RTX\,4090, one run per GPU ($\sim$14.5\,GB each), co-tenanted; the 24-run batch takes $\approx$1.4\,h wall-clock.

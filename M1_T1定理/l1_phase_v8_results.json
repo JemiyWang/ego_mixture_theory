@@ -1,0 +1,47 @@
+{
+ "0.5|white": {
+  "harmful_cells": 0,
+  "lam_min": 0.096,
+  "lam_max": 0.918
+ },
+ "0.5|lowfreq": {
+  "harmful_cells": 30,
+  "lam_min": 0.0,
+  "lam_max": 0.178
+ },
+ "0.5|highfreq": {
+  "harmful_cells": 0,
+  "lam_min": 0.098,
+  "lam_max": 1.0
+ },
+ "1.0|white": {
+  "harmful_cells": 18,
+  "lam_min": 0.0,
+  "lam_max": 0.848
+ },
+ "1.0|lowfreq": {
+  "harmful_cells": 36,
+  "lam_min": 0.0,
+  "lam_max": 0.058
+ },
+ "1.0|highfreq": {
+  "harmful_cells": 0,
+  "lam_min": 0.096,
+  "lam_max": 1.0
+ },
+ "2.0|white": {
+  "harmful_cells": 24,
+  "lam_min": 0.0,
+  "lam_max": 0.6940000000000001
+ },
+ "2.0|lowfreq": {
+  "harmful_cells": 42,
+  "lam_min": 0.0,
+  "lam_max": 0.004
+ },
+ "2.0|highfreq": {
+  "harmful_cells": 0,
+  "lam_min": 0.096,
+  "lam_max": 1.0
+ }
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "side": "left",
+    "w": 0.36606639276722885,
+    "n_r": 1000,
+    "first_order_derivative_prediction": -0.000386823409947202,
+    "actual_e2_paired_derivative": -0.00043537014262193344,
+    "standard_error": 0.00013703900861551188,
+    "error_in_standard_errors": -0.35425484440666244
+  },
+  {
+    "side": "right",
+    "w": 0.37106639276722886,
+    "n_r": 1000,
+    "first_order_derivative_prediction": 0.00035138277814099236,
+    "actual_e2_paired_derivative": 0.00046877220667192497,
+    "standard_error": 0.00013732960509301814,
+    "error_in_standard_errors": 0.8548005978129817
+  }
+]

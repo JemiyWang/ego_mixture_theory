@@ -1,0 +1,56 @@
+\section{A dual-domain model of cross-embodiment mixing}
+\label{sec:setup}
+
+We abstract the problem to its statistical skeleton.
+Two domains provide training data: the \emph{robot domain} $r$ (target; teleoperated demonstrations) and the \emph{human domain} $h$ (source; egocentric recordings).
+We write $e \in \{r,h\}$ for the domain index.
+
+\begin{assumption}[Data model]\label{ass:a1}
+Coordinates $j = 1,\dots,p$ index a shared spectral basis.
+Observations are $x_e = \Sigma_e^{1/2} u_e$ with $u_e$ standard Gaussian and $\Sigma_e = \mathrm{diag}(\lambda^e_j)$ diagonal with power-law spectra
+\begin{equation}
+  \lambda^e_j \asymp j^{-\alpha_e}, \qquad \lambda^e_1 = 1,
+  \label{eq:powerlaw}
+\end{equation}
+and throughout we abbreviate $a_j = \lambda^r_j$, $b_j = \lambda^h_j$.
+\end{assumption}
+
+\begin{assumption}[Labels and mismatch]\label{ass:a2}
+$y_r = \langle \beta^*, x_r \rangle + \varepsilon_r$ in the robot domain; $y_h = \langle \beta^* + \delta, x_h \rangle + \varepsilon_h$ in the human domain.
+The \emph{task mismatch} $\delta$ absorbs retargeting error, kinematic differences, and residual appearance-induced shifts; its \emph{alignment} with the task is $c = \delta^\top\beta^*$.
+Noise variances are $\sigma_e^2$, and $\beta^*$ obeys an ellipsoid constraint $\sum_j j^{2s}\beta_j^{*2} \le 1$ with $s > 0$.
+\end{assumption}
+
+\begin{assumption}[Mixture estimator]\label{ass:a3}
+Given $\nr$ robot and $\nh$ human samples and a mixing ratio $\lambda \in [0,1]$, per-sample weights are $w_r = (1-\lambda)/\nr$, $w_h = \lambda/\nh$.
+We analyze the \emph{diagonalized ridge} estimator
+\begin{equation}
+  \hat\beta_j = \frac{w_r T_{rj} + w_h T_{hj}}{w_r S_{rj} + w_h S_{hj} + \mu},
+  \qquad \mu > 0,
+  \label{eq:estimator}
+\end{equation}
+with $S_{ej} = \|X_{e,:j}\|^2$, $T_{ej} = X_{e,:j}^\top y_e$; $\mu$ is the ridge penalty and stands in for explicit or implicit regularization (weight decay, early stopping).
+\end{assumption}
+
+The evaluation criterion is the \emph{robot-domain excess risk}, weighted by the robot geometry:
+\begin{equation}
+  \risk(\lambda) = \E\big\| \hat\beta(\lambda) - \beta^* \big\|^2_{\Sigma_r}.
+  \label{eq:risk}
+\end{equation}
+Only errors in directions the robot actually visits are penalized --- this weighting turns out to be essential for the phase structure in Sec.~\ref{sec:theory}.
+
+\paragraph{Label feedthrough.}
+A subtle point drives the quantitative accuracy of the theory.
+Although the population covariances are diagonal, the \emph{sample} Gram matrices are not: the label projection $T_{ej}$ picks up contributions from all other coordinates, $T_{ej} = S_{ejj}\beta_{e,j} + \sum_{k\neq j} S_{ejk}\beta_{e,k} + X_{e,:j}^\top\varepsilon_e$.
+The middle term is mean-zero with variance $\nr\lambda^e_j F_e$ (and similarly for $h$), where $F_e = \sum_k \lambda^e_k\beta_{e,k}^2$ is the domain's total signal energy.
+Out-of-coordinate signal is therefore indistinguishable from noise, giving rise to the \emph{effective noise}
+\begin{equation}
+  \tilde\sigma_e^2 = \sigma_e^2 + F_e .
+  \label{eq:feedthrough}
+\end{equation}
+A heavier-tailed human spectrum (small $\alpha_h$) inflates $F_h$: broad coverage carries a hidden per-coordinate SNR cost, which competes with its coverage benefit --- this tension is the microscopic origin of the phase diagrams in Sec.~\ref{sec:theory}.
+
+\paragraph{What the model keeps and discards.}
+The model retains the three gap components that mixture practice manipulates --- spectra (coverage), mismatch $\delta$ (embodiment/retargeting), and noise --- and discards the rest (nonlinear observation maps, temporal structure, closed-loop compounding).
+Sec.~\ref{sec:experiments} therefore tests only \emph{structural} predictions: signs, monotone directions, and phase-region membership, not pointwise numerical values.
+The diagonalization in Assumption~\ref{ass:a3} is a controlled approximation of the full ridge solution; we quantify its gap (8--28\% on the weighted risk) in the supplementary and prove the full-ridge deterministic equivalent there in the fixed-dimension regime.

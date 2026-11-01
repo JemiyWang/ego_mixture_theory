@@ -1,0 +1,146 @@
+[
+  {
+    "configuration": "interior",
+    "n_h": 30,
+    "w": 0.11718697171193508,
+    "gain": 0.002878189086972555,
+    "w_direct": 0.11720000000000001,
+    "gain_direct": 0.0028781890513983367,
+    "gain_error": 3.557421848418563e-11
+  },
+  {
+    "configuration": "interior",
+    "n_h": 100,
+    "w": 0.25280816921954774,
+    "gain": 0.006209134881766954,
+    "w_direct": 0.2528,
+    "gain_direct": 0.006209134875283448,
+    "gain_error": 6.483506440058129e-12
+  },
+  {
+    "configuration": "interior",
+    "n_h": 300,
+    "w": 0.37769705775517626,
+    "gain": 0.009276488110681979,
+    "w_direct": 0.37770000000000004,
+    "gain_direct": 0.009276488110119049,
+    "gain_error": 5.629299110188057e-13
+  },
+  {
+    "configuration": "interior",
+    "n_h": 1000,
+    "w": 0.4566534914361002,
+    "gain": 0.011215710043349796,
+    "w_direct": 0.4567,
+    "gain_direct": 0.011215709927012471,
+    "gain_error": 1.1633732519000795e-10
+  },
+  {
+    "configuration": "interior",
+    "n_h": 1779.1732077446363,
+    "w": 0.4753023778832177,
+    "gain": 0.01167373895793107,
+    "w_direct": 0.4753,
+    "gain_direct": 0.011673738957638888,
+    "gain_error": 2.9218294450572557e-13
+  },
+  {
+    "configuration": "interior",
+    "n_h": 3000,
+    "w": 0.4856609061186362,
+    "gain": 0.011928151223123535,
+    "w_direct": 0.4857,
+    "gain_direct": 0.011928151145833333,
+    "gain_error": 7.729020201630021e-11
+  },
+  {
+    "configuration": "interior",
+    "n_h": 10000,
+    "w": 0.4967039266265406,
+    "gain": 0.012199375068647888,
+    "w_direct": 0.49670000000000003,
+    "gain_direct": 0.012199375067885489,
+    "gain_error": 7.623988246274749e-13
+  },
+  {
+    "configuration": "interior",
+    "n_h": 1000000,
+    "w": 0.501542539952653,
+    "gain": 0.012318214593791775,
+    "w_direct": 0.5015000000000001,
+    "gain_direct": 0.012318214505172904,
+    "gain_error": 8.861887092204146e-11
+  },
+  {
+    "configuration": "hits_boundary",
+    "n_h": 30,
+    "w": 0.04942997136349031,
+    "gain": 0.00040589180000008925,
+    "w_direct": 0.0494,
+    "gain_direct": 0.0004058916507747555,
+    "gain_error": 1.4922533374999228e-10
+  },
+  {
+    "configuration": "hits_boundary",
+    "n_h": 100,
+    "w": 0.1529445925613072,
+    "gain": 0.0012558970653347708,
+    "w_direct": 0.1529,
+    "gain_direct": 0.0012558969585742645,
+    "gain_error": 1.0676050625144096e-10
+  },
+  {
+    "configuration": "hits_boundary",
+    "n_h": 300,
+    "w": 0.380775044360227,
+    "gain": 0.0031267157129012987,
+    "w_direct": 0.3808,
+    "gain_direct": 0.0031267156994709035,
+    "gain_error": 1.3430395250785265e-11
+  },
+  {
+    "configuration": "hits_boundary",
+    "n_h": 1000,
+    "w": 0.7955512838116161,
+    "gain": 0.006532630581639038,
+    "w_direct": 0.7956000000000001,
+    "gain_direct": 0.006532630557142861,
+    "gain_error": 2.449617765576395e-11
+  },
+  {
+    "configuration": "hits_boundary",
+    "n_h": 1779.1732077446363,
+    "w": 1.0,
+    "gain": 0.008211451247165536,
+    "w_direct": 1.0,
+    "gain_direct": 0.008211451247165536,
+    "gain_error": 0.0
+  },
+  {
+    "configuration": "hits_boundary",
+    "n_h": 3000,
+    "w": 1.0,
+    "gain": 0.009313586545729407,
+    "w_direct": 1.0,
+    "gain_direct": 0.009313586545729407,
+    "gain_error": 0.0
+  },
+  {
+    "configuration": "hits_boundary",
+    "n_h": 10000,
+    "w": 1.0,
+    "gain": 0.01043792517006803,
+    "w_direct": 1.0,
+    "gain_direct": 0.01043792517006803,
+    "gain_error": 0.0
+  },
+  {
+    "configuration": "hits_boundary",
+    "n_h": 1000000,
+    "w": 1.0,
+    "gain": 0.010914965986394562,
+    "w_direct": 1.0,
+    "gain_direct": 0.010914965986394562,
+    "gain_error": 0.0
+  }
+]

@@ -1,0 +1,28 @@
+\section{Introduction}
+\label{sec:intro}
+
+Robot demonstrations are expensive, while egocentric human recordings and other auxiliary embodiments are cheap and abundant. Mixed training can exploit this asymmetry, but the same auxiliary data can also produce negative transfer. The practical question is therefore not merely whether more data helps, but \emph{when auxiliary data should be used, in what proportion, and how that decision changes with data scale}.
+
+We study this question in a dual-domain spectral model with Gaussian covariates, a shared spectral basis, task-vector mismatch $\delta$, and domain-specific noise. Standard full-ridge regression is the main estimator; diagonalized ridge is retained only as an interpretable special case. The model is deliberately simple so that optimal mixing can be characterized rather than tuned by trial and error. Claims about closed-loop robot policies are outside the scope of this paper.
+
+\paragraph{Full-ridge risk and the global optimum.}
+Our first result is a fixed-dimension expansion of the actual full-ridge risk over the entire mixing-weight interval, together with uniform first- and second-derivative control (Theorem~\ref{thm:t1c}). This supplies more than an accurate curve: it allows us to analyze the minimizer of that curve.
+When the population risk has a unique interior global minimizer $w_0$ with positive curvature, we derive a first-order sample-size correction to the finite-sample optimal weight, together with first-order expansions of the optimized risk and gain (Theorem~\ref{thm:optfull}). The central object is therefore the global optimum over all mixing weights, not only the derivative at zero.
+
+\paragraph{Why local and global analyses must be distinguished.}
+A positive zero-mixing derivative says that a small auxiliary contribution increases risk, but it does not rule out a lower risk at a larger weight. We construct a full-ridge example in which the zero-mixing derivative is positive while the optimized gain remains positive. This example motivates the global shape assumptions used throughout the paper. Detailed boundary cases, including flat-boundary rates, are deferred to the supplementary material so that they do not obscure the main result.
+
+\paragraph{Dosage, exchange, and mechanism.}
+At matched spectra, the population risk is quadratic in the mixing weight. We derive the optimized full-ridge gain expansion (Theorem~\ref{thm:fulldose}) and a first-order exchange approximation. To obtain a closed-form dosage rule, we additionally consider a quadratic surrogate that retains population bias and label-noise variance while omitting sample-Gram fluctuation corrections. This surrogate admits an exact piecewise solution: an interior hyperbolic branch and a boundary branch once the optimal weight reaches one. These branches describe the surrogate; the full-ridge gain expansion includes the Gram corrections.
+Alignment, variance reduction, and spectral coverage explain when auxiliary data supplies new information, reduces estimation variance, or amplifies mismatch. These mechanisms support the main result rather than forming a separate local theory.
+
+\paragraph{Evidence and scope.}
+Pre-registered direct-$n_r$ tests pass the 20\% root-compatibility criterion, and actual-E2 paired checks support the full-ridge expansions and optima. Additional experiments use small nonlinear learners and real CIFAR features to probe learner and data-distribution limits. All evidence remains controlled-model evidence, not external validation of a robot policy. General non-unimodal classification, general-spectrum or tuned-regularization extensions, the proportional regime, and policy-level validation remain open.
+
+\paragraph{Contributions.}
+Our contribution is not the first introduction of task mismatch or weighted transfer regression. Rather, it is a fixed-dimensional second-order analysis of the actual full-ridge risk and its use in characterizing optimized mixing over the entire weight interval.
+(i)~A fixed-dimension full-ridge risk and derivative expansion for dual-domain mixing with task mismatch.
+(ii)~A global theorem giving a first-order sample-size correction for the optimal mixing weight and expansions for optimized risk and gain under a unique nondegenerate interior population optimum.
+(iii)~A matched-spectrum optimized-gain expansion for full ridge, a first-order exchange approximation, and an exact piecewise dosage solution for an explicitly specified quadratic surrogate.
+(iv)~Pre-registered direct-$n_r$, nonlinear-learner, and real-feature checks organized by estimator and risk object.
+Proofs, boundary cases, numerical protocols, and experimental details are in the supplementary material.

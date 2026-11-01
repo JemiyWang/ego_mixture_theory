@@ -1,0 +1,26 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\paragraph{What the theory buys a practitioner.}
+Three quantities estimable from data --- two spectra, a mismatch spectrum, and noise levels --- determine (i)~whether human data helps at all (sign of Eq.~\eqref{eq:c1}), (ii)~whether there is a robot-data scale beyond which it must be discarded (Theorem~\ref{thm:h}), and (iii)~what it is worth in robot-data units (Corollary~\ref{cor:kex}).
+The mismatch-\emph{location} effect (Table~\ref{tab:harmful}) is, to our knowledge, a new and actionable prediction: retargeting errors that live on low-frequency, task-critical coordinates are far more dangerous than equal-magnitude errors on high-frequency coordinates --- which suggests concrete filtering strategies for egocentric pipelines.
+
+\paragraph{Boundaries of the theory.}
+The theory has a sharp negative edge, stated fully in the supplementary material.
+If the encoder aligns the two domains in feature space ($W_1$ gap $\varepsilon$) while the action marginals differ (mean gap $|\Delta\mu|$), then \emph{any} deterministic $L$-Lipschitz shared head pays mixture risk $R_\lambda \ge \lambda(1-\lambda)(|\Delta\mu| - L\varepsilon)_+^2$, and the mixture-optimal head pays $R_r \ge \lambda^2(|\Delta\mu| - L\varepsilon)_+^2$ on the robot domain --- a floor that \emph{grows} with the mixing ratio, the squared-loss analogue of the bound of~\cite{zhao2019learning}.
+Over-strong alignment losses are likewise predicted to collapse useful within-domain structure, the overlapping/collapse regime of~\cite{lei2026simreal}; the first batch observes the predicted signature --- strong MMD alignment reduces closed-loop coverage at intermediate $\lambda$ relative to both light alignment and naive mixing (Sec.~\ref{sec:experiments}, F4).
+Finally, with only two embodiment ``environments'', IRM-style full invariance is unidentifiable~\cite{arjovsky2019invariant}; this is why the framework claims only \emph{partial} invariance (appearance-invariant features with a domain-conditioned action head).
+
+\paragraph{Limitations.}
+Our theory is stated for a diagonalized ridge estimator over linear labels; the gap to the full ridge solution is 8--28\% on the weighted risk (a full-ridge extension is stated as a conjecture in the supplementary), and the gap to diffusion policies is bridged only at the level of structural predictions, which is all we claim.
+The experiments so far cover one task, one policy class, one surrogate ego domain, and a coarse single-seed protocol; the alignment-strength axis (two MMD weights) and a 150-epoch arm are included, but multi-seed significance, the coverage axis, and action-marginal-shift tests are future work.
+The exchange rate prices \emph{samples}, while empirical practice prices \emph{hours}; the conversion depends on collection throughput.
+Finally, the harmful-region criterion assumes the shared-spectral-basis structure of Assumption~\ref{ass:a1}; heavy basis misalignment across embodiments is outside the current model.
+
+\paragraph{Outlook.}
+The immediate next steps are set by the theory itself: a multi-seed significance pass over the interior optimum, the alignment-strength response (why does strong alignment hurt, and where is the transition?), the open-loop-to-closed-loop bridge (compounding-error bounds in the spirit of~\cite{ross2011reduction}), and a real-robot egocentric pairing of the testbed.
+More broadly, we hope the exchange-rate formulation turns "how much egocentric data should I mix?" from folklore into a measurable, computable quantity.
+
+\paragraph{Conclusion.}
+We gave a closed-form, numerically exact account of cross-embodiment data mixing: a per-coordinate risk theorem, an exact harmful-mixing phase criterion, and an exchange-rate corollary that quantitatively matches empirical substitution ratios.
+A controlled dual-domain Push-T testbed confirms the theory's structural predictions with diffusion policies and surfaces an open-loop/closed-loop divergence as a target for the next iteration of the theory.

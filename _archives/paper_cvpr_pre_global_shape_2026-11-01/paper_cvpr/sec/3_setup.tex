@@ -1,0 +1,59 @@
+\section{A dual-domain model of cross-embodiment mixing}
+\label{sec:setup}
+
+We abstract the problem to its statistical skeleton.
+Two domains provide training data: the \emph{robot domain} $r$ (target; teleoperated demonstrations) and the \emph{human domain} $h$ (source; egocentric recordings).
+We write $e \in \{r,h\}$ for the domain index.
+
+\begin{assumption}[Data model]\label{ass:a1}
+Coordinates $j = 1,\dots,p$ index a shared spectral basis.
+Observations are $x_e = \Sigma_e^{1/2} u_e$ with $u_e$ standard Gaussian and $\Sigma_e = \mathrm{diag}(\lambda^e_j)$ diagonal with power-law spectra
+\begin{equation}
+  \lambda^e_j \asymp j^{-\alpha_e}, \qquad \lambda^e_1 = 1,
+  \label{eq:powerlaw}
+\end{equation}
+and throughout we abbreviate $a_j = \lambda^r_j$, $b_j = \lambda^h_j$.
+\end{assumption}
+
+\begin{assumption}[Labels and mismatch]\label{ass:a2}
+$y_r = \langle \beta^*, x_r \rangle + \varepsilon_r$ in the robot domain; $y_h = \langle \beta^* + \delta, x_h \rangle + \varepsilon_h$ in the human domain.
+The \emph{task mismatch} $\delta$ absorbs retargeting error, kinematic differences, and residual appearance-induced shifts; its \emph{alignment} with the task is $c = \delta^\top\beta^*$.
+For each domain $e$ and sample $i$, $\varepsilon_{e,i}$ has mean zero and variance $\sigma_e^2$, is independent of the design and of other samples, and has finite fourth moment. The fourth-moment assumption is used only for Cauchy--Schwarz and complementary-event bounds. The parameter $\beta^*$ obeys an ellipsoid constraint $\sum_j j^{2s}\beta_j^{*2} \le 1$ with $s > 0$.
+\end{assumption}
+
+\begin{assumption}[Mixture estimator]\label{ass:a3}
+Given $\nr$ robot and $\nh$ human samples and a mixing ratio $\lambda \in [0,1]$, per-sample weights are $w_r = (1-\lambda)/\nr$, $w_h = \lambda/\nh$. The main estimator is the \emph{standard full-ridge} solution
+\begin{align}
+  \hat\beta ={}&
+  \left(w_r X_r^\top X_r + w_h X_h^\top X_h + \mu I\right)^{-1}\notag\\
+  &\quad\times
+  \left(w_r X_r^\top y_r + w_h X_h^\top y_h\right),
+  \qquad \mu>0.
+  \label{eq:estimator}
+\end{align}
+The diagonalized estimator, which retains only the diagonal of the sample Gram matrix, is analyzed separately as an interpretable special case. The coefficient $\mu$ is the ridge penalty and stands in for explicit or implicit regularization.
+\end{assumption}
+
+The evaluation criterion is the \emph{robot-domain excess risk}, weighted by the robot geometry:
+\begin{equation}
+  \risk(\lambda) = \E\big\| \hat\beta(\lambda) - \beta^* \big\|^2_{\Sigma_r}.
+  \label{eq:risk}
+\end{equation}
+Only errors in directions the robot actually visits are penalized --- this weighting turns out to be essential for the phase structure in Sec.~\ref{sec:theory}.
+
+\paragraph{Label feedthrough.}
+A subtle point drives the quantitative accuracy of the theory.
+Although the population covariances are diagonal, the \emph{sample} Gram matrices are not: the label projection $T_{ej}$ picks up contributions from all other coordinates, $T_{ej} = S_{ejj}\beta_{e,j} + \sum_{k\neq j} S_{ejk}\beta_{e,k} + X_{e,:j}^\top\varepsilon_e$.
+The middle term is mean-zero with variance $\nr\lambda^e_j F_{e,j}$ (and similarly for $h$), where $F_{e,j} = \sum_{k\neq j} \lambda^e_k\beta_{e,k}^2$ is the domain's signal energy on the coordinates \emph{other than} $j$ ($\beta_h = \beta^* + \delta$).
+Out-of-coordinate signal is therefore indistinguishable from noise for coordinate $j$, giving rise to the \emph{effective noise}
+\begin{equation}
+  \tilde\sigma_{e,j}^2 = \sigma_e^2 + F_{e,j} .
+  \label{eq:feedthrough}
+\end{equation}
+A heavier-tailed human spectrum (small $\alpha_h$) inflates $F_{h,j}$: broad coverage carries a hidden per-coordinate SNR cost, which competes with its coverage benefit --- this tension is the microscopic origin of the phase diagrams in Sec.~\ref{sec:theory}.
+Where the coordinate dependence is immaterial we abbreviate $\tilde\sigma_{e,j}^2$ (resp.\ $F_{e,j}$) as $\tilde\sigma_e^2$ (resp.\ $F_e$); all numerical evaluations use the exact per-coordinate form.
+
+\paragraph{What the model keeps and discards.}
+The model retains the three gap components that mixture practice manipulates --- spectra (coverage), mismatch $\delta$ (embodiment/retargeting), and noise --- and discards the rest (nonlinear observation maps, temporal structure, closed-loop compounding).
+Sec.~\ref{sec:numerics} therefore validates at three levels: within-model Monte-Carlo, Adam-trained estimators on synthetic data, and stress tests of the assumptions; policy-level evaluation is companion work and is not claimed here.
+The diagonalized estimator is a controlled approximation of the full-ridge solution in Assumption~\ref{ass:a3}; we quantify its gap (8--28\% on the weighted risk) in the supplementary. The full-ridge risk and its first two derivatives are expanded at fixed dimension in Theorem~\ref{thm:t1c}. The earlier diagonal-motivated full-ridge surrogate is retained only as a numerical comparator, not as the proved second-order object.

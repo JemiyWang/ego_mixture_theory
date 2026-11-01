@@ -1,0 +1,129 @@
+\section{Theory}
+\label{sec:theory}
+
+All proofs and the full numerical-verification protocol are deferred to the supplementary; here we state results and give intuition.
+
+\subsection{Closed-form risk of the mixture estimator}
+
+\begin{theorem}[Risk characterization, T1-a]\label{thm:t1a}
+Under Assumptions~\ref{ass:a1}--\ref{ass:a3}, with $\nr,\nh \to \infty$ at fixed ratio $\rho = \nh/\nr$ and $p$ fixed or growing polynomially, with high probability,
+\begin{equation}
+  \big|\, \risk(\lambda) - \riske(\lambda) \,\big|
+  \;\le\; C\big(\kappa_0^{-3} + \nr^{-3/2}\big)\, \riske(\lambda),
+  \label{eq:t1a-error}
+\end{equation}
+where the deterministic equivalent is
+\begin{align}
+  \riske(\lambda) = \sum_{j > m} a_j\beta_j^{*2} + \sum_{j \le m} a_j\, \mathrm{MSE}^{\det}_j(\lambda),
+  \label{eq:t1a}
+\end{align}
+with per-coordinate closed form
+\begin{align}
+  \mathrm{MSE}^{\det}_j = \underbrace{\frac{(1{-}\lambda)^2 \tilde\sigma_r^2 a_j / \nr + \lambda^2 \tilde\sigma_h^2 b_j / \nh}{D_j^2}}_{\text{effective variance}}
+  + \underbrace{\Big(\frac{\lambda\, b_j \delta_j - \mu \beta^*_j}{D_j}\Big)^2}_{\text{bias square}},
+  \label{eq:mse}
+\end{align}
+where the bias square expands into mismatch energy, shrinkage energy, and an \emph{alignment cross term} $-2\lambda\mu b_j \delta_j \beta^*_j / D_j^2$ whose sign tracks the alignment $c$;
+$D_j = (1-\lambda) a_j + \lambda b_j + \mu$, $\tilde\sigma_e^2 = \sigma_e^2 + F_e$ the feedthrough-corrected effective noise of Eq.~\eqref{eq:feedthrough}, and $m$ a self-consistent truncation $m = \max\{j : D_j \ge \kappa_0 \eta_j\}$ with $\eta_j$ the fluctuation scale of the empirical denominator.
+Second-order fluctuation corrections to Eq.~\eqref{eq:mse} are derived in the supplementary and included in all numerical evaluations.
+\end{theorem}
+
+\paragraph{Proof sketch.}
+The chain is elementary once the feedthrough is identified: (i)~a per-coordinate representation of the estimator including the feedthrough term (Lemma~L1); (ii)~exact conditional MSE given the design (Lemma~L2); (iii)~a deterministic equivalent via $\chi^2$ concentration of $S_{ejj}$ and a second-order delta method, in which the only third-order mixed moment closes in the exact form $8\lambda^3 b_j^3\delta_j^2/\nh^2$ (Lemma~L3); (iv)~assembly with a truncation at the information-poor coordinates, where a boundary-band argument keeps the aggregate relative error at $O(\kappa_0^{-3})$ (Lemma~L4).
+Every step is scalar random-matrix-free analysis; no new asymptotic-equivalence lemma is needed in the diagonal setting.
+
+\paragraph{Numerical verification.}
+Across spectral families and mixing ratios, Eq.~\eqref{eq:mse} matches Monte-Carlo estimates with binned median relative error 0.6--1.6\% and aggregate error $\le 2\%$ (200 replicates, $\sim$200k coordinate-replicates; the supplementary material).
+Against the \emph{full} (non-diagonalized) ridge estimator, Eq.~\eqref{eq:t1a} is a variance upper bound; the gap on the weighted risk is 8--28\% depending on the spectral family, and the full-ridge extension (T1-b) is proved in the supplementary for the fixed-dimension regime.
+
+\subsection{When does marginal mixing help? Three forces}
+
+\begin{corollary}[Marginal-benefit decomposition, C1]\label{cor:c1}
+The right derivative $\riske'(0^+) = \sum_j a_j\, \partial_\lambda \mathrm{MSE}^{\det}_j(0)$ decomposes per coordinate as (sign flipped so that positive means beneficial)
+\begin{align}
+  \mathrm{benefit}_j \;\propto\;
+  \underbrace{\mu \beta^*_j b_j \delta_j}_{\text{A: alignment}}
+  + \underbrace{V_j D_{0j}}_{\text{B: variance}}
+  + \underbrace{(V_j + \mu^2\beta_j^{*2})(b_j - a_j)}_{\text{C: coverage}},
+  \label{eq:c1}
+\end{align}
+with $V_j = \tilde\sigma_r^2 a_j / \nr$ and $D_{0j} = a_j + \mu$.
+\end{corollary}
+
+The three terms have distinct physical carriers.
+A~(alignment) exists only through $\mu$: regularization is what couples the mismatch to the task direction --- with sign set by $c = \delta^\top\beta^*$.
+B~(variance) is always positive and vanishes as $\nr$ grows: diminishing returns.
+C~(coverage) is positive exactly where the human spectrum is heavier than the robot spectrum, $b_j > a_j$; it is the spectral fingerprint of "the human data sees directions the robot data cannot".
+In the unregularized limit only B survives:
+\begin{equation}
+  \riske'(0^+)\big|_{\mu=0} = -\frac{2\tilde\sigma_r^2}{\nr}\sum_j j^{\alpha_r - \alpha_h} < 0
+  \quad\text{always},
+  \label{eq:mu0}
+\end{equation}
+so under-regularized mixture is always beneficial, with magnitude growing in the spectral gap --- the classical picture.
+
+\subsection{The phase transition: an exact criterion}
+
+\begin{theorem}[Harmful-mixing criterion, C2]\label{thm:h}
+Define the asymptotic marginal-harm functional (the $\nr\to\infty$, $\nh/\nr$ fixed part of $\riske'(0^+)$ after term B vanishes), for anti-aligned mismatch:
+\begin{align}
+  H \;=\; \underbrace{2\mu \sum_j \frac{a_j \beta^*_j b_j |\delta_j|}{D_{0j}^2}}_{A_\infty:\ \text{mismatch harm}}
+  \;-\; \underbrace{2\mu^2 \sum_j \frac{a_j \beta_j^{*2} (b_j - a_j)}{D_{0j}^3}}_{C_\infty:\ \text{coverage benefit}} .
+  \label{eq:h}
+\end{align}
+Then (i)~$H \le 0$ implies marginal mixing is beneficial at \emph{all} robot sample sizes;
+(ii)~$H > 0$ implies a critical robot sample size
+\begin{equation}
+  \nr^{\mathrm{crit}} = K / H,
+  \qquad
+  K = 2\tilde\sigma_r^2\,(S_1 + S_2),
+  \label{eq:ncrit}
+\end{equation}
+with $S_1 = \sum_j a_j^2/D_{0j}^2$, $S_2 = \sum_j a_j^2(b_j - a_j)/D_{0j}^3$, beyond which marginal mixing hurts.
+\end{theorem}
+
+\paragraph{Exactness.}
+The criterion is not an asymptotic slogan.
+Numerically (the supplementary material): the predicted mismatch threshold $\|\delta\|^* = 0.674$ (the root of $H$) coincides with the Monte-Carlo phase boundary to within the search resolution, and $\nr^{\mathrm{crit}} \cdot H = 25.866$ is constant across three decades of mismatch magnitude --- the inverse proportionality in Eq.~\eqref{eq:ncrit} is exact.
+
+\paragraph{Two consequences.}
+First, \emph{mismatch location beats mismatch magnitude}: because $A_\infty$ weights $|\delta_j|$ by the risk weight $a_j\beta^*_j b_j/D_{0j}^2$, mismatch concentrated on low-frequency, high-risk-weight coordinates is harmful across nearly the whole $(\nr, \nh/\nr)$ plane (42/42 cells at $\|\delta\|=2$), while the same energy on high-frequency coordinates is harmless everywhere (0/42) --- see Fig.~\ref{fig:teaser-phase} and Table~\ref{tab:harmful}.
+Second, \emph{$\mu$ is the carrier of the classical transition}: as $\mu \to 0$, $C_\infty \to 0$ and $H = A_\infty > 0$ whenever $c<0$, recovering the discard-the-source transition of classical domain adaptation; at $\mu > 0$ the large-$\nr$ limit of the mixing benefit is $-C_\infty < 0$ --- broad human coverage keeps paying even with abundant robot data.
+
+\begin{table}[t]
+  \centering
+  \small
+  \caption{Harmful-mixing cells (out of 42 grid points of $(\nr, \nh/\nr)$) under anti-aligned mismatch, by mismatch magnitude and \emph{spectral location}.
+  Location --- not magnitude --- is the dominant factor; theory: Eq.~\eqref{eq:h}.}
+  \label{tab:harmful}
+  \begin{tabular}{lccc}
+    \toprule
+    $\|\delta\|$ & white & low-freq & high-freq \\
+    \midrule
+    0.5 & 0/42 & 30/42 & 0/42 \\
+    1.0 & 18/42 & 36/42 & 0/42 \\
+    2.0 & 24/42 & 42/42 & 0/42 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{The exchange rate of egocentric data}
+
+\begin{corollary}[Exchange rate, T2]\label{cor:kex}
+Define the ego$\leftrightarrow$teleop exchange rate $\kex$ by
+\begin{equation}
+  \riske(\lambda^*;\, \nr, \nh) = \riske\big(0;\, \nr + \kex\, \nh\big),
+  \label{eq:kex}
+\end{equation}
+\ie, the amount of extra robot data that reproduces the optimal mixture's risk.
+Then $\kex$ is (i)~increasing in the spectral gap $\alpha_r - \alpha_h$; (ii)~decreasing in the effective mismatch; (iii)~decreasing in $\nr$; and (iv)~capped: there is a large-gap regime in which $\kex \ge 1$, \ie, human data supplies coverage that \emph{no} amount of additional robot data reproduces.
+\end{corollary}
+
+Numerically (Fig.~in suppl.): at zero spectral gap with moderate mismatch and noisier human labels, $\kex \approx 0.42$--$0.59$ --- one ego sample is worth about half a robot sample, the price of the gap; the cap $\kex = 1$ binds from $\alpha_r - \alpha_h \approx 0.5$--$0.75$ upward.
+The empirical substitution ratio of 4--5:1 reported for egocentric pipelines~\cite{zevaego2025} corresponds to $\kex \approx 0.2$--$0.25$ and falls inside the predicted small-gap range $0.19$--$0.56$; we note the units caveat (theory prices samples; empirics price hours).
+Corollary~\ref{cor:kex} thus turns a practitioner rule of thumb into a computable function of measurable quantities: two spectra, a mismatch spectrum, and noise levels.
+
+\paragraph{The $\nh$ axis: an exact dosage law.}
+The classical small-source threshold has a smooth refinement in this model (supplementary material).
+At matched spectra the optimal gain is exactly hyperbolic in the human sample size, $g(\nh) = A_1^2/(4A_2(\nh))$ with $A_2(\nh) = A_2^r + B/\nh$; this yields an explicit worth-mixing threshold $\nh^\varepsilon$, a ratio $\lambda^*(\nh)$ growing linearly from zero, and a closed-form exchange rate whose pole is exactly the cap regime of Corollary~\ref{cor:kex}(iv).
+Unlike the $\nr$ axis --- a true sign-change transition (Theorem~\ref{thm:h}) --- the $\nh$ axis carries no sign change: once mixing helps at all, it helps at every sample size, and the hard classical threshold is recovered only as the divergence $\nh^\varepsilon \to \infty$.

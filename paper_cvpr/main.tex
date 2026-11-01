@@ -1,0 +1,50 @@
+% Paper Draft (v2, option C: theory + trained-model validation)
+% Theory of cross-embodiment data mixing + controlled synthetic trained-model study
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+%%%%%%%%% PAPER TYPE  - PLEASE UPDATE FOR FINAL VERSION
+% \usepackage{cvpr}              % To produce the CAMERA-READY version
+\usepackage[review]{cvpr}      % To produce the REVIEW version
+% \usepackage[pagenumbers]{cvpr} % To force page numbers, e.g. for an arXiv version
+
+% Import additional packages in the preamble file, before hyperref
+\input{preamble}
+
+\definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
+\usepackage[pagebackref,breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
+
+%%%%%%%%% PAPER ID  - PLEASE UPDATE
+\def\paperID{*****} % *** Enter the Paper ID here
+\def\confName{CVPR}
+\def\confYear{2027}
+
+%%%%%%%%% TITLE
+\title{When Does Auxiliary Data Help? Global Geometry and\\
+Optimal Mixing under Task Mismatch}
+
+%%%%%%%%% AUTHORS (review version: anonymized)
+\author{Anonymous \confName~\confYear~submission\\
+Paper ID \paperID\\
+{\tt\small https://anonymous.4open.science/ (code and data to be released)}
+}
+
+\begin{document}
+\maketitle
+\input{fig/teaser}
+\input{sec/0_abstract}
+\input{sec/1_intro}
+\input{sec/2_related}
+\input{sec/3_setup}
+\input{sec/4_theory}
+\input{sec/5_numerics}
+\input{sec/7_discussion}
+{
+    \small
+    \bibliographystyle{ieeenat_fullname}
+    \bibliography{main}
+}
+
+% Supplementary: compiled as separate document for submission; kept here for drafting
+% \input{sec/X_suppl}
+
+\end{document}

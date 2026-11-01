@@ -1,0 +1,18 @@
+\section{Related work}
+\label{sec:related}
+
+\paragraph{Egocentric human data for robot learning.}
+Egocentric video has long served as a representation prior: Ego4D~\cite{grauman2022ego4d} supplies large-scale first-person video, and R3M/VIP-style pretraining~\cite{nair2022r3m,ma2022vip} distills it into visual features for downstream control.
+A more recent line injects egocentric data \emph{directly into policy training}: EgoMimic~\cite{kareer2024egomimic} uses hand-mounted grippers whose kinematics match the robot, UMI~\cite{chi2024universal} uses hand-held grippers with visual-inertial pose recovery, DexCap~\cite{wang2024dexcap} uses portable mocap, and EgoBridge~\cite{egobridge2025} studies mixing in simulation with explicit domain gaps.
+Cross-embodiment robot corpora~\cite{openx2024} face a cousin of the same problem across robot morphologies.
+These works establish that mixing \emph{can} help and document substitution ratios~\cite{zevaego2025} and failure modes, but stop short of a principled account of when and why --- the gap this paper addresses.
+
+\paragraph{Domain adaptation and mixture theory.}
+Classical domain-adaptation theory bounds target error by source error plus a discrepancy and a shared-optimal-hypothesis term~\cite{bendavid2010theory}; later work asks when quantity compensates for quality~\cite{bendavid2014quantity}, characterizes the value of target data via transfer exponents~\cite{hanneke2019value}, and shows that enforced representation invariance can provably \emph{hurt} when label marginals differ~\cite{zhao2019learning}.
+On the practice side, data-mixture scaling laws~\cite{wu2026mixture} and analyses of sim-real co-training~\cite{lei2026simreal} give empirical-fit models of multi-source learning.
+Closest to us is the ridge-regression scaling analysis of~\cite{wu2026mixture}, whose minimax characterization assumes matched task vectors across domains; our model adds an explicit mismatch spectrum, which is precisely the object that governs harmful mixing (Theorem~\ref{thm:h}).
+Relative to all of the above, our contribution is an \emph{operational} theory: closed-form mixture risk, an explicit critical-threshold formula, and an exchange rate, all stated in quantities estimable from data.
+
+\paragraph{Technical tools.}
+Our analysis builds on the ridge-regression literature under power-law spectra~\cite{dobriban2018high,hastie2022surprises}, with two differences that matter: the robot-domain risk is $\Sigma_r$-weighted (only target-geometry errors count), and the sample-level coupling between coordinates induces a \emph{label-feedthrough} term that acts as effective noise (Sec.~\ref{sec:setup}).
+On the alignment side we use kernel MMD~\cite{gretton2012kernel,long2015learning} as the alignment-strength knob in experiments; gradient-conflict diagnostics follow the multi-task learning literature~\cite{yu2020surgery}; and the impossibility caveats of invariant-representation approaches~\cite{zhao2019learning,arjovsky2019invariant} inform our negative results.

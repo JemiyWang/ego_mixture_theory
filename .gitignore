@@ -1,0 +1,26 @@
+# Local datasets and large binary artifacts
+M2_实验设计/light_validation/data/
+
+# Python and test caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+.cache/
+.tmp/
+
+# OS/editor files
+.DS_Store
+*~
+
+# LaTeX build logs and auxiliary state (PDFs are retained)
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.out
+*.brf
+*.blg
+*.bcf
+*.run.xml
+*.synctex.gz

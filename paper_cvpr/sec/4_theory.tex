@@ -1,0 +1,94 @@
+\section{Full-ridge risk geometry and optimal data mixing}
+\label{sec:theory}
+
+The main object is the full-ridge target risk $R_n(w)$ and its global minimizers over $w\in[0,1]$. Diagonalized ridge is retained only as an interpretable special case. Proofs and exact algebraic certificates are deferred to the supplementary material.
+
+\subsection{Actual full-ridge risk at fixed dimension}
+
+\begin{theorem}[Second-order full-ridge risk, T1-c]\label{thm:t1c}
+Consider the standard full-ridge estimator under the Gaussian design and noise model, with fixed $p$, fixed $\mu>0$, and fixed $\rho=\nh/\nr$. Then, uniformly for $w\in[0,1]$,
+\begin{equation}
+  R_n(w)=R_0(w)+\frac{R_1(w)}{\nr}+o(\nr^{-1}),
+  \label{eq:t1c-main}
+\end{equation}
+where $R_0$ and $R_1$ are explicit matrix coefficients derived in the supplementary. The first two derivatives satisfy the same uniform expansion.
+\end{theorem}
+
+This is an expansion of the actual full-ridge risk, not of a diagonalized object or a numerical surrogate. It connects population geometry to finite-sample optima without requiring a single global shape.
+
+\subsection{Global shape of the population risk}
+
+With $D_j(w)=(1-w)a_j+wb_j+\mu$, the population risk has the coordinate representation
+\begin{equation}
+ R_0(w)=\sum_j a_j\frac{(wb_j\delta_j-\mu\beta_j^*)^2}{D_j(w)^2}.
+ \label{eq:r0-coordinates}
+\end{equation}
+
+\begin{proposition}[Log-convexity and flatness at zero mismatch]\label{prop:delta-zero-shape}
+Suppose $\delta=0$ and let $\mathcal J=\{j:a_j\beta_j^{*2}>0\}$. Then $R_0$ is log-convex on $[0,1]$. If some $j\in\mathcal J$ has $a_j\ne b_j$, then $R_0$ is strictly log-convex and has a unique minimizer. If every $j\in\mathcal J$ has $a_j=b_j$, or $\mathcal J$ is empty, then $R_0$ is constant and every weight is optimal. In the strictly log-convex case, the signs of $R_0'(0^+)$ and $R_0'(1^-)$ determine whether the unique optimum is at zero, one, or an interior point.
+\end{proposition}
+
+\begin{proposition}[Minimum dimension for multiple valleys]\label{prop:multimodal}
+For $p=1$, $R_0'(w)=L(w)/D(w)^3$ with affine $L$, so there is at most one nondegenerate local valley. In contrast, a certified two-dimensional example satisfying Assumptions~\ref{ass:a1}--\ref{ass:a3} has three simple interior stationary points
+\begin{equation}
+ w_1\approx0.264842,\quad w_2\approx0.727011,\quad w_3\approx0.869112,
+\end{equation}
+which are respectively a local minimum, a local maximum, and a local minimum. Interval risk comparison proves that $w_1$ is the unique global minimizer. Thus $p=2$ is the minimum dimension for multiple valleys.
+\end{proposition}
+
+The example does not merely show multiple local minima. Varying its second-coordinate weight $t$ gives valley-pair creation at $t_1\approx0.9375848$ and annihilation at $t_2\approx1.2003419$. Between these critical values, the global optimum switches branches, and at some $t_*\in[1.06085925,1.06085926]$ the two local minima have equal risk: two different weights are global minimizers.
+
+\paragraph{Exact global certification at fixed parameters.}
+For each coordinate, $R_{0j}'(w)=L_j(w)/D_j(w)^3$ with affine $L_j$. After clearing positive denominators, the stationary equation becomes
+\begin{equation}
+ P(w)=\sum_j a_jL_j(w)\prod_{k\ne j}D_k(w)^3=0,
+ \qquad \deg P\le3p-2.
+ \label{eq:stationary-polynomial}
+\end{equation}
+For fixed parameters, isolating all real roots of $P$ in $(0,1)$ and comparing them with $w=0,1$ certifies the global minimizers without assuming convexity or unimodality. Degenerate roots and flat cases are handled separately.
+
+\subsection{Finite-sample optimal selection}
+
+\begin{theorem}[Nondegenerate interior optimum]\label{thm:optfull}
+Suppose $R_0$ has a unique global minimizer $w_0\in(0,1)$ with $R_0''(w_0)>0$. Then, for all sufficiently large $\nr$, $R_n$ has a unique global minimizer $w_n^*$ on $[0,1]$, with
+\begin{align}
+ w_n^*&=w_0-\frac{R_1'(w_0)}{\nr R_0''(w_0)}+o(\nr^{-1}),\notag\\
+ R_n(w_n^*)&=R_0(w_0)+R_1(w_0)/\nr+o(\nr^{-1}).
+ \label{eq:optfull-main}
+\end{align}
+Consequently, $\mathcal G_n=R_n(0)-R_n(w_n^*)$ satisfies $\mathcal G_n=\mathcal G_0+\mathcal G_1/\nr+o(\nr^{-1})$, where $\mathcal G_0=R_0(0)-R_0(w_0)$ and $\mathcal G_1=R_1(0)-R_1(w_0)$.
+\end{theorem}
+
+\begin{theorem}[$R_1$ selects among multiple population optima]\label{thm:branchselect}
+Suppose $R_0$ has two global minimizers $w_1<w_2$, both with positive local curvature. If $R_1(w_1)<R_1(w_2)$, then for all sufficiently large $\nr$ the global optimum is attained only near $w_1$, and $w_n^*\to w_1$. The risk gap between the two local branches is $(R_1(w_2)-R_1(w_1))/\nr+o(\nr^{-1})$. If the first-order values tie, $R_2$ or higher-order analysis is required.
+\end{theorem}
+
+\begin{theorem}[Flat $R_0$ at matched spectra and zero mismatch]\label{thm:flatR1}
+Let $\Sigma_r=\Sigma_h=\Sigma$ and $\delta=0$. Then $R_0$ is constant and there are explicit nonnegative coefficients $A,B$ such that
+\begin{equation}
+ R_1(w)=A(1-w)^2+Bw^2.
+ \label{eq:flat-r1}
+\end{equation}
+If $A+B>0$, then $R_n$ is strictly convex for sufficiently large $\nr$, $w_n^*\to w_1^*=A/(A+B)$, and
+\begin{align}
+ R_n(w_n^*)&=C+\frac{AB}{A+B}\frac1\nr+o(\nr^{-1}),\notag\\
+ \mathcal G_n&=\frac{A^2}{A+B}\frac1\nr+o(\nr^{-1}),
+ \label{eq:flat-r1-optimum}
+\end{align}
+where $C=R_0$ and $\mathcal G_n=R_n(0)-R_n(w_n^*)$. If $A=B=0$, the optimal weight and gain require higher-order analysis.
+\end{theorem}
+
+\subsection{Full-ridge gain and surrogate dosage}
+
+For matched spectra, the full-ridge optimized gain admits $\mathcal G_n=G_0+G_1(\rho)/\nr+o(\nr^{-1})$ at fixed $\rho$, with $G_1(\rho)=D_0+D_1/\rho$. A first-order exchange approximation follows by equating target-only and optimized-mixture risks; its pole is a statement about the approximate equation and a fixed-$\mu$ baseline, not a uniform actual-exchange guarantee.
+
+An explicitly defined quadratic surrogate
+\begin{equation}
+ \widetilde R(w)=R_0(w)+\frac{C_r(1-w)^2}{\nr}+\frac{C_hw^2}{\nh}
+ \label{eq:surrogate-dose}
+\end{equation}
+admits an exact piecewise dosage rule with an interior hyperbolic branch and a $w=1$ boundary branch. It omits Gram-fluctuation terms that can be of the same order as its retained noise terms, so this identity describes $\widetilde R$, not the complete full-ridge risk expansion.
+
+\subsection{Mechanism and scope}
+
+Alignment, variance reduction, and spectral coverage explain how auxiliary data changes risk, but they do not imply a single-valley landscape. A positive zero-mixing derivative cannot by itself justify discarding the source, and a unique global minimizer does not imply unimodality. The remaining open problems are a unified closed-form classification of all parameters, general $R_1/R_n$ shape theory, higher-order degenerate rates, tuned regularization, the proportional regime, and robot-policy validation.

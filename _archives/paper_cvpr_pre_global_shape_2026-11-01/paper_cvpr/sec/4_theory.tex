@@ -1,0 +1,88 @@
+\section{Full-ridge risk and optimal data mixing}
+\label{sec:theory}
+
+The main object is the full-ridge target risk $R_n(w)$ and its minimizer over the mixing-weight interval. Diagonalized ridge is used only as an interpretable special case. Proofs and detailed boundary cases are deferred to the supplementary material.
+
+\subsection{Actual full-ridge risk at fixed dimension}
+
+\begin{theorem}[Second-order full-ridge risk, T1-c]\label{thm:t1c}
+Consider the standard full-ridge estimator under the Gaussian design and noise model, with fixed $p$, fixed $\mu>0$, and fixed $\rho=\nh/\nr$. Then, uniformly for $w\in[0,1]$,
+\begin{equation}
+  R_n(w)=R_0(w)+\frac{R_1(w)}{\nr}+o(\nr^{-1}),
+  \label{eq:t1c-main}
+\end{equation}
+where $R_0$ and $R_1$ are explicit matrix coefficients derived in the supplementary. This is an expansion of the actual full-ridge target risk, not of a diagonalized leading-order object or a numerical surrogate. The first two derivatives satisfy the same uniform expansion.
+\end{theorem}
+
+The risk expansion is the technical foundation, not the final decision rule. Its role is to connect sample size, spectra, mismatch, noise, and regularization to the optimal mixing weight and optimized gain.
+
+\subsection{Optimal mixing weight and optimized risk}
+
+Write $R_n(w)=R_{\mathrm{full}}(w;\nr)$ and let $R_0,R_1$ be the coefficients of Theorem~\ref{thm:t1c}.
+
+\begin{theorem}[Nondegenerate interior optimum of standard full ridge]\label{thm:optfull}
+Under the fixed-dimension conditions of Theorem~\ref{thm:t1c}, the first two derivatives satisfy, uniformly for $w\in[0,1]$ and $k=1,2$,
+\begin{equation}
+ R_n^{(k)}(w)=R_0^{(k)}(w)+R_1^{(k)}(w)/\nr+o(\nr^{-1}).
+ \label{eq:fullderivative-main}
+\end{equation}
+Suppose $R_0$ has a unique global minimizer $w_0\in(0,1)$ and $R_0''(w_0)>0$. Then, for all sufficiently large $\nr$, $R_n$ has a unique global minimizer $w_n^*$ on $[0,1]$, with
+\begin{align}
+ w_n^*&=w_0-\frac{R_1'(w_0)}{\nr R_0''(w_0)}+o(\nr^{-1}),\notag\\
+ R_n(w_n^*)&=R_0(w_0)+R_1(w_0)/\nr+o(\nr^{-1}).
+ \label{eq:optfull-main}
+\end{align}
+Consequently, the optimal mixture gain $\mathcal G_n=R_n(0)-R_n(w_n^*)$ satisfies
+$\mathcal G_n=\mathcal G_0+\mathcal G_1/\nr+o(\nr^{-1})$, where
+$\mathcal G_0=R_0(0)-R_0(w_0)$ and $\mathcal G_1=R_1(0)-R_1(w_0)$.
+This result does not address boundary-switching, non-unique or flat optima, or the dosage and exchange-rate consequences.
+\end{theorem}
+
+\subsection{Full-ridge gain and surrogate dosage}
+
+\begin{theorem}[Matched-spectrum full-ridge optimized gain]\label{thm:fulldose}
+For matched spectra $\Sigma_r=\Sigma_h=\Sigma$, $R_0(w)=A_0+A_1w+A_2w^2$ with $A_2>0$ independent of $\rho=\nh/\nr$, and $R_1(w;\rho)=C_0(w)+C_1(w)/\rho$. Under the nondegenerate optimal-branch conditions of Theorem~\ref{thm:optfull} and the boundary results in the supplementary,
+\begin{equation}
+ \mathcal G_n=G_0+G_1(\rho)/\nr+o(\nr^{-1}),
+ \qquad G_1=R_1(0)-R_1(w_0),
+ \label{eq:fulldose-main}
+\end{equation}
+where $w_0=\operatorname{clip}_{[0,1]}(-A_1/(2A_2))$ and $G_0$ is the corresponding interior or boundary population gain. In particular, $G_1(\rho)=D_0+D_1/\rho$ for explicit constants $D_0,D_1$, so the full second-order gain is not asserted to be exactly hyperbolic in $\nh$.
+This expansion holds at fixed $\rho$; it does not give a uniform dosage formula for fixed $\nr$ as $\nh$ varies arbitrarily.
+\end{theorem}
+
+\paragraph{First-order exchange approximation.}
+Approximate the target-only risk at sample size $m$ by $S+B_0/m$, where $S=R_0(0)$ and $B_0=R_1(0)>0$, and write $\Gamma_n^{(1)}=\nr G_0+G_1(\rho)$. For $0<\Gamma_n^{(1)}<B_0$, equating this baseline to the first-order optimized mixture risk gives
+\begin{equation}
+ \kex^{(1)}=\frac{\Gamma_n^{(1)}}{\rho(B_0-\Gamma_n^{(1)})}.
+ \label{eq:fullexchange-main}
+\end{equation}
+Zero approximate gain gives $\kex^{(1)}=0$; for $\Gamma_n^{(1)}\ge B_0$, the approximate equation has no finite solution. If $G_0>0$, this regime is eventually reached at fixed $\rho$. These statements concern the first-order equation and a fixed-$\mu$ baseline. Higher-order terms can change the classification near its pole; no uniform error bound for the actual exchange rate is asserted.
+
+\paragraph{Exact dosage rule for a quadratic surrogate.}
+Let $C_e=\sigma_e^2\operatorname{tr}[\Sigma(\Sigma+\mu I)^{-1}\Sigma(\Sigma+\mu I)^{-1}]$. Define
+\begin{equation}
+ \widetilde R(w)=R_0(w)+\frac{C_r(1-w)^2}{\nr}+\frac{C_hw^2}{\nh}.
+ \label{eq:surrogate-dose}
+\end{equation}
+This population-plus-noise surrogate omits Gram-fluctuation terms that can also be of order $\nr^{-1}$. With $q_1=A_1-2C_r/\nr$ and $q_2=A_2+C_r/\nr+C_h/\nh>0$, its optimal gain $\widetilde G:=\widetilde R(0)-\min_{w\in[0,1]}\widetilde R(w)$ is exactly
+\begin{equation}
+ \widetilde G=\begin{cases}
+ 0,&q_1\ge0,\\
+ q_1^2/(4q_2),&-2q_2<q_1<0,\\
+ -q_1-q_2,&q_1\le-2q_2.
+ \end{cases}
+ \label{eq:surrogate-piecewise}
+\end{equation}
+At fixed $\nr$, the interior branch is hyperbolic in $\nh$; the last branch applies when the surrogate optimum reaches $w=1$. This identity describes $\widetilde R$, not the complete full-ridge risk expansion.
+
+\paragraph{Numerical verification.}
+Across 16 configurations, the closed-form surrogate optimum agrees with grid minimization of the same surrogate to within $1.49\times10^{-10}$ in gain, including a surrogate boundary crossing at $\nh=1779.17$. This checks the algebraic implementation. A separate full-ridge conditional-risk experiment evaluates the optimized-gain expansion, giving $0.0122262\pm0.0000066$ versus prediction $0.0122186$ in one configuration. Exchange checks evaluate the first-order equation, including finite and no-finite-solution examples.
+
+\subsection{Mechanism and scope}
+
+The global analysis separates three ways auxiliary data can change risk: \emph{alignment}, which determines whether transferred directions agree with the target task; \emph{variance reduction}, whose benefit diminishes as target samples grow; and \emph{spectral coverage}, which supplies information in directions weakly observed by the target domain. These mechanisms explain both beneficial mixing and negative transfer without requiring a zero-mixing derivative to stand in for the global optimum.
+
+A three-dimensional counterexample makes the local--global distinction explicit: its zero-mixing derivative is positive ($0.26281$), yet a larger mixing weight lowers risk, giving positive optimized gain ($0.00940$ at $\nr=1000$). Therefore, a positive local derivative cannot by itself justify discarding the source; a global discard conclusion requires the additional condition that zero is the population global minimizer.
+
+The main optimal-weight theorem assumes fixed $p$, a unique interior global minimizer, and positive curvature. The gain expansion and first-order exchange approximation use matched covariances and fixed regularization. The exact piecewise dosage rule applies to the quadratic surrogate in Eq.~\eqref{eq:surrogate-dose}. General non-unimodal classification, general-spectrum or tuned-regularization extensions, the proportional regime, and robot-policy validation remain outside the proved scope.

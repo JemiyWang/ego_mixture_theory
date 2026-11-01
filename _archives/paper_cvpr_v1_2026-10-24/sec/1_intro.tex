@@ -1,0 +1,32 @@
+\section{Introduction}
+\label{sec:intro}
+
+Robot learning is data-hungry, and its current fuel --- teleoperated robot demonstrations --- is expensive, slow to collect, and hard to scale.
+Egocentric human data offers a tempting substitute: wearable-camera recordings of humans performing manipulation tasks are cheap, abundant, and semantically aligned with the tasks we want robots to do.
+A growing line of systems therefore mixes egocentric human data into robot policy training, using hand-mounted grippers~\cite{kareer2024egomimic}, hand-held interfaces~\cite{chi2024universal}, portable motion-capture rigs~\cite{wang2024dexcap}, or simulation surrogates of the human embodiment~\cite{egobridge2025}, and reports substantial gains.
+
+Yet the practice is ahead of the principle. Reported pipelines rely on rules of thumb --- fixed mixing ratios, substitution rates on the order of 4--5 ego-hours per teleoperation-hour~\cite{zevaego2025}, alignment losses tuned by trial and error --- and the same recipe that helps in one setting degrades the policy in another through negative transfer and gradient conflict.
+Classical domain-adaptation theory~\cite{bendavid2010theory,zhao2019learning} explains \emph{why} source data can help or hurt, but its bounds are existential rather than operational: they do not tell a practitioner what the optimal mixing ratio is, when mixing is strictly harmful, or what one egocentric demonstration is worth in units of robot demonstrations.
+
+This paper takes a step toward such an operational theory, and validates it in a controlled testbed.
+We abstract cross-embodiment data mixing into a \emph{dual-domain model}: observations in each domain are Gaussian covariates with power-law feature spectra $\lambda^e_j \asymp j^{-\alpha_e}$ --- motivated by the heavy-tailed spectra ubiquitously observed in learned visual representations~\cite{martin2021implicit} --- the two domains share a spectral basis, and the embodiment gap is decomposed into a task mismatch vector $\delta$, an alignment coefficient $c = \delta^\top\beta^*$, and per-domain noise.
+Policies are fit by mixture-weighted ridge regression and evaluated by excess risk on the robot domain.
+The model is deliberately simple --- linear labels, ridge estimation --- because its role is to supply \emph{falsifiable structural predictions} (signs, phase boundaries, monotone directions), which we then test on a diffusion policy in a controlled dual-domain Push-T environment rather than to numerically match a deep learner.
+
+Our findings are fourfold.
+First, the mixture risk admits a closed per-coordinate characterization (Theorem~\ref{thm:t1a}), exact up to a relative error of $O(n_r^{-3/2})$ and verified numerically to 1--2\%; the analysis exposes a \emph{label-feedthrough} effect in which out-of-coordinate signal energy acts as effective noise, $\tilde\sigma_e^2 = \sigma_e^2 + F_e$, which is essential for quantitative accuracy.
+Second, the marginal benefit of human data decomposes into three interpretable terms --- alignment, variance reduction, and spectral coverage --- whose competition yields an exact phase-transition criterion (Theorem~\ref{thm:h}): mixing is marginally beneficial at \emph{all} robot sample sizes iff $H \le 0$ for an explicit functional $H$; otherwise a critical threshold $\nr^{\mathrm{crit}} = K/H$ appears, and the classical discard-the-source transition~\cite{bendavid2010theory} is recovered exactly as regularization vanishes.
+Strikingly, whether mixing hurts is governed less by the \emph{magnitude} of the mismatch than by the \emph{location of its spectrum} relative to the risk-weighting spectrum: mismatch concentrated on low-frequency, high-risk-weight coordinates is harmful almost everywhere, while the same energy on high-frequency coordinates is harmless (Fig.~\ref{fig:teaser}).
+Third, an exchange-rate corollary (Corollary~\ref{cor:kex}) defines $\kex$, the number of robot demonstrations equivalent to one egocentric demonstration, and shows it increases with the spectral gap $\alpha_r - \alpha_h$, decreases with mismatch and with $\nr$, and is capped at $1$ --- beyond which human data covers directions that no amount of additional robot data reaches.
+The predicted range $\kex \approx 0.2$--$0.6$ in the small-gap regime quantitatively matches empirically reported 4--5:1 substitution ratios~\cite{zevaego2025}.
+Fourth, we build a controlled dual-domain Push-T testbed (Sec.~\ref{sec:platform}) in which every gap component (appearance, actuator, friction, task geometry, coverage) is independently manipulable, and run a first batch of mixture experiments with a diffusion policy (Sec.~\ref{sec:experiments}).
+The experiments confirm the theory's three headline structural predictions: naive mixing yields a \emph{non-monotone} benefit curve with an interior optimum ($\lambda^* \approx 0.5$, $+28\%$ closed-loop coverage) and a harm boundary at $\lambda \to 1$; the benefit \emph{grows} with training budget ($+32\%$ at 150 epochs, relieving overfitting exactly as the variance term predicts); and alignment strength is itself non-monotone --- light MMD alignment helps while strong alignment hurts at intermediate $\lambda$, consistent with the coverage term's logic.
+They also surface a sharp open-loop/closed-loop divergence: open-loop robot-domain prediction error keeps improving well past the closed-loop optimum, evidence that prediction and execution must be bridged explicitly.
+The optimum's quantitative position (predicted $\lambda^* \approx 0.12$ vs.\ measured $\approx 0.5$) is off, and we state the gap and its sources plainly.
+
+\paragraph{Contributions.}
+(i)~A dual-domain spectral model of cross-embodiment data mixing with an explicit mismatch decomposition (Sec.~\ref{sec:setup}).
+(ii)~A closed-form risk characterization of the mixture estimator with provable error control, verified to 1--2\% (Sec.~\ref{sec:theory}, Theorem~\ref{thm:t1a}).
+(iii)~An exact phase-transition criterion for harmful mixing (Theorem~\ref{thm:h}) and an exchange-rate corollary (Corollary~\ref{cor:kex}) that explains empirical substitution ratios.
+(iv)~A controlled dual-domain Push-T testbed and a first experimental batch testing the theory's structural predictions with diffusion policies (Secs.~\ref{sec:platform}--\ref{sec:experiments}).
+Proofs, numerical verification protocols, and experimental details are in the supplementary material.

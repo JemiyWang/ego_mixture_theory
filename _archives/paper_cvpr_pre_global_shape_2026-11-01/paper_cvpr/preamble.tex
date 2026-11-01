@@ -1,0 +1,46 @@
+%% Preamble: kit defaults + project additions
+
+%% Official support for 2-column teaser figure
+\usepackage{cuted} %< for strip environment
+
+%% For auto-referencing of figures
+\usepackage{currfile} %< for \currfilebase macro
+
+%% caption support for teaser
+\usepackage{caption}
+
+%% Inline annotations
+\newcommand{\red}[1]{{\color{red}#1}}
+\newcommand{\todo}[1]{{\color{red}#1}}
+\newcommand{\TODO}[1]{\textbf{\color{red}[TODO: #1]}}
+%% Disable for camera ready / submission by uncommenting these lines:
+% \renewcommand{\TODO}[1]{}
+% \renewcommand{\todo}[1]{#1}
+
+%% ---------- Project additions ----------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{multirow}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{assumption}{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+%% Notation macros
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\risk}{\mathcal{R}_T}        % robot-domain excess risk
+\newcommand{\riske}{\bar{\mathcal{R}}_T} % deterministic equivalent
+\newcommand{\lead}{\mathrm{lead}}         % leading-order risk object
+\newcommand{\nr}{n_r}
+\newcommand{\nh}{n_h}
+\newcommand{\kex}{\kappa_{\mathrm{ex}}}  % ego<->teleop exchange rate

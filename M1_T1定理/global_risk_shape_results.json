@@ -1,0 +1,178 @@
+{
+  "scope": "Population risk R0 only; no claim about R1 or finite-sample Rn",
+  "delta_zero": {
+    "log_second_derivatives": [
+      "0",
+      "50/(5*w - 12)**2"
+    ],
+    "all_log_second_derivatives_nonnegative_on_01": true,
+    "at_least_one_strictly_positive_log_curvature": true,
+    "strict_log_convexity": true,
+    "endpoint_derivatives": [
+      "1/8640",
+      "1/1715"
+    ],
+    "matched_spectra_risk_minus_constant": "0"
+  },
+  "multimodal_counterexample": {
+    "model": {
+      "a": [
+        "1",
+        "1/2"
+      ],
+      "b": [
+        "1",
+        "1/16"
+      ],
+      "mu": "7/1000",
+      "beta": [
+        "sqrt(26)/350",
+        "19*sqrt(3)/70"
+      ],
+      "delta": [
+        "sqrt(26)/1000",
+        "4*sqrt(3)/125"
+      ],
+      "K": [
+        "13/500000",
+        "3/500000"
+      ],
+      "c": [
+        "1/50",
+        "19/20"
+      ],
+      "spectral_exponents": [
+        1,
+        4
+      ],
+      "ellipsoid_s": 1,
+      "ellipsoid_value": "54163/61250",
+      "ellipsoid_numeric": 0.8842938775510204
+    },
+    "derivative_numerator_identity": "0",
+    "primitive_polynomial": "-870898437500*w**4 + 3045158593750*w**3 - 3569273662500*w**2 + 1647923289900*w - 238369257759",
+    "numerator_to_primitive_factor": "1007/200000000000000000000",
+    "all_real_root_intervals": [
+      {
+        "interval": [
+          "2913/10999",
+          "3484/13155"
+        ],
+        "multiplicity": 1
+      },
+      {
+        "interval": [
+          "24706/33983",
+          "2269/3121"
+        ],
+        "multiplicity": 1
+      },
+      {
+        "interval": [
+          "8931/10276",
+          "10684/12293"
+        ],
+        "multiplicity": 1
+      },
+      {
+        "interval": [
+          "33368/20401",
+          "31209/19081"
+        ],
+        "multiplicity": 1
+      }
+    ],
+    "interior_root_count": 3,
+    "outside_root_intervals": [
+      [
+        "33368/20401",
+        "31209/19081"
+      ]
+    ],
+    "candidate_risks": [
+      {
+        "classification": "boundary_0",
+        "root": "0",
+        "root_numeric": 0.0,
+        "isolating_interval": null,
+        "risk_interval_exact": [
+          "9156247741/434433802335000",
+          "9156247741/434433802335000"
+        ],
+        "risk_interval": [
+          2.107627834617585e-05,
+          2.107627834617585e-05
+        ]
+      },
+      {
+        "classification": "local_minimum",
+        "root": "CRootOf(870898437500*x**4 - 3045158593750*x**3 + 3569273662500*x**2 - 1647923289900*x + 238369257759, 0)",
+        "root_numeric": 0.2648422642754006,
+        "isolating_interval": [
+          "2913/10999",
+          "3484/13155"
+        ],
+        "risk_interval_exact": [
+          "10851251117040226858609555977541633988583/543964761291287740797171359822445154419605000",
+          "5425625537362409551418969185476936065684/271982367772342058993002056220487745321630625"
+        ],
+        "risk_interval": [
+          1.9948444989857512e-05,
+          1.9948445856254297e-05
+        ]
+      },
+      {
+        "classification": "local_maximum",
+        "root": "CRootOf(870898437500*x**4 - 3045158593750*x**3 + 3569273662500*x**2 - 1647923289900*x + 238369257759, 1)",
+        "root_numeric": 0.7270105699941145,
+        "isolating_interval": [
+          "24706/33983",
+          "2269/3121"
+        ],
+        "risk_interval_exact": [
+          "80821489949826644065697105800387389598208/3816934645159927346458099092625966848133276875",
+          "53880993340761941554199182202549966789947/2544622858611303398332321074611895666116820000"
+        ],
+        "risk_interval": [
+          2.1174449516004295e-05,
+          2.117445151387457e-05
+        ]
+      },
+      {
+        "classification": "local_minimum",
+        "root": "CRootOf(870898437500*x**4 - 3045158593750*x**3 + 3569273662500*x**2 - 1647923289900*x + 238369257759, 2)",
+        "root_numeric": 0.8691124964451347,
+        "isolating_interval": [
+          "8931/10276",
+          "10684/12293"
+        ],
+        "risk_interval_exact": [
+          "1696111698684044890991732107503130176583/81040825917322975283384465457551958540980000",
+          "3015309606922277347533790393017730487317/144072564756429352967469906579043574812801250"
+        ],
+        "risk_interval": [
+          2.0929101838305555e-05,
+          2.0929103414102418e-05
+        ]
+      },
+      {
+        "classification": "boundary_1",
+        "root": "1",
+        "root_numeric": 1.0,
+        "isolating_interval": null,
+        "risk_interval_exact": [
+          "339560024/12245275455625",
+          "339560024/12245275455625"
+        ],
+        "risk_interval": [
+          2.772988041228745e-05,
+          2.772988041228745e-05
+        ]
+      }
+    ],
+    "unique_global_minimizer": "CRootOf(870898437500*x**4 - 3045158593750*x**3 + 3569273662500*x**2 - 1647923289900*x + 238369257759, 0)",
+    "unique_global_minimizer_numeric": 0.2648422642754006,
+    "independent_numpy_root_max_error": 1.0436096431476471e-14,
+    "conclusion": "Two local minima and one local maximum in (0,1); unique global minimum at the first stationary point"
+  }
+}

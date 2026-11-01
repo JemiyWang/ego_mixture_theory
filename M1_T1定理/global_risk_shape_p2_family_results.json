@@ -1,0 +1,120 @@
+{
+  "scope": "One-parameter two-coordinate full-ridge population risk family",
+  "root_bifurcations": {
+    "discriminant": "-2023615767711059500040117588688666830220328050897*t**2*(1731879748655149824*t**2 - 3702632038813093152*t + 1949096207169601139)/4294967296000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "leading_coefficient": "-4490213/1024000000000",
+    "endpoint_polynomials": [
+      "-3021*(70420632805*t + 9035786448)/200000000000000000000",
+      "1007*(11119047285*t + 3421478606)/200000000000000000000"
+    ],
+    "endpoint_roots": [
+      [
+        "-9035786448/70420632805"
+      ],
+      [
+        "-3421478606/11119047285"
+      ]
+    ],
+    "positive_critical_parameters": [
+      {
+        "scale_exact": "38034733763/35580951312 - 1257113*sqrt(384090)/5930158552",
+        "scale_numeric": 0.9375848093633645,
+        "numeric_stationary_weights": [
+          0.23849570810001702,
+          0.8170713945029638,
+          0.8170714338264317
+        ],
+        "numeric_stationary_risks": [
+          1.8788881824775964e-05,
+          2.073518538395725e-05,
+          2.0735185383957253e-05
+        ]
+      },
+      {
+        "scale_exact": "1257113*sqrt(384090)/5930158552 + 38034733763/35580951312",
+        "scale_numeric": 1.2003419385464047,
+        "numeric_stationary_weights": [
+          0.462928563250581,
+          0.46292860842002875,
+          0.9004168823280096
+        ],
+        "numeric_stationary_risks": [
+          2.346146522863163e-05,
+          2.3461465228631628e-05,
+          2.1259260018861813e-05
+        ]
+      }
+    ],
+    "region_samples": [
+      {
+        "scale": "1/2",
+        "interior_root_count": 1
+      },
+      {
+        "scale": "1",
+        "interior_root_count": 3
+      },
+      {
+        "scale": "5/4",
+        "interior_root_count": 1
+      }
+    ],
+    "classification": "1 simple interior root; birth of a double root; 3 simple roots; merger to a double root; 1 simple root"
+  },
+  "global_branch_switch": {
+    "below_tie_unique_global": "first stationary point at scale 1",
+    "above_tie_unique_global": "third stationary point at scale 11/10"
+  },
+  "double_global_minimum": {
+    "bracket_exact": [
+      "4243437/4000000",
+      "53042963/50000000"
+    ],
+    "left_branch_minus_right_at_left": [
+      "-4527094613512568734423349764451062845547421926104868312141242242181944421871101625066021887107/28838305702804329358355641167542884707496861350805578491591725580508786943914533498485080742360634972578125",
+      "-292111673293832849319894927781499316297920044392704013832542002579131083669470674510823020953/2123331299854650927897738122490351843863724460829091622909617543452670200689834055253604647374908827500000"
+    ],
+    "left_branch_minus_right_at_right": [
+      "321211468704195891721355458165312934533157388183647111574760112404299997824758206060366673207/154063820083048379190972880372810804913699415214382917870616625861298103920601065973932137901353139500000000",
+      "200895402565926283563144710610938541671315369958600306301595722781377826892544270114447061075423/7449300120319170903878409349088075066420695937874384004537468499803889683430677368274761409271639424000000000"
+    ],
+    "branch_risk_intervals_over_bracket": [
+      [
+        2.1057409929656736e-05,
+        2.105741088448009e-05
+      ],
+      [
+        2.1742336288408154e-05,
+        2.174233834243476e-05
+      ],
+      [
+        2.1057410282958824e-05,
+        2.1057410663928524e-05
+      ]
+    ],
+    "endpoint_risk_intervals_over_bracket": [
+      [
+        2.2358340671841385e-05,
+        2.235834088250161e-05
+      ],
+      [
+        2.7918874511971735e-05,
+        2.7918874543026026e-05
+      ]
+    ],
+    "existence_proof": "Three simple continuous root branches; branch-risk difference changes sign; all other candidates stay strictly above throughout the bracket",
+    "estimated_tie_parameter": 1.0608592591022064,
+    "estimated_tie_scale_of_base_K2": true,
+    "independent_numeric_weights": [
+      0.2955060493592477,
+      0.6711498033802952,
+      0.8833510934978862
+    ],
+    "independent_numeric_risks": [
+      2.1057410480969184e-05,
+      2.174233735745884e-05,
+      2.105741048096919e-05
+    ],
+    "conclusion": "There exists a parameter in the bracket with exactly two global minima at the first and third stationary points"
+  }
+}

@@ -1,0 +1,79 @@
+[
+  {
+    "configuration": "interior",
+    "n_r": 1000,
+    "rho": 1.0,
+    "w0": 0.48902077151335316,
+    "G0": 0.011421573575028428,
+    "G1": -0.20583632941282493,
+    "R1_baseline": 1.3271264288028137,
+    "finite_exchange": false,
+    "kappa": Infinity
+  },
+  {
+    "configuration": "interior",
+    "n_r": 1000,
+    "rho": 2.0,
+    "w0": 0.48902077151335316,
+    "G0": 0.011421573575028428,
+    "G1": 0.3958711595137683,
+    "R1_baseline": 1.3271264288028137,
+    "finite_exchange": false,
+    "kappa": Infinity
+  },
+  {
+    "configuration": "interior",
+    "n_r": 1000,
+    "rho": 6.0,
+    "w0": 0.48902077151335316,
+    "G0": 0.011421573575028428,
+    "G1": 0.7970094854648305,
+    "R1_baseline": 1.3271264288028137,
+    "finite_exchange": false,
+    "kappa": Infinity
+  },
+  {
+    "configuration": "hits_boundary",
+    "n_r": 1000,
+    "rho": 1.0,
+    "w0": 1.0,
+    "G0": 0.00971513605442177,
+    "G1": -3.5996245632606794,
+    "R1_baseline": 1.3271264288028137,
+    "finite_exchange": false,
+    "kappa": Infinity
+  },
+  {
+    "configuration": "hits_boundary",
+    "n_r": 1000,
+    "rho": 2.0,
+    "w0": 1.0,
+    "G0": 0.00971513605442177,
+    "G1": -1.1362490672289327,
+    "R1_baseline": 1.3271264288028137,
+    "finite_exchange": false,
+    "kappa": Infinity
+  },
+  {
+    "configuration": "hits_boundary",
+    "n_r": 1000,
+    "rho": 6.0,
+    "w0": 1.0,
+    "G0": 0.00971513605442177,
+    "G1": 0.5060012634588984,
+    "R1_baseline": 1.3271264288028137,
+    "finite_exchange": false,
+    "kappa": Infinity
+  },
+  {
+    "configuration": "finite_example",
+    "n_r": 40,
+    "rho": 6.0,
+    "w0": 0.48902077151335316,
+    "G0": 0.011421573575028428,
+    "G1": 0.7970094854648305,
+    "R1_baseline": 1.3271264288028137,
+    "finite_exchange": true,
+    "kappa": 2.852796258452892
+  }
+]

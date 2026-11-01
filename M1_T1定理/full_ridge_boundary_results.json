@@ -1,0 +1,42 @@
+{
+  "flat_boundary": [
+    {
+      "scale": 0.13166099773242632,
+      "n_r": 100000,
+      "curvature": 0.0003827840822090422,
+      "R1_prime": -3.228207359771466,
+      "w_prediction": 0.08433494259065114,
+      "gain_prediction": 1.3612534117852202e-06,
+      "mc_w": 0.07027911882554262,
+      "mc_gain": 1.1040038064187574e-06,
+      "mc_gain_standard_error": 1.5323485529403556e-07,
+      "baseline_risk": 0.021465802657047558,
+      "mc_optimal_risk": 0.02146469865324114,
+      "grid_step": 0.0028111647530217054
+    },
+    {
+      "scale": 0.13166099773242632,
+      "n_r": 1000000,
+      "curvature": 0.0003827840822090422,
+      "R1_prime": -3.228207359771466,
+      "w_prediction": 0.008433494259065113,
+      "gain_prediction": 1.3612534117852202e-08,
+      "mc_w": 0.0047789800801368975,
+      "mc_gain": 4.495008424504343e-09,
+      "mc_gain_standard_error": 3.365767121813972e-09,
+      "baseline_risk": 0.02145176133669648,
+      "mc_optimal_risk": 0.021451756841688055,
+      "grid_step": 0.00028111647530217054
+    }
+  ],
+  "nondegenerate_boundary": [
+    {
+      "configuration": "p2_anti_aligned",
+      "n_r": 1000,
+      "mc_w": 0.0,
+      "mc_optimal_risk": 0.02278535564162129,
+      "baseline_risk": 0.02278535564162129,
+      "grid_step": 0.05
+    }
+  ]
+}

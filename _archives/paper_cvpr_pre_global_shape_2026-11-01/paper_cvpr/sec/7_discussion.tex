@@ -1,0 +1,17 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\paragraph{What the theory buys a practitioner.}
+The central output is a way to compute the optimal mixing weight and optimized gain, rather than a recommendation to use a fixed source fraction or a zero-mixing derivative alone. Spectra, mismatch, noise, sample sizes, and regularization determine whether auxiliary data should be used and how that decision changes with scale. Under matched spectra and fixed regularization, the full-ridge gain expansion and first-order exchange approximation quantify data value in the stated asymptotic regime. The quadratic surrogate provides an interpretable piecewise dosage rule for sample budgeting; its accuracy for actual full-ridge decisions requires separate evaluation.
+A global discard recommendation is valid only when zero is the population global minimizer. The counterexample shows that a small auxiliary contribution can be harmful while a larger, optimally chosen contribution is beneficial.
+
+\paragraph{Limitations.}
+The main optimal-weight theorem assumes fixed dimension, Gaussian covariates, a shared spectral basis, and a unique nondegenerate interior population optimum. The matched-spectrum gain expansion and first-order exchange approximation additionally require matched covariances and fixed regularization. The exact dosage rule applies to a quadratic surrogate that omits Gram-fluctuation terms of the same asymptotic order as its retained noise terms. No uniform full-ridge dosage guarantee across source sample sizes is established. General non-unimodal classification, general-spectrum or tuned-regularization extensions, the proportional regime, and robot-policy validation remain open.
+The diagonalized leading-order model is an interpretable special case, not a universal finite-sample guarantee. The full-ridge risk expansion is an asymptotic result, and exact finite-sample roots are not identified at the boundary. Evidence is controlled-model evidence: synthetic data, small learners, and controlled real CIFAR features. It does not establish closed-loop policy performance or the validity of estimated parameters on native robot data.
+The trained-MLP gap is material, and nonlinear regularization is not identified with the ridge coefficient. The light-weight CIFAR experiment uses controlled regression labels, not real object-class labels, and therefore does not validate a real task decision pipeline.
+
+\paragraph{Outlook.}
+The next priorities are general-spectrum and global-shape analysis, tuned-regularization baselines, and evaluation on native cross-embodiment tasks with independently estimated parameters. Real robot experiments should report both open-loop risk and closed-loop performance rather than treating them as interchangeable.
+
+\paragraph{Conclusion.}
+We presented a full-ridge analysis of optimal auxiliary-data mixing. The main result connects a second-order actual-risk expansion to the optimal mixing weight and optimized gain under a unique nondegenerate interior population optimum. Boundary cases clarify, rather than replace, that main result: a zero-mixing derivative cannot determine the global optimum. Matched spectra yield an optimized full-ridge gain expansion and a first-order exchange approximation. An explicitly specified quadratic surrogate admits an exact piecewise dosage rule. Pre-registered direct-$n_r$ tests pass the stated root-compatibility checks. The claims remain limited to the stated model and evidence hierarchy.
