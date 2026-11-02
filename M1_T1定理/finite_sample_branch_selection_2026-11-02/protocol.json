@@ -1,0 +1,104 @@
+{
+  "protocol_version": 1,
+  "experiment": "finite_sample_branch_selection_2026-11-02",
+  "runner_sha256": "247e292f251fe8bb84f3974b258e84ae30957c416dfa0481db88ccc4c27dc609",
+  "configuration": {
+    "p": 2,
+    "sigma_r": [
+      1.0,
+      0.5
+    ],
+    "sigma_h": [
+      1.0,
+      0.0625
+    ],
+    "mu": 0.007,
+    "rho": 2.0,
+    "sigma_r2": 1.0,
+    "sigma_h2": 4.0,
+    "u1": "sqrt(26)/1000",
+    "u2": "sqrt(3)/500",
+    "c": [
+      0.02,
+      0.95
+    ],
+    "t_initial": 1.0608592591022064,
+    "w1_initial": 0.29550604935924824,
+    "w2_initial": 0.883351093497898,
+    "population_digits": 80
+  },
+  "n_r_values": [
+    1000,
+    3000,
+    10000,
+    30000,
+    100000,
+    300000,
+    1000000,
+    3000000,
+    10000000,
+    30000000,
+    100000000
+  ],
+  "n_h_rule": "n_h = 2 n_r",
+  "seed_rule": "SeedSequence([20261102, n_r, stage, batch_id]); stages 0=find, 1=independent evaluation, 2=bootstrap",
+  "root_seed": 20261102,
+  "initial_budget": {
+    "find_batches": 32,
+    "find_batch_size": 4096,
+    "find_replicates": 131072,
+    "evaluation_batches": 32,
+    "evaluation_batch_size": 8192,
+    "evaluation_replicates": 262144,
+    "bootstrap_replicates": 1000
+  },
+  "maximum_budget_multiplier": 8,
+  "grid": {
+    "coarse_points": 2001,
+    "fine_points": 4001,
+    "interval": [
+      0.0,
+      1.0
+    ],
+    "root_interpolation": "piecewise linear with bracketed Brent refinement",
+    "grid_position_tolerance": 0.001,
+    "near_zero_standard_errors": 3.0,
+    "local_refinement_points": 17,
+    "weight_chunk": 128
+  },
+  "intervals": {
+    "confidence": 0.95,
+    "normal_quantile": 1.959963984540054,
+    "scope": "pointwise per sample size",
+    "bootstrap": "percentile over reoptimized batch-mean curves; positions conditional on two minima"
+  },
+  "criteria": {
+    "stable_double_valley": "two internal minima and at least one internal maximum; positive lower 95% curvature bounds; coarse/fine agreement; at least 95% bootstrap support; no unresolved local refinement",
+    "direction_resolved": "independent paired 95% interval, conservatively expanded by the quadratic root-position error, excludes zero",
+    "risk_relative_tolerance": 0.1,
+    "risk_support": "entire position-expanded 95% interval for n_r Delta_n lies within [0.9 C_Delta, 1.1 C_Delta]",
+    "risk_unsupported": "position-expanded 95% interval for n_r Delta_n has no intersection with the tolerance band",
+    "risk_unresolved": "all other two-valley cases",
+    "bootstrap_indeterminate_band": [
+      0.05,
+      0.95
+    ]
+  },
+  "escalation": {
+    "multipliers": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "reasons": [
+      "inconsistent or unresolved grid shape",
+      "bootstrap root structure in the indeterminate band",
+      "paired branch direction unresolved",
+      "first-order risk-difference accuracy unresolved"
+    ],
+    "rule": "double both find-root and independent-evaluation budgets; retain every attempt; stop when resolved or at the 8x cap"
+  },
+  "risk_definition": "exact conditional-label-noise full-ridge risk averaged over independent exact Bartlett Gram pairs; not R0+R1/n",
+  "position_rule": "roots of the Monte Carlo average conditional derivative; never an average of per-dataset argmins"
+}

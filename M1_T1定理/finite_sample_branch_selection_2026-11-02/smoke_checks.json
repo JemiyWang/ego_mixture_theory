@@ -1,0 +1,32 @@
+{
+  "purpose": "implementation and performance check only; not formal evidence",
+  "rows": [
+    {
+      "n_r": 1000,
+      "gram_pairs": 2048,
+      "grid_points": 4001,
+      "elapsed_seconds": 1.1495447158813477,
+      "gram_weight_evaluations_per_second": 7128081.132292172,
+      "root_count_for_implementation_diagnostic_only": 1,
+      "formal_conclusion_allowed": false
+    },
+    {
+      "n_r": 100000,
+      "gram_pairs": 2048,
+      "grid_points": 4001,
+      "elapsed_seconds": 0.9316446781158447,
+      "gram_weight_evaluations_per_second": 8795250.155425796,
+      "root_count_for_implementation_diagnostic_only": 1,
+      "formal_conclusion_allowed": false
+    },
+    {
+      "n_r": 100000000,
+      "gram_pairs": 2048,
+      "grid_points": 4001,
+      "elapsed_seconds": 0.9466156959533691,
+      "gram_weight_evaluations_per_second": 8656150.574122367,
+      "root_count_for_implementation_diagnostic_only": 3,
+      "formal_conclusion_allowed": false
+    }
+  ]
+}

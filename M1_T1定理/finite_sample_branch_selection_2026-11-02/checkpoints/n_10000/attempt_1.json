@@ -1,0 +1,196 @@
+{
+  "n_r": 10000,
+  "n_h": 20000,
+  "budget_multiplier": 1,
+  "find_batches": 32,
+  "find_batch_size": 4096,
+  "find_replicates": 131072,
+  "evaluation_batches": 32,
+  "evaluation_batch_size": 8192,
+  "evaluation_replicates": 262144,
+  "started_or_completed_utc": "2026-11-02T04:05:34.080058+00:00",
+  "elapsed_seconds": 106.15551733970642,
+  "shape": {
+    "stationary_count": 1,
+    "local_minimum_count": 1,
+    "local_maximum_count": 0,
+    "grid_comparison": {
+      "consistent": true,
+      "reason": null,
+      "maximum_position_difference": 3.304119300384656e-08
+    },
+    "near_zero_regions_checked": [],
+    "unresolved_near_zero_regions": [],
+    "refined_roots": [],
+    "refinement_changed_root_count": false,
+    "sign_curvature_consistent": true,
+    "positive_curvature_evidence": false,
+    "stable_double_valley": false
+  },
+  "roots": [
+    {
+      "w": 0.3376538681216751,
+      "kind": "local_minimum",
+      "risk": 0.00017736633272998195,
+      "risk_standard_error": 5.329685916487647e-09,
+      "risk_confidence_interval": [
+        0.00017735588673753672,
+        0.00017737677872242718
+      ],
+      "derivative": -1.02983235061163e-11,
+      "derivative_standard_error": 3.4254267477065946e-09,
+      "derivative_confidence_interval": [
+        -6.724011380691212e-09,
+        6.70341473367898e-09
+      ],
+      "curvature": 0.0008111351235492756,
+      "curvature_standard_error": 2.361897404825635e-08,
+      "curvature_confidence_interval": [
+        0.0008110888312107892,
+        0.000811181415887762
+      ],
+      "sign_based_kind": "local_minimum",
+      "bracket": [
+        0.3375,
+        0.33775
+      ],
+      "source": "fine_grid",
+      "curvature_based_kind": "local_minimum"
+    }
+  ],
+  "bootstrap": {
+    "replicates": 1000,
+    "batch_count": 32,
+    "double_valley_support_rate": 0.0,
+    "two_minima_rate": 0.0,
+    "position_intervals_conditional_on_two_minima": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ],
+    "valid_position_replicates": 0,
+    "reoptimized_delta_percentile_interval": [
+      null,
+      null
+    ],
+    "valid_delta_replicates": 0,
+    "root_count_frequencies": {
+      "1": 1000
+    },
+    "minimum_count_frequencies": {
+      "1": 1000
+    }
+  },
+  "independent_candidates": [
+    {
+      "w": 0.0,
+      "kind": "boundary",
+      "risk": 0.00021829981330431436,
+      "risk_standard_error": 5.584357053857588e-09,
+      "risk_confidence_interval": [
+        0.00021828886816561199,
+        0.00021831075844301674
+      ],
+      "derivative": -0.00023361613563996174,
+      "derivative_standard_error": 1.1276566621078382e-08,
+      "derivative_confidence_interval": [
+        -0.00023363823730440832,
+        -0.00023359403397551516
+      ],
+      "curvature": 0.0006373424869409528,
+      "curvature_standard_error": 5.172990970877139e-08,
+      "curvature_confidence_interval": [
+        0.0006372410981810001,
+        0.0006374438757009055
+      ],
+      "candidate_index": 0
+    },
+    {
+      "w": 0.3376538681216751,
+      "kind": "local_minimum",
+      "risk": 0.00017735411188389398,
+      "risk_standard_error": 4.3337616063494246e-09,
+      "risk_confidence_interval": [
+        0.00017734561786722795,
+        0.00017736260590056
+      ],
+      "derivative": -3.301055216437621e-09,
+      "derivative_standard_error": 3.0824115310094018e-09,
+      "derivative_confidence_interval": [
+        -9.342470802747017e-09,
+        2.7403603698717742e-09
+      ],
+      "curvature": 0.0008110846428485958,
+      "curvature_standard_error": 1.950015662596194e-08,
+      "curvature_confidence_interval": [
+        0.000811046423243916,
+        0.0008111228624532755
+      ],
+      "candidate_index": 1
+    },
+    {
+      "w": 1.0,
+      "kind": "boundary",
+      "risk": 0.0015193394959691524,
+      "risk_standard_error": 2.058621524151148e-08,
+      "risk_confidence_interval": [
+        0.001519299147728701,
+        0.0015193798442096039
+      ],
+      "derivative": 0.01950376905597349,
+      "derivative_standard_error": 1.0255611236703242e-06,
+      "derivative_confidence_interval": [
+        0.019501758993107153,
+        0.019505779118839828
+      ],
+      "curvature": 0.39348455890965933,
+      "curvature_standard_error": 3.964859093434713e-05,
+      "curvature_confidence_interval": [
+        0.3934068490993903,
+        0.3935622687199284
+      ],
+      "candidate_index": 2
+    }
+  ],
+  "conditional_global_candidate": {
+    "w": 0.3376538681216751,
+    "kind": "local_minimum",
+    "risk": 0.00017735411188389398,
+    "all_relevant_paired_intervals_exclude_tie": true,
+    "comparisons_other_minus_global": [
+      {
+        "mean": 4.0945701420420364e-05,
+        "standard_error": 1.8455747101058594e-09,
+        "confidence_interval": [
+          4.094208416045778e-05,
+          4.094931868038295e-05
+        ],
+        "other_w": 0.0,
+        "other_kind": "boundary"
+      },
+      {
+        "mean": 0.0013419853840852588,
+        "standard_error": 2.134125656067817e-08,
+        "confidence_interval": [
+          0.0013419435559910151,
+          0.0013420272121795025
+        ],
+        "other_w": 1.0,
+        "other_kind": "boundary"
+      }
+    ]
+  },
+  "branch_difference": null,
+  "position_analysis": [],
+  "failure_or_caution_reasons": [
+    "two stable local minima not identified at the current numerical resolution"
+  ],
+  "code_sha256": "247e292f251fe8bb84f3974b258e84ae30957c416dfa0481db88ccc4c27dc609",
+  "escalation_reasons": [],
+  "completed": true
+}

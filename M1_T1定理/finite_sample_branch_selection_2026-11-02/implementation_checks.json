@@ -1,0 +1,249 @@
+{
+  "risk_coefficients": {
+    "rows": [
+      {
+        "w": 0.0,
+        "R0_absolute_error": 0.0,
+        "R1_absolute_error": 0.0
+      },
+      {
+        "w": 0.1,
+        "R0_absolute_error": 0.0,
+        "R1_absolute_error": 0.0
+      },
+      {
+        "w": 0.2955060493592481,
+        "R0_absolute_error": 0.0,
+        "R1_absolute_error": 0.0
+      },
+      {
+        "w": 0.5,
+        "R0_absolute_error": 0.0,
+        "R1_absolute_error": 0.0
+      },
+      {
+        "w": 0.8833510934978948,
+        "R0_absolute_error": 0.0,
+        "R1_absolute_error": 0.0
+      },
+      {
+        "w": 0.9,
+        "R0_absolute_error": 0.0,
+        "R1_absolute_error": 0.0
+      },
+      {
+        "w": 1.0,
+        "R0_absolute_error": 0.0,
+        "R1_absolute_error": 0.0
+      }
+    ],
+    "max_R0_absolute_error": 0.0,
+    "max_R1_absolute_error": 0.0,
+    "passed": true
+  },
+  "vectorized_vs_scalar": {
+    "replicates": 8,
+    "weights": [
+      0.1,
+      0.2955,
+      0.6,
+      0.8833
+    ],
+    "max_absolute_errors_risk_first_second": [
+      1.3877787807814457e-17,
+      1.6653345369377348e-16,
+      1.7763568394002505e-15
+    ],
+    "passed": true
+  },
+  "analytic_derivatives": {
+    "rows": [
+      {
+        "w": 0.2,
+        "complex_step_first_max_absolute_error": 8.673617379884035e-18,
+        "complex_step_second_max_absolute_error": 2.7755575615628914e-17,
+        "finite_differences": [
+          {
+            "step": 0.001,
+            "max_first_absolute_error": 1.7216126246832886e-08,
+            "max_second_absolute_error": 7.378875385016803e-08
+          },
+          {
+            "step": 0.0001,
+            "max_first_absolute_error": 1.7217666181679192e-10,
+            "max_second_absolute_error": 7.378985547590311e-10
+          },
+          {
+            "step": 1e-05,
+            "max_first_absolute_error": 1.5926288066125949e-12,
+            "max_second_absolute_error": 7.614658903420946e-12
+          }
+        ]
+      },
+      {
+        "w": 0.5,
+        "complex_step_first_max_absolute_error": 1.3877787807814457e-17,
+        "complex_step_second_max_absolute_error": 2.7755575615628914e-17,
+        "finite_differences": [
+          {
+            "step": 0.001,
+            "max_first_absolute_error": 9.431289844409607e-08,
+            "max_second_absolute_error": 6.78026065320525e-07
+          },
+          {
+            "step": 0.0001,
+            "max_first_absolute_error": 9.43101307118721e-10,
+            "max_second_absolute_error": 6.780163569475306e-09
+          },
+          {
+            "step": 1e-05,
+            "max_first_absolute_error": 9.048123361665716e-12,
+            "max_second_absolute_error": 6.796412044263178e-11
+          }
+        ]
+      },
+      {
+        "w": 0.88,
+        "complex_step_first_max_absolute_error": 1.3877787807814457e-16,
+        "complex_step_second_max_absolute_error": 2.220446049250313e-15,
+        "finite_differences": [
+          {
+            "step": 0.001,
+            "max_first_absolute_error": 8.641611963400297e-06,
+            "max_second_absolute_error": 0.00018763964257750843
+          },
+          {
+            "step": 0.0001,
+            "max_first_absolute_error": 8.641370524697933e-08,
+            "max_second_absolute_error": 1.876322212268633e-06
+          },
+          {
+            "step": 1e-05,
+            "max_first_absolute_error": 8.638047221953826e-10,
+            "max_second_absolute_error": 1.8742150054151807e-08
+          }
+        ]
+      }
+    ],
+    "max_complex_step_first_absolute_error": 1.3877787807814457e-16,
+    "max_complex_step_second_absolute_error": 2.220446049250313e-15,
+    "max_finite_difference_first_absolute_error_all_steps": 8.641611963400297e-06,
+    "max_finite_difference_second_absolute_error_all_steps": 0.00018763964257750843,
+    "max_smallest_step_first_absolute_error": 8.638047221953826e-10,
+    "max_smallest_step_second_absolute_error": 1.8742150054151807e-08,
+    "finite_difference_errors_decrease_with_step": true,
+    "passed": true
+  },
+  "wishart_moments": {
+    "rows": [
+      {
+        "domain": "target",
+        "n": 23,
+        "replicates": 262144,
+        "sample_mean": [
+          1.0003979529850788,
+          7.279890995997678e-05,
+          0.5002547050392454
+        ],
+        "expected_mean": [
+          1.0,
+          0.0,
+          0.5
+        ],
+        "max_absolute_mean_z": 0.8847907345034322,
+        "sample_covariance": [
+          [
+            0.0870453871357176,
+            -7.253393066416388e-05,
+            4.15679665338074e-06
+          ],
+          [
+            -7.253393066416388e-05,
+            0.021801373011623146,
+            -9.515087304330361e-05
+          ],
+          [
+            4.15679665338074e-06,
+            -9.515087304330361e-05,
+            0.021723703400600983
+          ]
+        ],
+        "expected_covariance": [
+          [
+            0.08695652173913043,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.021739130434782608,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.021739130434782608
+          ]
+        ],
+        "max_covariance_relative_error_nonzero_entries": 0.0028631585346647337,
+        "max_covariance_variance_scaled_absolute_error": 0.004376940159991966,
+        "passed": true
+      },
+      {
+        "domain": "human",
+        "n": 23,
+        "replicates": 262144,
+        "sample_mean": [
+          1.0005523172474908,
+          -6.34789785802239e-05,
+          0.0625041912504157
+        ],
+        "expected_mean": [
+          1.0,
+          0.0,
+          0.0625
+        ],
+        "max_absolute_mean_z": 0.9587607755197668,
+        "sample_covariance": [
+          [
+            0.08699546556867592,
+            9.482062546180507e-06,
+            1.3787941462521371e-05
+          ],
+          [
+            9.482062546180507e-06,
+            0.0027238715408346406,
+            -1.5944734356787087e-06
+          ],
+          [
+            1.3787941462521371e-05,
+            -1.5944734356787087e-06,
+            0.0003381480031431618
+          ]
+        ],
+        "expected_covariance": [
+          [
+            0.08695652173913043,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.002717391304347826,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.00033967391304347825
+          ]
+        ],
+        "max_covariance_relative_error_nonzero_entries": 0.004492278746531596,
+        "max_covariance_variance_scaled_absolute_error": 0.004492278746531596,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "all_passed": true
+}

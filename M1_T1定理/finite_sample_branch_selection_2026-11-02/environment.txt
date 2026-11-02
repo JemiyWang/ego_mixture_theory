@@ -1,0 +1,14 @@
+generated_utc=2026-11-02T04:09:01.761324+00:00
+hostname=is-ddfread7lairjxib-devmachine-0
+platform=Linux-5.15.0-113-generic-x86_64-with-glibc2.31
+python=3.10.21 | packaged by conda-forge | (main, Aug 21 2026, 22:42:31) [GCC 14.4.0]
+python_executable=/root/miniconda3/envs/behavior/bin/python
+numpy=1.26.4
+scipy=1.15.3
+matplotlib=3.10.7
+mpmath=1.3.0
+runner_sha256=247e292f251fe8bb84f3974b258e84ae30957c416dfa0481db88ccc4c27dc609
+git_sha=457c9e46336eeae162ac15db4ab14258069dce5f
+cpu_count=112
+OPENBLAS_NUM_THREADS=1
+OMP_NUM_THREADS=1

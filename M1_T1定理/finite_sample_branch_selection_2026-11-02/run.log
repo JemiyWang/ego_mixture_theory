@@ -1,0 +1,43 @@
+2026-11-02 11:59:57,852 INFO Starting population and implementation checks; runner 9f2c233aeff3d741cf392234046c0c799fa1261823c902a03f1094013f2e0931
+2026-11-02 11:59:58,064 ERROR Implementation checks failed
+Traceback (most recent call last):
+  File "/mnt/mnt/data/wjm/ego/doc/ego_mixture_theory/M1_T1定理/verify_finite_sample_branch_selection.py", line 1338, in main
+    implementation = implementation_checks(model)
+  File "/mnt/mnt/data/wjm/ego/doc/ego_mixture_theory/M1_T1定理/verify_finite_sample_branch_selection.py", line 593, in implementation_checks
+    raise AssertionError("One or more implementation checks failed; inspect implementation_checks.json")
+AssertionError: One or more implementation checks failed; inspect implementation_checks.json
+2026-11-02 12:02:52,104 INFO Starting population and implementation checks; runner 247e292f251fe8bb84f3974b258e84ae30957c416dfa0481db88ccc4c27dc609
+2026-11-02 12:02:52,322 INFO Population and implementation checks passed
+2026-11-02 12:03:03,080 INFO Starting population and implementation checks; runner 247e292f251fe8bb84f3974b258e84ae30957c416dfa0481db88ccc4c27dc609
+2026-11-02 12:03:03,297 INFO Population and implementation checks passed
+2026-11-02 12:03:06,356 INFO Smoke n_r=1000: 1.150s, 7.13e+06 evaluations/s
+2026-11-02 12:03:06,357 INFO Smoke n_r=100000: 0.932s, 8.8e+06 evaluations/s
+2026-11-02 12:03:06,357 INFO Smoke n_r=100000000: 0.947s, 8.66e+06 evaluations/s
+2026-11-02 12:03:47,666 INFO Starting population and implementation checks; runner 247e292f251fe8bb84f3974b258e84ae30957c416dfa0481db88ccc4c27dc609
+2026-11-02 12:03:47,888 INFO Population and implementation checks passed
+2026-11-02 12:04:48,633 INFO Completed n_r=100000 multiplier=1 stationary=1 minima=1 bootstrap=0.000 elapsed=60.6s
+2026-11-02 12:04:48,737 INFO Completed n_r=30000 multiplier=1 stationary=1 minima=1 bootstrap=0.000 elapsed=60.7s
+2026-11-02 12:04:48,765 INFO Completed n_r=3000 multiplier=1 stationary=1 minima=1 bootstrap=0.000 elapsed=60.7s
+2026-11-02 12:04:58,605 INFO Completed n_r=1000 multiplier=1 stationary=1 minima=1 bootstrap=0.000 elapsed=70.6s
+2026-11-02 12:04:58,721 INFO Completed n_r=1000000 multiplier=1 stationary=1 minima=1 bootstrap=0.000 elapsed=70.7s
+2026-11-02 12:05:20,514 INFO Completed n_r=300000 multiplier=1 stationary=1 minima=1 bootstrap=0.000 elapsed=92.5s
+2026-11-02 12:05:30,947 INFO Completed n_r=3000000 multiplier=1 stationary=3 minima=2 bootstrap=1.000 elapsed=102.9s
+2026-11-02 12:05:34,199 INFO Completed n_r=10000 multiplier=1 stationary=1 minima=1 bootstrap=0.000 elapsed=106.2s
+2026-11-02 12:05:48,692 INFO Completed n_r=100000000 multiplier=1 stationary=3 minima=2 bootstrap=1.000 elapsed=59.8s
+2026-11-02 12:05:48,759 INFO Completed n_r=10000000 multiplier=1 stationary=3 minima=2 bootstrap=1.000 elapsed=60.0s
+2026-11-02 12:05:49,610 INFO Completed n_r=30000000 multiplier=1 stationary=3 minima=2 bootstrap=1.000 elapsed=60.7s
+2026-11-02 12:06:04,860 INFO All formal outputs completed in 137.0 seconds
+2026-11-02 12:09:01,768 INFO Starting population and implementation checks; runner 247e292f251fe8bb84f3974b258e84ae30957c416dfa0481db88ccc4c27dc609
+2026-11-02 12:09:01,984 INFO Population and implementation checks passed
+2026-11-02 12:09:02,059 INFO Completed n_r=1000 multiplier=1 stationary=1 minima=1 bootstrap=0.000 elapsed=70.6s
+2026-11-02 12:09:02,069 INFO Completed n_r=100000 multiplier=1 stationary=1 minima=1 bootstrap=0.000 elapsed=60.6s
+2026-11-02 12:09:02,074 INFO Completed n_r=3000 multiplier=1 stationary=1 minima=1 bootstrap=0.000 elapsed=60.7s
+2026-11-02 12:09:02,081 INFO Completed n_r=3000000 multiplier=1 stationary=3 minima=2 bootstrap=1.000 elapsed=102.9s
+2026-11-02 12:09:02,087 INFO Completed n_r=10000 multiplier=1 stationary=1 minima=1 bootstrap=0.000 elapsed=106.2s
+2026-11-02 12:09:02,095 INFO Completed n_r=30000 multiplier=1 stationary=1 minima=1 bootstrap=0.000 elapsed=60.7s
+2026-11-02 12:09:02,102 INFO Completed n_r=300000 multiplier=1 stationary=1 minima=1 bootstrap=0.000 elapsed=92.5s
+2026-11-02 12:09:02,111 INFO Completed n_r=1000000 multiplier=1 stationary=1 minima=1 bootstrap=0.000 elapsed=70.7s
+2026-11-02 12:09:02,121 INFO Completed n_r=30000000 multiplier=1 stationary=3 minima=2 bootstrap=1.000 elapsed=60.7s
+2026-11-02 12:09:02,131 INFO Completed n_r=10000000 multiplier=1 stationary=3 minima=2 bootstrap=1.000 elapsed=60.0s
+2026-11-02 12:09:02,143 INFO Completed n_r=100000000 multiplier=1 stationary=3 minima=2 bootstrap=1.000 elapsed=59.8s
+2026-11-02 12:09:17,241 INFO All formal outputs completed in 15.3 seconds
