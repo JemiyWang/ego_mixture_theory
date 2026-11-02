@@ -24,3 +24,8 @@ __pycache__/
 *.bcf
 *.run.xml
 *.synctex.gz
+
+# Backup snapshots and LaTeX build outputs
+_archives/
+paper_cvpr/build_*/
+*.bbl

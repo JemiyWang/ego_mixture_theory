@@ -22,6 +22,13 @@ Paper ID \paperID
 
 \begin{document}
 \maketitle
+\setcounter{tocdepth}{1}
+\begingroup
+% Consume the CVPR heading prefix and align appendix labels in the TOC.
+\def\numberline#1\hskip -1em.~{\makebox[1.7em][l]{#1.}}
+\tableofcontents
+\endgroup
+\clearpage
 \appendix
 \input{sec/X_suppl}
 {

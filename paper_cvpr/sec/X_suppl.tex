@@ -1,7 +1,7 @@
 %% Supplementary material — full version (compiled as suppl.pdf via suppl.tex)
 %% Self-contained: restates the model and all equations used.
 
-The supplement follows the main text's global-shape hierarchy: full-ridge risk and derivative expansions lead to population-shape classification and then to finite-sample optimal selection. Nondegenerate interior and boundary optima are special cases, while multimodal, multiple-optimum, and flat regimes are treated separately. A first-order exchange equation and an exact dosage solution for a quadratic surrogate remain separate from the complete full-ridge risk. Throughout, C1 refers to the marginal-benefit decomposition and C2 to the diagonalized marginal criterion.
+The main text follows three stages: two-dimensional multivalley geometry, global population certification, and finite-sample structure and selection. For the core arguments, read Sec.~\ref{supp:globalshape} for population geometry and certificates, Sec.~\ref{supp:t1b} for the full-ridge risk expansion, Sec.~\ref{supp:optfull} for uniform derivatives and interior optima, and Sec.~\ref{supp:degenerate} for flat and multiple optima. Section~\ref{supp:doseexchange} collects further consequences for matched-spectrum gain, a first-order exchange equation, and a quadratic-surrogate dosage rule. The earlier sections retain the diagonalized reference model and its separate risk objects; C1 denotes its marginal-benefit decomposition and C2 its marginal criterion.
 
 \begin{table}[h]
   \centering
@@ -12,17 +12,17 @@ The supplement follows the main text's global-shape hierarchy: full-ridge risk a
     \toprule
     Result & Estimator and risk object & Established scope \\
     \midrule
-    T1-a & Diagonalized; leading order & Conditional per-coordinate approximation, not an exact finite-sample identity \\
-    C1, C2 & Diagonalized; $\riske^{\lead}$ & Exact marginal decomposition and critical-size algebra for this object \\
-    Exchange rate, dosage & Diagonalized; $\riske^{\lead}$ & Full-interval optimization under the stated baseline and spectral conditions \\
+    Population shape & Full ridge; population risk & Zero-mismatch log-convexity, minimum-dimension multimodality, and fixed-parameter polynomial global certification \\
     T1-c, full derivative & Standard full ridge; actual risk & Fixed-$p$ second-order risk and uniform first/second derivatives; zero-mixing expansion is a special case \\
     Interior optimum & Standard full ridge; actual risk & First-order optimal-weight correction and optimized risk/gain expansions at a unique nondegenerate interior population minimizer; no boundary-switching claim \\
     Boundary optima & Standard full ridge; actual risk & Nondegenerate boundary persistence and flat-boundary weight/gain rates; local--global counterexample included \\
-    Population shape & Full ridge; population risk & Zero-mismatch log-convexity, minimum-dimension multimodality, and fixed-parameter polynomial global certification \\
     Multiple optima & Full ridge; population and first order & Valley bifurcations, two global minimizers, and $R_1$ branch selection at first order \\
-    Flat $R_0$ & Full ridge; matched spectra and $\delta=0$ & Exact $R_1=A(1-w)^2+Bw^2$, optimal weight, risk, and gain; higher order needed when $A+B=0$ \\
+    Flat $R_0$ & Full ridge; matched spectra and $\delta=0$ & Exact $R_1=A(1-w)^2+Bw^2$; if $A+B=0$, actual risk and gain vanish identically and every weight is optimal \\
     Matched gain, exchange & Full ridge; matched spectra & Optimized-gain expansion and exchange equation based on first-order risks \\
     Surrogate dosage & Population-plus-noise quadratic & Exact piecewise optimum of this surrogate; no full-ridge dosage guarantee \\
+    T1-a & Diagonalized; leading order & Conditional per-coordinate approximation, not an exact finite-sample identity \\
+    C1, C2 & Diagonalized; $\riske^{\lead}$ & Exact marginal decomposition and critical-size algebra for this object \\
+    Exchange rate, dosage & Diagonalized; $\riske^{\lead}$ & Full-interval optimization under the stated baseline and spectral conditions \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -43,7 +43,7 @@ Given $\nr$ robot and $\nh$ human samples, mixing ratio $\lambda \in [0,1]$, per
   \label{supp:eq:estimator}
 \end{equation}
 The robot-domain excess risk is $\risk(\lambda) = \E\|\hat\beta(\lambda) - \beta^*\|^2_{\Sigma_r} = \sum_j a_j\, \E(\hat\beta_j - \beta^*_j)^2$.
-The effective noise is $\tilde\sigma_{e,j}^2 = \sigma_e^2 + F_{e,j}$ with per-coordinate feedthrough energy $F_{e,j} = \sum_{k\neq j} \lambda^e_k \beta_{e,k}^2$ ($\beta_h = \beta^* + \delta$); where the coordinate dependence is immaterial we abbreviate $\tilde\sigma_{e,j}^2$ (resp.\ $F_{e,j}$) as $\tilde\sigma_e^2$ (resp.\ $F_e$), and all numerical evaluations use the exact per-coordinate form.
+For this diagonalized estimator, the coordinatewise effective noise is $\tilde\sigma_{e,j}^2 = \sigma_e^2 + F_{e,j}$ with per-coordinate feedthrough energy $F_{e,j} = \sum_{k\neq j} \lambda^e_k \beta_{e,k}^2$ ($\beta_h = \beta^* + \delta$). It describes the signal terms left in a coordinate numerator when the estimator discards off-diagonal Gram entries; it is not an additional independent noise source for full ridge. Where the coordinate dependence is immaterial we abbreviate $\tilde\sigma_{e,j}^2$ (resp.\ $F_{e,j}$) as $\tilde\sigma_e^2$ (resp.\ $F_e$), and numerical evaluations of this diagonalized object use the exact per-coordinate form.
 
 \medskip
 \noindent\textbf{Single-coordinate notation} (used throughout, index $j$ suppressed).
@@ -587,7 +587,7 @@ Then
   \label{supp:eq:t1b}
 \end{equation}
 where the constants depend on $(p,\mu^{-1},\|\beta^*\|,\|\delta\|)$ and the spectra.
-In words: the population full-ridge risk is the T1-a leading form with the feedthrough-corrected noise $\tilde\sigma_e^2=\sigma_e^2+F_e$ replaced by the true label noise $\sigma_e^2$.
+The displayed approximation uses the true label-noise variances $\sigma_e^2$. Its resemblance to the diagonalized formula after replacing $\tilde\sigma_e^2$ is an algebraic observation, not a transfer of the diagonalized effective-noise mechanism to full ridge.
 This theorem does \emph{not} control $O(1/n)$ terms, derivatives with respect to $\lambda$, or errors of optimized risks.
 \end{theorem}
 
@@ -638,7 +638,7 @@ Thus T1-b cannot establish its sign or magnitude, and we do not claim a theorem-
 (iii)~\emph{No blanket downstream transfer.}
 Corollary~1, Theorem~2, Corollary~2, and the dosage law involve derivatives, $O(1/n)$ coefficients, or optimized risks.
 They therefore do not follow from T1-b by substituting $\tilde\sigma_e^2\to\sigma_e^2$.
-The complete fixed-$p$ second-order risk and zero-mixing derivative are proved separately below. Uniform derivatives and optimized-risk control are established only for a unique, nondegenerate interior population optimum; boundary-switching and general downstream transfer remain open.
+The complete fixed-$p$ second-order risk and uniform derivatives are proved separately below without assumptions on the number or location of population optima. Their consequences for optimized risk are then stated under the respective interior, boundary, flat, or multiple-optimum conditions; these do not follow from T1-b alone.
 
 \subsection{Complete second-order risk at fixed dimension}
 
@@ -667,18 +667,47 @@ The coefficients are $R_0=v^\top Sv$ and
 This is a risk expansion, not yet a uniform derivative or optimized-risk theorem.
 \end{theorem}
 
-\begin{proof}[Proof sketch]
-Write $G_e=X_e^\top X_e/n_e$, $Z_e=G_e-\Sigma_e$, $B=[(1-\lambda)G_r+\lambda G_h+\mu I]^{-1}$, and $Z=(1-\lambda)Z_r+\lambda Z_h$. Conditional on both designs, the label-noise covariance is
-$N=(1-\lambda)^2\sigma_r^2G_r/\nr+\lambda^2\sigma_h^2G_h/\nh$.
-The exact risk is
+\begin{proof}
+Write $n=\nr$, $w=\lambda$, $G_e=X_e^\top X_e/n_e$, $Z_e=G_e-\Sigma_e$, $Z=(1-w)Z_r+wZ_h$, and $\xi=wZ_h\delta$. For $t\in[0,1]$, define $G_{e,t}=\Sigma_e+tZ_e$ and
+\begin{align}
+ B_t&=[(1-w)G_{r,t}+wG_{h,t}+\mu I]^{-1},\notag\\
+ q_t&=v+t\xi,\qquad
+ W_t=(1-w)^2\sigma_r^2G_{r,t}+w^2\rho^{-1}\sigma_h^2G_{h,t},\notag\\
+ F_0(w,t)&=q_t^\top B_t\Sigma_rB_tq_t,\qquad
+ F_1(w,t)=\operatorname{tr}(\Sigma_rB_tW_tB_t).
+ \label{supp:eq:interpolation-risk}
+\end{align}
+Conditional centering and covariance of the label noise give the exact identity
 \begin{equation}
- \mathbb E[(v+\lambda Z_h\delta)^\top B\Sigma_rB(v+\lambda Z_h\delta)]
- +\mathbb E\operatorname{tr}\{\Sigma_rBNB\}.
+ R_{\mathrm{full}}(w;n)=\mathbb E F_0(w,1)+n^{-1}\mathbb E F_1(w,1).
  \label{supp:eq:t1c-exact}
 \end{equation}
-The real Wishart moment is $\mathbb E[Z_eNZ_e]=\mathcal T_e(N)/n_e$, so $\mathbb E[ZNZ]=\mathcal T(N)/\nr$. On $\|Z\|\le\mu/2$, use $B=R-RZR+RZRZR+O_p(\|Z\|^3)$. Pairing the two fluctuations gives $\mathbb E[B\Sigma_rB]=S+C/\nr+o(\nr^{-1})$.
-The mismatch square contributes the second term of Eq.~\eqref{supp:eq:t1c-r1}. Although $\mathbb EZ_h=0$, its cross term with $B$ is of order $\nr^{-1}$ and gives the third term. The label-noise term gives the final two terms; its further resolvent corrections are $O(\nr^{-2})$.
-The good-event remainder is $O_p(\nr^{-3/2})$. On the exponentially unlikely complementary event, both the actual-risk contribution and the subtracted deterministic approximation are controlled using $\|B\|\le\mu^{-1}$, finite fourth moments, and Cauchy--Schwarz. The same good event and continuous coefficients give uniformity in $\lambda\in[0,1]$, including the endpoints.
+The interpolation matrices $G_{e,t}=(1-t)\Sigma_e+tG_e$ are positive semidefinite, so $\|B_t\|\le\mu^{-1}$ for every design and all real $w,t\in[0,1]$. Lemma~\ref{supp:lem:uniform-interpolation} below bounds the expected Taylor remainders uniformly: expanding $F_0$ to order two in $t$ costs $O(n^{-3/2})$, and expanding $n^{-1}F_1$ to order one costs $O(n^{-2})$. That lemma depends only on Gaussian Gram moments and this deterministic resolvent bound, not on the present expansion.
+
+We identify the Taylor coefficients. At $t=0$, $B_0=R$, and the coefficients through degree two in $B_t\Sigma_rB_t$ are
+\begin{align}
+ S,\qquad H_1&=-RZS-SZR,\notag\\
+ H_2&=RZRZS+SZRZR+RZ S ZR.
+\end{align}
+Consequently the bias coefficients through degree two are
+\begin{equation}
+ v^\top Sv,\qquad 2\xi^\top Sv+v^\top H_1v,\qquad
+ v^\top H_2v+2v^\top H_1\xi+\xi^\top S\xi.
+\end{equation}
+All linear terms have zero expectation. For any deterministic symmetric matrix $M$, independence of the two designs and the real Wishart identity give
+\begin{equation}
+ \mathbb E[Z_eMZ_e]=\mathcal T_e(M)/n_e,\quad
+ \mathbb E[ZMZ]=\mathcal T(M)/n,\quad
+ \mathbb E[ZMZ_h]=\frac{w}{\rho n}\mathcal T_h(M).
+\end{equation}
+It follows that $\mathbb E H_2=C/n$ and
+\begin{align}
+ 2\mathbb E[v^\top H_1\xi]
+ &=-\frac{2w^2}{\rho n}v^\top[R\mathcal T_h(S)+S\mathcal T_h(R)]\delta,\notag\\
+ \mathbb E[\xi^\top S\xi]
+ &=\frac{w^2}{\rho n}\operatorname{tr}\{S\mathcal T_h(\delta\delta^\top)\}.
+\end{align}
+For the noise term, $F_1(w,0)$ equals the last two terms of $R_1$ in Eq.~\eqref{supp:eq:t1c-r1}, and $\mathbb E\partial_tF_1(w,0)=0$, since this derivative is linear in the centered Gram fluctuations. Combining these identities with the uniform expected remainder bounds proves T1-c, with an $O(n^{-3/2})$ remainder, hence the stated $o(n^{-1})$.
 \end{proof}
 
 \paragraph{Numerical verification of T1-c.}
@@ -759,6 +788,42 @@ The fixed-$p$ second-order expansion and the nondegenerate interior-optimum theo
 \section{Uniform derivatives and nondegenerate interior optima}
 \label{supp:optfull}
 
+\begin{lemma}[Uniform interpolation and expected remainder bounds]\label{supp:lem:uniform-interpolation}
+Fix $p$, $\mu>0$, $0<\rho<\infty$, both covariance matrices, the task vectors, and the noise variances. With the interpolation and functions $F_0,F_1$ in Eq.~\eqref{supp:eq:interpolation-risk}, put $z=\|Z_r\|+\|Z_h\|$. For every fixed $q>0$,
+\begin{equation}
+ \mathbb E z^q=O(n^{-q/2}),\qquad n=\nr.
+ \label{supp:eq:gram-moment-bound}
+\end{equation}
+For $k=0,1,2$, $j=0,1,2,3$, and $\ell=0,1$, there are deterministic constants, independent of $n$, the design realization, $w$, and $t$, such that
+\begin{equation}
+ \sup_{w,t\in[0,1]}|\partial_w^k\partial_t^jF_\ell(w,t)|
+ \le C_{k,j}z^j(1+z)^{k+2}.
+ \label{supp:eq:mixed-derivative-envelope}
+\end{equation}
+For $j=0$ the factor $z^0$ is one. In particular, expectation and up to two $w$ derivatives can be interchanged, including one-sided endpoint limits.
+\end{lemma}
+
+\begin{proof}
+Each entry of $Z_e$ is an average of $n_e$ independent centered products of Gaussian coordinates. In an even moment of order $2m$, a nonzero expectation requires each sample index to appear at least twice. There are $O(n_e^m)$ such index tuples, and their moments are bounded by fixed Gaussian moments. Hence each entry has $2m$-th absolute moment $O(n_e^{-m})$. Finite dimension, the bound of operator norm by the sum of absolute entries, and the moment inequality for smaller powers give Eq.~\eqref{supp:eq:gram-moment-bound}. Here $n_h=\rho n$; all constants may depend on the fixed parameters and on the moment order.
+
+For the derivative bound, write $A_t=B_t^{-1}$. The deterministic positive-semidefinite interpolation gives $A_t\succeq\mu I$. Moreover,
+\begin{align}
+ \|\partial_w A_t\|&=\|\Sigma_h-\Sigma_r+t(Z_h-Z_r)\|\le C(1+z),\notag\\
+ \|\partial_t A_t\|&=\|(1-w)Z_r+wZ_h\|\le z,\qquad
+ \|\partial_w\partial_t A_t\|\le z.
+\end{align}
+All other nonzero derivatives of $A_t$ are covered by these displays. Repeatedly using $\partial B_t=-B_t(\partial A_t)B_t$ and the product rule shows
+\begin{equation}
+ \sup_{w,t\in[0,1]}\|\partial_w^k\partial_t^jB_t\|
+ \le C_{k,j}z^j(1+z)^k.
+\end{equation}
+Indeed each $t$ derivative contributes a factor bounded by $z$, each $w$ derivative contributes at most a factor $C(1+z)$, and every resolvent factor is bounded by $\mu^{-1}$. Mixed derivatives of $A_t$ satisfy the same counting bound.
+
+The vectors $q_t$ and their $w$ derivatives have norm at most $C(1+z)$; their nonzero $t$ derivatives have norm at most $Cz$. The same bounds apply to $W_t$ and its first two $w$ derivatives, with every nonzero $t$ derivative bounded by $Cz$. Applying the product rule to the two quadratic/trace expressions in Eq.~\eqref{supp:eq:interpolation-risk} proves Eq.~\eqref{supp:eq:mixed-derivative-envelope}. The two $q_t$ factors account for the exponent $k+2$; this exponent also bounds the noise expression, which has only one $W_t$ factor.
+
+These bounds are integrable by Eq.~\eqref{supp:eq:gram-moment-bound}. Dominated differentiation on $(0,1)$ and dominated limits at the endpoints justify the asserted exchange with expectation. No event truncation or complex extension is needed.
+\end{proof}
+
 \begin{theorem}[Uniform risk derivatives]\label{supp:thm:derivatives}
 Under the fixed-$p$ assumptions of Theorem~\ref{supp:thm:t1c}, for $k=0,1,2$ and uniformly for $\lambda\in[0,1]$,
 \begin{equation}
@@ -768,8 +833,33 @@ Under the fixed-$p$ assumptions of Theorem~\ref{supp:thm:t1c}, for $k=0,1,2$ and
 Endpoints use one-sided derivatives.
 \end{theorem}
 
-\begin{proof}[Proof sketch]
-The case $k=0$ is T1-c. On its uniform good event, bounded Gram norms and continuity give a fixed complex neighborhood of $[0,1]$ on which the empirical and population resolvents are analytic and uniformly bounded. The conditional risk and the coefficients $R_0,R_1$ are therefore analytic there. Apply Cauchy's integral formula to the analytic risk remainder on a fixed contour; the uniform $o(\nr^{-1})$ risk remainder implies the same order for its first two derivatives. On the exponentially unlikely complementary event, the actual derivative and the subtracted deterministic derivative are separately controlled by the resolvent bound and finite-moment assumptions.
+\begin{proof}
+Fix $k\in\{0,1,2\}$ and apply Taylor's formula in the real interpolation parameter $t$ to $\partial_w^kF_0(w,t)$ and $\partial_w^kF_1(w,t)$. All mixed derivatives exist by positive definiteness. Define
+\begin{align}
+ T_0(w)&=F_0(w,0)+\partial_tF_0(w,0)+\tfrac12\partial_t^2F_0(w,0),\notag\\
+ T_1(w)&=F_1(w,0)+\partial_tF_1(w,0).
+\end{align}
+The integral remainder formula and Lemma~\ref{supp:lem:uniform-interpolation} give
+\begin{align}
+ \mathbb E\sup_{w\in[0,1]}\left|\partial_w^k\{F_0(w,1)-T_0(w)\}\right|
+ &\le C_k\mathbb E[z^3(1+z)^4]=O(n^{-3/2}),\notag\\
+ n^{-1}\mathbb E\sup_{w\in[0,1]}\left|\partial_w^k\{F_1(w,1)-T_1(w)\}\right|
+ &\le C_kn^{-1}\mathbb E[z^2(1+z)^4]=O(n^{-2}).
+ \label{supp:eq:uniform-taylor-remainders}
+\end{align}
+For example, the bias remainder is $\tfrac12\int_0^1(1-t)^2\partial_t^3\partial_w^kF_0(w,t)\,dt$. The noise remainder uses $\int_0^1(1-t)\partial_t^2\partial_w^kF_1(w,t)\,dt$. Expanding $(1+z)^4$ and applying Eq.~\eqref{supp:eq:gram-moment-bound} proves the stated expectation orders directly.
+
+The moment calculations in the proof of T1-c identify the exact deterministic function
+\begin{equation}
+ \mathbb ET_0(w)+n^{-1}\mathbb ET_1(w)=R_0(w)+n^{-1}R_1(w).
+\end{equation}
+The lemma permits differentiating this identity and Eq.~\eqref{supp:eq:t1c-exact} under the expectation. Therefore
+\begin{equation}
+ \sup_{w\in[0,1]}\left|
+ R_{\mathrm{full}}^{(k)}(w;n)-R_0^{(k)}(w)-n^{-1}R_1^{(k)}(w)
+ \right|=O(n^{-3/2})=o(n^{-1}).
+\end{equation}
+The same uniform bounds cover the one-sided derivatives at $0$ and $1$. In particular, derivative control follows from expected mixed-derivative remainder bounds, not from differentiating an unspecified real-axis $o(n^{-1})$ term. The proof uses only the label-noise second moments after conditioning on the designs; the assumed fourth moments are more than sufficient.
 \end{proof}
 
 \begin{theorem}[Nondegenerate interior optimum]\label{supp:thm:optfull}
@@ -804,7 +894,7 @@ The case $d=0$ is undetermined at this order. The right boundary is analogous wh
 \end{theorem}
 
 \begin{proof}[Proof sketch]
-In the nondegenerate case, uniform first-derivative control preserves strict increase near zero, while the population risk gap and uniform risk control exclude all other global minimizers. In the flat case, $d>0$ gives the same boundary conclusion. For $d<0$, evaluating $R_n'(A/\nr)=(cA-d+o(1))/\nr$ on both sides of $A=|d|/c$ proves $\nr w_n^*\to|d|/c$. For the gain, integrate the derivative expansion rather than subtracting the $o(\nr^{-1})$ risk remainders:
+In the nondegenerate case, uniform first-derivative control preserves strict increase near zero, while the population risk gap and uniform risk control exclude all other global minimizers. In the flat case, $d>0$ gives the same boundary conclusion. For $d<0$, evaluating $R_n'(A/\nr)=(cA+d+o(1))/\nr$ on both sides of $A=|d|/c$ proves $\nr w_n^*\to|d|/c$. For the gain, integrate the derivative expansion rather than subtracting the $o(\nr^{-1})$ risk remainders:
 $\mathcal G_n=-\int_0^{w_n^*}R_n'(w)\,dw$. The integral has the required $o(\nr^{-2})$ remainder and yields $\mathcal G_n\sim d^2/(2c\nr^2)$.
 \end{proof}
 
@@ -937,29 +1027,34 @@ If $A+B>0$, then $R_1$ has the unique minimizer $w_1^*=A/(A+B)$. For sufficientl
  R_n(w_n^*)&=C+\frac{AB}{A+B}\frac1\nr+o(\nr^{-1}),\notag\\
  \mathcal G_n&=\frac{A^2}{A+B}\frac1\nr+o(\nr^{-1}).
 \end{align}
-If $A=B=0$, then $R_1\equiv0$ and the optimal weight and gain are determined only at higher order.
+If $A=B=0$, then $R_n(w)\equiv0$ for every sample size. Every weight is optimal and $\mathcal G_n=0$ exactly.
 \end{theorem}
 
 \begin{proof}
-Since $R_1''=2(A+B)>0$ everywhere, the uniform second-derivative expansion makes $R_n$ strictly convex for sufficiently large $\nr$. Uniform risk convergence and the positive risk gap outside any neighborhood of $w_1^*$ give $w_n^*\to w_1^*$. The optimized-risk formula follows by continuity and the uniform risk expansion. Finally, $\mathcal G_n=R_n(0)-R_n(w_n^*)$ and $R_1(0)=A$ give the gain formula.
+When $A+B>0$, $R_1''=2(A+B)>0$ everywhere, so the uniform second-derivative expansion makes $R_n$ strictly convex for sufficiently large $\nr$. The rescaled objectives $\nr(R_n-C)$ converge uniformly to $R_1$, whose unique minimizer has a positive value gap outside any fixed neighborhood. Hence $w_n^*\to w_1^*$. The optimized-risk formula follows from this convergence and the uniform expansion. Finally, $\mathcal G_n=R_n(0)-R_n(w_n^*)$ and $R_1(0)=A$ give the gain formula. If $A=B=0$, positivity of the covariance eigenvalues and $\mu$ in Eq.~\eqref{supp:eq:flat-r1} and its coefficient definitions forces $\beta^*=0$ and $\sigma_r^2=\sigma_h^2=0$. Since $\delta=0$ and the noises have zero mean, both labels vanish almost surely. Full ridge then returns zero for every design and weight, proving the exact zero-risk statement.
 \end{proof}
 
 \subsection{$R_1$ branch selection at multiple population optima}
 
 \begin{proposition}[First-order branch selection]\label{supp:prop:branch-select}
-Suppose $R_0$ has two global minimizers $w_1<w_2$, both with positive local curvature. If $R_1(w_1)<R_1(w_2)$, then for all sufficiently large $\nr$ the global optimum occurs only near $w_1$, and $w_n^*\to w_1$. The gap between the two local branch minima is $(R_1(w_2)-R_1(w_1))/\nr+o(\nr^{-1})$. If $R_1(w_1)=R_1(w_2)$, the selection requires $R_2$ or higher-order analysis.
+Suppose $R_0$ has exactly two global minimizers $0<w_1<w_2<1$, both with positive local curvature. If $R_1(w_1)<R_1(w_2)$, then for all sufficiently large $\nr$ the global optimum occurs only near $w_1$, and $w_n^*\to w_1$. The gap between the two local branch minima is $(R_1(w_2)-R_1(w_1))/\nr+o(\nr^{-1})$. If $R_1(w_1)=R_1(w_2)$, first-order analysis does not select a branch; higher-order terms or exact symmetry may determine whether a tie persists.
 \end{proposition}
 
 \begin{proof}
-Outside small neighborhoods of $w_1,w_2$, the population risk gap is strictly positive, so no finite-sample global minimizer can lie there for large $\nr$. Within the two neighborhoods, optimized risks converge to $R_0^*+R_1(w_i)/\nr+o(\nr^{-1})$, where $R_0^*$ is their common population minimum. The smaller $R_1(w_1)$ therefore wins eventually. Positive local curvature then gives $w_n^*\to w_1$. If the two first-order values are equal, this argument does not select a branch.
+Choose disjoint closed interior neighborhoods of $w_1,w_2$ on which $R_0''>0$, with $R_0'$ negative at each left endpoint and positive at each right endpoint. Uniform first- and second-derivative control preserves these signs and strict convexity for large $\nr$, giving a unique local minimizer $w_{i,n}$ in each neighborhood. The local argument of Theorem~\ref{supp:thm:optfull} gives $w_{i,n}=w_i-R_1'(w_i)/(\nr R_0''(w_i))+o(\nr^{-1})$. Thus $R_n(w_{i,n})=R_0^*+R_1(w_i)/\nr+o(\nr^{-1})$. Outside these neighborhoods, the population risk has a strictly positive gap above $R_0^*$, and uniform risk control excludes global minimizers there. Comparing the two branch minima proves the result. Equality of the first-order coefficients leaves the comparison unresolved.
 \end{proof}
 
-For the two-global-minimum example above, with $\sigma_r^2=1,\sigma_h^2=4,\rho=2$, the branch values are $R_1(w_1)=1.5697698402$ and $R_1(w_2)=5.1438849070$. At $\nr=1000$, the predicted gap is $0.0035741151$, and 20{,}000 conditional-risk replicates give $0.0035763806\pm0.0000007785$. Once a nondegenerate branch is selected, the local correction $w_n^*=w_i-R_1'(w_i)/(\nr R_0''(w_i))+o(\nr^{-1})$ remains valid.
+\paragraph{Fixed-candidate risk comparison, separate from branch selection.}
+For the two-global-minimum example above, with $\sigma_r^2=1,\sigma_h^2=4,\rho=2$, the values at the two fixed population weights are $R_1(w_1)=1.5697698402$ and $R_1(w_2)=5.1438849070$. At $\nr=1000$, the first-order prediction for $R_n(w_2)-R_n(w_1)$ is $0.0035741151$, and 20{,}000 conditional-risk replicates give $0.0035763806\pm0.0000007785$ (mean $\pm$ one standard error). This experiment evaluates those fixed weights, not the finite-sample local minimizers $w_{i,n}$; it supports their risk ordering but does not validate branch persistence or the optimized branch-gap expansion. The discrepancy from the first-order fixed-point prediction is about $2.91$ Monte Carlo standard errors; higher-order approximation error is distinct from sampling uncertainty.
 
-The script \texttt{verify\_flat\_r0\_r1.py} checks 200 random matched-spectrum configurations, with maximum quadratic-identity error $1.82\times10^{-12}$ and maximum flat-$R_0$ error $3.55\times10^{-15}$. Four conditional-risk gain checks are within approximately $1.18$ Monte Carlo standard errors. The script \texttt{verify\_r1\_rn\_global\_shapes.py} reproduces the branch-gap check and additional general-$R_1$ shape examples that are not needed for the present claims.
+For the first population minimizer, $R_0''(w_1)\approx2.37736\times10^{-5}$ and $R_1'(w_1)\approx-0.330613$, giving a formal displacement of approximately $13.91$ at $\nr=1000$. Its size rules out interpreting this cell as a small-displacement validation. The theorem is asymptotic; an experimental validation of branch selection must first establish that the two finite-sample local minima persist and then compare their optimized risks.
 
-\section{Matched-spectrum full-ridge gain, exchange approximation, and surrogate dosage}
+The script \texttt{verify\_flat\_r0\_r1.py} checks 200 random matched-spectrum configurations, with maximum quadratic-identity error $1.82\times10^{-12}$ and maximum flat-$R_0$ error $3.55\times10^{-15}$. Four conditional-risk gain checks are within approximately $1.18$ Monte Carlo standard errors. The script \texttt{verify\_r1\_rn\_global\_shapes.py} reproduces the fixed-candidate risk comparison and additional general-$R_1$ shape examples that are not needed for the present claims.
+
+\section{Further consequences: matched-spectrum gain, exchange, and surrogate dosage}
 \label{supp:doseexchange}
+
+These extensions use the risk expansions developed above. Their distinct approximation scopes are stated separately; they are not required for the main text's global-certification and selection results.
 
 For matched spectra, $R_0(w)=A_0+A_1w+A_2w^2$ with $A_2$ independent of $\rho=\nh/\nr$, and $R_1(w;\rho)=C_0(w)+C_1(w)/\rho$. If $A_2>0$, the population optimum is $w_0=\operatorname{clip}_{[0,1]}(-A_1/(2A_2))$, with
 \begin{equation}
@@ -973,7 +1068,11 @@ Under the nondegenerate optimal-branch assumptions, $\mathcal G_n=G_0+G_1(\rho)/
 
 \paragraph{Exact dosage rule for a quadratic surrogate.}
 Write $S=R\Sigma R$, $C_r=\sigma_r^2\operatorname{tr}(S\Sigma)$, and $C_h=\sigma_h^2\operatorname{tr}(S\Sigma)$. Retaining population label noise defines the quadratic surrogate
-$\widetilde R_{\nr,\nh}(w)=R_0(w)+C_r(1-w)^2/\nr+C_hw^2/\nh$, with
+\begin{equation}
+ \widetilde R_{\nr,\nh}(w)=R_0(w)+\frac{C_r(1-w)^2}{\nr}+\frac{C_hw^2}{\nh}.
+ \label{supp:eq:surrogate-dose}
+\end{equation}
+Its linear and quadratic coefficients are
 \begin{align}
  A_1^{\mathrm{lead}}&=A_1-2C_r/\nr,\notag\\
  A_2^{\mathrm{lead}}(\nh)&=A_2^r+B/\nh,\notag\\

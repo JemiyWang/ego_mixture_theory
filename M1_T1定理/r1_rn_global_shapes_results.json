@@ -221,16 +221,27 @@
     "max_symbolic_vs_numeric_error": 2.0816681711721685e-17,
     "conclusion": "R1 has two local minima and one local maximum in (0,1)"
   },
-  "finite_sample_branch_selection": {
-    "R1_first_branch": 1.56976984015784,
-    "R1_second_branch": 5.143884906996469,
-    "predicted_branch_gap_at_n_1000": 0.003574115066838629,
-    "conditional_mc_branch_gap": 0.003576380632007985,
+  "fixed_population_candidate_risk_comparison": {
+    "weights": [
+      0.29550604935924824,
+      0.883351093497898
+    ],
+    "n_r": 1000,
+    "replicates": 20000,
+    "seed": 20261101,
+    "R1_first_candidate": 1.56976984015784,
+    "R1_second_candidate": 5.143884906996469,
+    "predicted_fixed_candidate_gap": 0.003574115066838629,
+    "conditional_mc_fixed_candidate_gap": 0.003576380632007985,
     "standard_error": 7.784713172436947e-07,
     "error_in_standard_errors": 2.9102744303769477,
-    "R0_first_branch_curvature": 2.3773615793532855e-05,
-    "R1_first_branch_derivative": -0.3306128467788346,
+    "R0_first_candidate_curvature": 2.3773615793532855e-05,
+    "R1_first_candidate_derivative": -0.3306128467788346,
     "local_weight_correction_coefficient": 13906.7127882487,
-    "selection_rule": "The branch with smaller R1 wins at first order; equality would require R2"
+    "formal_first_order_displacement_at_n_1000": 13.9067127882487,
+    "finite_sample_local_minima_sought": false,
+    "scope": "Risk ordering at two fixed population weights; no branch-persistence or optimized-branch-gap validation.",
+    "interpretation": "The displacement is outside [0,1]; n_r=1000 is not a small-displacement check of the asymptotic branch-selection theorem.",
+    "numerical_provenance": "Original recorded values preserved; same-seed replay agrees to floating-point precision. Field names and scope corrected on 2026-11-01."
   }
 }

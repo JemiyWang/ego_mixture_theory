@@ -1,0 +1,217 @@
+{
+  "interpolation": {
+    "coefficient_error": 1.8546030753437107e-68,
+    "scope": "Two-coordinate noncommuting perturbations, five weights including endpoints; numerical diagnostics only.",
+    "remainder_checks": [
+      {
+        "part": "bias",
+        "w_derivative_order": 0,
+        "expected_directional_order": 3,
+        "observed_last_halving_order": 2.9875481000486555,
+        "values": [
+          {
+            "epsilon": 0.125,
+            "max_sampled_error": 0.00022513089013239253,
+            "scaled_error": 0.11526701574778497
+          },
+          {
+            "epsilon": 0.0625,
+            "max_sampled_error": 3.0006543727792205e-05,
+            "scaled_error": 0.12290680310903687
+          },
+          {
+            "epsilon": 0.03125,
+            "max_sampled_error": 3.878356129294919e-06,
+            "scaled_error": 0.1270859736447359
+          },
+          {
+            "epsilon": 0.015625,
+            "max_sampled_error": 4.93144523874585e-07,
+            "scaled_error": 0.12927487806657922
+          },
+          {
+            "epsilon": 0.0078125,
+            "max_sampled_error": 6.21774093858851e-08,
+            "scaled_error": 0.13039547844842772
+          }
+        ]
+      },
+      {
+        "part": "bias",
+        "w_derivative_order": 1,
+        "expected_directional_order": 3,
+        "observed_last_halving_order": 2.983899855982662,
+        "values": [
+          {
+            "epsilon": 0.125,
+            "max_sampled_error": 0.002052056480900153,
+            "scaled_error": 1.0506529182208784
+          },
+          {
+            "epsilon": 0.0625,
+            "max_sampled_error": 0.0002784389930470248,
+            "scaled_error": 1.1404861155206136
+          },
+          {
+            "epsilon": 0.03125,
+            "max_sampled_error": 3.6334890034357245e-05,
+            "scaled_error": 1.1906216766458182
+          },
+          {
+            "epsilon": 0.015625,
+            "max_sampled_error": 4.643093102009129e-06,
+            "scaled_error": 1.217158998133081
+          },
+          {
+            "epsilon": 0.0078125,
+            "max_sampled_error": 5.868998944345541e-07,
+            "scaled_error": 1.230818287413214
+          }
+        ]
+      },
+      {
+        "part": "bias",
+        "w_derivative_order": 2,
+        "expected_directional_order": 3,
+        "observed_last_halving_order": 2.9794676023809052,
+        "values": [
+          {
+            "epsilon": 0.125,
+            "max_sampled_error": 0.01991821563390506,
+            "scaled_error": 10.19812640455939
+          },
+          {
+            "epsilon": 0.0625,
+            "max_sampled_error": 0.0027608763955819203,
+            "scaled_error": 11.308549716303546
+          },
+          {
+            "epsilon": 0.03125,
+            "max_sampled_error": 0.0003644670357904843,
+            "scaled_error": 11.942855828782589
+          },
+          {
+            "epsilon": 0.015625,
+            "max_sampled_error": 4.68549691298327e-05,
+            "scaled_error": 12.282749027570864
+          },
+          {
+            "epsilon": 0.0078125,
+            "max_sampled_error": 5.9408219520699945e-06,
+            "scaled_error": 12.458806638427493
+          }
+        ]
+      },
+      {
+        "part": "noise",
+        "w_derivative_order": 0,
+        "expected_directional_order": 2,
+        "observed_last_halving_order": 1.98573993708313,
+        "values": [
+          {
+            "epsilon": 0.125,
+            "max_sampled_error": 0.0392989801349299,
+            "scaled_error": 2.5151347286355135
+          },
+          {
+            "epsilon": 0.0625,
+            "max_sampled_error": 0.010575096324258806,
+            "scaled_error": 2.7072246590102544
+          },
+          {
+            "epsilon": 0.03125,
+            "max_sampled_error": 0.002747042871200999,
+            "scaled_error": 2.812971900109823
+          },
+          {
+            "epsilon": 0.015625,
+            "max_sampled_error": 0.0007003268896785094,
+            "scaled_error": 2.8685389401231745
+          },
+          {
+            "epsilon": 0.0078125,
+            "max_sampled_error": 0.0001768208675876046,
+            "scaled_error": 2.8970330945553138
+          }
+        ]
+      },
+      {
+        "part": "noise",
+        "w_derivative_order": 1,
+        "expected_directional_order": 2,
+        "observed_last_halving_order": 1.9789318779889686,
+        "values": [
+          {
+            "epsilon": 0.125,
+            "max_sampled_error": 0.24420571199341878,
+            "scaled_error": 15.629165567578802
+          },
+          {
+            "epsilon": 0.0625,
+            "max_sampled_error": 0.06803114681112891,
+            "scaled_error": 17.415973583649002
+          },
+          {
+            "epsilon": 0.03125,
+            "max_sampled_error": 0.017996435531959423,
+            "scaled_error": 18.42834998472645
+          },
+          {
+            "epsilon": 0.015625,
+            "max_sampled_error": 0.004630945599169545,
+            "scaled_error": 18.968353174198455
+          },
+          {
+            "epsilon": 0.0078125,
+            "max_sampled_error": 0.0011747672332135587,
+            "scaled_error": 19.247386348970945
+          }
+        ]
+      },
+      {
+        "part": "noise",
+        "w_derivative_order": 2,
+        "expected_directional_order": 2,
+        "observed_last_halving_order": 1.961782889434401,
+        "values": [
+          {
+            "epsilon": 0.125,
+            "max_sampled_error": 1.0467441435847475,
+            "scaled_error": 66.99162518942384
+          },
+          {
+            "epsilon": 0.0625,
+            "max_sampled_error": 0.32122025682315464,
+            "scaled_error": 82.23238574672759
+          },
+          {
+            "epsilon": 0.03125,
+            "max_sampled_error": 0.08913623414380152,
+            "scaled_error": 91.27550376325276
+          },
+          {
+            "epsilon": 0.015625,
+            "max_sampled_error": 0.023489855511603493,
+            "scaled_error": 96.2144481755279
+          },
+          {
+            "epsilon": 0.0078125,
+            "max_sampled_error": 0.006030104670677974,
+            "scaled_error": 98.79723492438792
+          }
+        ]
+      }
+    ]
+  },
+  "matched_R1_existing_algebra_check": {
+    "random_configurations": 200,
+    "max_quadratic_identity_error": 1.8189894035458565e-12,
+    "max_flat_r0_error": 3.552713678800501e-15,
+    "max_coefficient_identity_error": 4.547473508864641e-13,
+    "minimum_gram_correction_eigenvalue": 7.730558790047641e-10
+  },
+  "zero_coefficients": {
+    "design_weight_cells": 36,
+    "max_actual_risk": 0.0
+  }
+}

@@ -6,7 +6,7 @@ Two domains provide training data: the \emph{robot domain} $r$ (target; teleoper
 We write $e \in \{r,h\}$ for the domain index.
 
 \begin{assumption}[Data model]\label{ass:a1}
-Coordinates $j = 1,\dots,p$ index a shared spectral basis.
+Coordinates $j = 1,\dots,p$ index a shared spectral basis. Design rows are independent within and across domains.
 Observations are $x_e = \Sigma_e^{1/2} u_e$ with $u_e$ standard Gaussian and $\Sigma_e = \mathrm{diag}(\lambda^e_j)$ diagonal with power-law spectra
 \begin{equation}
   \lambda^e_j \asymp j^{-\alpha_e}, \qquad \lambda^e_1 = 1,
@@ -41,19 +41,16 @@ The evaluation criterion is the \emph{robot-domain excess risk}, weighted by the
 \end{equation}
 Only errors in directions the robot actually visits are penalized --- this weighting turns out to be essential for the phase structure in Sec.~\ref{sec:theory}.
 
-\paragraph{Label feedthrough.}
-A subtle point drives the quantitative accuracy of the theory.
-Although the population covariances are diagonal, the \emph{sample} Gram matrices are not: the label projection $T_{ej}$ picks up contributions from all other coordinates, $T_{ej} = S_{ejj}\beta_{e,j} + \sum_{k\neq j} S_{ejk}\beta_{e,k} + X_{e,:j}^\top\varepsilon_e$.
-The middle term is mean-zero with variance $\nr\lambda^e_j F_{e,j}$ (and similarly for $h$), where $F_{e,j} = \sum_{k\neq j} \lambda^e_k\beta_{e,k}^2$ is the domain's signal energy on the coordinates \emph{other than} $j$ ($\beta_h = \beta^* + \delta$).
-Out-of-coordinate signal is therefore indistinguishable from noise for coordinate $j$, giving rise to the \emph{effective noise}
+\paragraph{Full-ridge error and sample coupling.}
+Let $G_e=X_e^\top X_e/n_e$ and $\widehat A_\lambda=(1-\lambda)G_r+\lambda G_h+\mu I$. The exact error is
 \begin{equation}
-  \tilde\sigma_{e,j}^2 = \sigma_e^2 + F_{e,j} .
-  \label{eq:feedthrough}
+ \hat\beta-\beta^*=\widehat A_\lambda^{-1}
+ \big(-\mu\beta^*+\lambda G_h\delta+\eta_\lambda\big),
+ \label{eq:full-error}
 \end{equation}
-A heavier-tailed human spectrum (small $\alpha_h$) inflates $F_{h,j}$: broad coverage carries a hidden per-coordinate SNR cost, which competes with its coverage benefit --- this tension is the microscopic origin of the phase diagrams in Sec.~\ref{sec:theory}.
-Where the coordinate dependence is immaterial we abbreviate $\tilde\sigma_{e,j}^2$ (resp.\ $F_{e,j}$) as $\tilde\sigma_e^2$ (resp.\ $F_e$); all numerical evaluations use the exact per-coordinate form.
+where $\eta_\lambda=w_rX_r^\top\varepsilon_r+w_hX_h^\top\varepsilon_h$. Thus shrinkage and task mismatch determine the population bias, while sample-Gram fluctuations and label noise contribute finite-sample corrections. Full ridge jointly uses the off-diagonal sample-Gram entries. The additional per-coordinate signal variance, or \emph{label feedthrough}, of the diagonalized estimator is derived separately in the supplementary; it is not an extra independent noise source in Eq.~\eqref{eq:full-error}. For example, with $\delta=0$ and no label noise, the exact error is $-\mu\widehat A_\lambda^{-1}\beta^*$.
 
 \paragraph{What the model keeps and discards.}
 The model retains the three gap components that mixture practice manipulates --- spectra (coverage), mismatch $\delta$ (embodiment/retargeting), and noise --- and discards the rest (nonlinear observation maps, temporal structure, closed-loop compounding).
-Sec.~\ref{sec:numerics} therefore validates at three levels: within-model Monte-Carlo, Adam-trained estimators on synthetic data, and stress tests of the assumptions; policy-level evaluation is companion work and is not claimed here.
-The diagonalized estimator is a controlled approximation of the full-ridge solution in Assumption~\ref{ass:a3}; we quantify its gap (8--28\% on the weighted risk) in the supplementary. The full-ridge risk and its first two derivatives are expanded at fixed dimension in Theorem~\ref{thm:t1c}. The earlier diagonal-motivated full-ridge surrogate is retained only as a numerical comparator, not as the proved second-order object.
+Sec.~\ref{sec:numerics} reports exact algebraic checks, population root and interval certificates, and within-model conditional Monte Carlo. Exploratory trained-model and assumption-stress protocols are recorded separately in the supplementary; policy-level validation is not claimed here.
+The diagonalized estimator is a separate simplified comparator to Assumption~\ref{ass:a3}; its coordinatewise effective-noise analysis does not replace the full-ridge expansion. The full-ridge risk and its first two derivatives are expanded at fixed dimension in Theorem~\ref{thm:t1c}. The earlier diagonal-motivated full-ridge surrogate is retained only as a numerical comparator, not as the proved second-order object.

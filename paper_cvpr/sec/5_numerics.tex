@@ -1,7 +1,7 @@
 \section{Numerical validation}
 \label{sec:numerics}
 
-Validation is organized by evidence type: exact algebraic identities, real-root and interval certificates, and conditional Monte Carlo. The first two certify population objects; the third checks actual finite-sample full-ridge risk without treating formula--grid consistency as independent evidence.
+Validation follows the theoretical sequence: population valleys and global certification, then finite-sample risk and weight corrections. Exact algebra, root isolation, and interval comparisons certify population objects; conditional Monte Carlo checks actual finite-sample full-ridge risk. The fixed-candidate comparison below is reported separately from validation of optimized finite-sample branches.
 
 \paragraph{Global-shape certificates.}
 For the two-dimensional multimodal example, exact real-root isolation gives three simple interior stationary points at $0.2648422643$, $0.7270105700$, and $0.8691124964$. Rational interval evaluation proves that the first is the unique global minimum, with risk interval $[1.9948444989,1.9948445856]\times10^{-5}$; the second local minimum has a strictly higher interval. The example satisfies exact power-law spectra and the task ellipsoid constraint. Independent NumPy roots differ from the exact roots by at most $1.04\times10^{-14}$.
@@ -11,8 +11,8 @@ For the one-parameter family, the discriminant has two positive roots $t_1\appro
 \paragraph{Full-ridge expansion and optimum checks.}
 The fixed-dimension second-order risk expansion is checked in 22 design-level cells over $p=1,2,20$; all simulated means are within $2.13$ Monte Carlo standard errors. Four optimized-risk checks are within $1.59$ standard errors. For the two-dimensional aligned example, $w_0=0.3708597$, $R_0''(w_0)=0.13996$, and the predicted scaled weight shift is $-2.29329$; 200{,}000 conditional-design replicates at $\nr=4000$ give $-2.29688\pm0.07803$. Actual-E2 paired checks at $\nr=1000$ give derivatives $-0.000435\pm0.000137$ and $0.000469\pm0.000137$ on the two sides of the first-order prediction.
 
-\paragraph{Flat and multiple optima.}
-For matched spectra and zero mismatch, 200 random configurations give maximum $R_1$ quadratic-identity error $1.82\times10^{-12}$ and maximum flat-$R_0$ error $3.55\times10^{-15}$. Four conditional-risk gain checks at $\nr=1000,4000$ are within approximately $1.18$ standard errors. For the multiple-optimum example, the branch values are $R_1(w_1)=1.56977$ and $R_1(w_2)=5.14388$; at $\nr=1000$, the predicted branch gap is $0.00357412$ and 20{,}000 conditional-risk replicates give $0.00357638\pm0.00000078$, confirming the selected branch.
+\paragraph{Selection from a flat population risk.}
+For matched spectra and zero mismatch, 200 random configurations give maximum $R_1$ quadratic-identity error $1.82\times10^{-12}$ and maximum flat-$R_0$ error $3.55\times10^{-15}$. Four conditional-risk gain checks at $\nr=1000,4000$ are within approximately $1.18$ standard errors.
 
-\paragraph{Surrogate dosage and exchange.}
-Across 16 configurations, the closed-form surrogate optimum agrees with grid minimization of the same surrogate to within $1.49\times10^{-10}$ in gain, including a boundary crossing at $\nh=1779.17$. This checks only the algebraic implementation. A separate full-ridge conditional-risk check gives optimized gain $0.0122262\pm0.0000066$ versus prediction $0.0122186$. Exchange checks evaluate the first-order equation, including finite and no-finite-solution examples.
+\paragraph{Risk ordering at two fixed population candidates.}
+For the multiple-population-optimum example, we evaluate the finite-sample risk at the two \emph{fixed population weights}. Here $R_1(w_1)=1.56977$ and $R_1(w_2)=5.14388$; at $\nr=1000$, the first-order fixed-point gap is $0.00357412$ and 20{,}000 conditional-risk replicates give $0.00357638\pm0.00000078$ (mean $\pm$ one standard error). This supports the ordering of these two fixed candidates; it does not locate finite-sample local optima or validate branch persistence. The first-order weight displacement at $w_1$ is about $13.91$, outside $[0,1]$, so this sample size is not a small-displacement check of Theorem~\ref{thm:branchselect}.

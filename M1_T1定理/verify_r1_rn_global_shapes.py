@@ -1,4 +1,8 @@
-"""Exact R1 multimodality certificates and finite-sample branch selection."""
+"""Exact R1 certificates and finite-sample risk at fixed population candidates.
+
+The fixed-candidate comparison does not search for finite-sample local minima
+and must not be interpreted as a validation of asymptotic branch selection.
+"""
 import json
 from fractions import Fraction
 from pathlib import Path
@@ -155,7 +159,8 @@ def certify_risk_shape(name, w, risk, config, global_index):
     }
 
 
-def branch_selection_check(reps):
+def fixed_candidate_risk_check(reps):
+    """Compare two fixed population minimizers without reoptimizing either."""
     t = 1.0608592591022064
     a = np.array([1.0, 0.5])
     b = np.array([1.0, 1 / 16])
@@ -173,30 +178,37 @@ def branch_selection_check(reps):
     r1_first = float(risk_coefficients(w1, sr, sh, beta, delta, mu, sr2, sh2, rho)[1])
     r1_second = float(risk_coefficients(w2, sr, sh, beta, delta, mu, sr2, sh2, rho)[1])
     if not r1_first < r1_second:
-        raise AssertionError("The first branch must have smaller R1")
+        raise AssertionError("The first fixed candidate must have smaller R1")
     n_r = 1000
     rng = np.random.default_rng(20261101)
     draws = conditional_gain_draws(rng, reps, n_r, [w1, w2], config)
-    branch_gap_draws = draws[:, 1] - draws[:, 0]
-    mean, se = summarize_draws(branch_gap_draws)
+    fixed_gap_draws = draws[:, 1] - draws[:, 0]
+    mean, se = summarize_draws(fixed_gap_draws)
     prediction = (r1_second - r1_first) / n_r
-    r0_prime, r1_prime = coefficient_derivatives(w1, sr, sh, beta, delta,
-                                                 mu, sr2, sh2, rho)
+    _, r1_prime = coefficient_derivatives(w1, sr, sh, beta, delta,
+                                          mu, sr2, sh2, rho)
     h = 1e-4
     objective = lambda x: float(risk_coefficients(x, sr, sh, beta, delta,
                                                    mu, sr2, sh2, rho)[0])
     curvature = (objective(w1 + h) - 2 * objective(w1) + objective(w1 - h)) / h**2
     return {
-        "R1_first_branch": r1_first,
-        "R1_second_branch": r1_second,
-        "predicted_branch_gap_at_n_1000": prediction,
-        "conditional_mc_branch_gap": mean,
+        "weights": [w1, w2],
+        "n_r": n_r,
+        "replicates": reps,
+        "seed": 20261101,
+        "R1_first_candidate": r1_first,
+        "R1_second_candidate": r1_second,
+        "predicted_fixed_candidate_gap": prediction,
+        "conditional_mc_fixed_candidate_gap": mean,
         "standard_error": se,
         "error_in_standard_errors": (mean - prediction) / se,
-        "R0_first_branch_curvature": float(curvature),
-        "R1_first_branch_derivative": r1_prime,
+        "R0_first_candidate_curvature": float(curvature),
+        "R1_first_candidate_derivative": r1_prime,
         "local_weight_correction_coefficient": float(-r1_prime / curvature),
-        "selection_rule": "The branch with smaller R1 wins at first order; equality would require R2",
+        "formal_first_order_displacement_at_n_1000": float(-r1_prime / curvature / n_r),
+        "finite_sample_local_minima_sought": False,
+        "scope": "Risk ordering at two fixed population weights; no branch-persistence or optimized-branch-gap validation.",
+        "interpretation": "The displacement is outside [0,1]; n_r=1000 is not a small-displacement check of the asymptotic branch-selection theorem.",
     }
 
 
@@ -206,14 +218,14 @@ def main(reps):
     result = {
         "matched_spectra_general_mismatch_R1": matched,
         "general_spectra_zero_mismatch_R1": general,
-        "finite_sample_branch_selection": branch_selection_check(reps),
+        "fixed_population_candidate_risk_comparison": fixed_candidate_risk_check(reps),
     }
     output = Path(__file__).with_name("r1_rn_global_shapes_results.json")
     output.write_text(json.dumps(result, indent=2), encoding="utf-8")
     print(json.dumps({
         "matched_global": matched["unique_global_minimizer_numeric"],
         "general_global": general["unique_global_minimizer_numeric"],
-        "branch_gap": result["finite_sample_branch_selection"]["conditional_mc_branch_gap"],
+        "fixed_candidate_gap": result["fixed_population_candidate_risk_comparison"]["conditional_mc_fixed_candidate_gap"],
     }, indent=2))
     print(f"wrote {output}")
 

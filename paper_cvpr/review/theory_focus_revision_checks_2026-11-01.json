@@ -1,0 +1,42 @@
+{
+  "core_statements_identical": [
+    "thm:t1c",
+    "prop:delta-zero-shape",
+    "prop:multimodal",
+    "thm:optfull",
+    "thm:branchselect",
+    "thm:flatR1"
+  ],
+  "supplement_proofs_identical": 24,
+  "extension_numerical_values_retained": [
+    "1779.1732",
+    "0.0122185831",
+    "0.0122262407",
+    "0.0000066100",
+    "2.8527963",
+    "1.49\\times10^{-10}"
+  ],
+  "build": {
+    "main_pages": 6,
+    "suppl_pages": 25,
+    "undefined_references": false,
+    "overfull_or_underfull_boxes": false,
+    "pdfs_synced": true
+  },
+  "visual_review": {
+    "main_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "suppl_pages": [
+      1,
+      20,
+      21
+    ],
+    "result": "No visible clipping or overlap on inspected pages."
+  }
+}
